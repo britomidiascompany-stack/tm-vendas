@@ -19,7 +19,6 @@
       --muted:     #8b8fa8;
       --success:   #22c55e;
       --danger:    #f87171;
-      --gold:      #f59e0b;
     }
 
     body {
@@ -38,118 +37,58 @@
       padding: 18px 0;
       position: sticky; top: 0; z-index: 10;
     }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .header-left  { display: flex; align-items: center; gap: 16px; }
     .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      transition: color .15s;
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--muted); text-decoration: none;
+      font-size: 13px; font-weight: 500; transition: color .15s;
     }
-
     .back-link:hover { color: var(--text); }
-
     .divider { width: 1px; height: 20px; background: var(--border); }
-
     .report-title { font-size: 15px; font-weight: 700; }
     .report-sub   { font-size: 11px; color: var(--muted); margin-top: 2px; }
-
     .date-badge {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--muted);
+      background: var(--surface2); border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 8px;
+      font-size: 13px; font-weight: 500; color: var(--muted);
     }
 
-    /* ── SECTION LAYOUT ── */
+    /* ── SECTIONS ── */
     section { padding: 36px 0; border-bottom: 1px solid var(--border); }
     section:last-of-type { border-bottom: none; }
-
-    .sec-header {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
+    .sec-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
     .sec-title {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: var(--muted);
+      font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .1em; color: var(--muted);
     }
-
-    .sec-periodo {
-      font-size: 12px;
-      color: var(--accent);
-      font-weight: 500;
-    }
+    .sec-periodo { font-size: 12px; color: var(--accent); font-weight: 500; }
 
     /* ── METRICS ── */
     .metrics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
       gap: 14px;
     }
-
     .metric-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px;
+      display: flex; flex-direction: column; gap: 8px;
     }
-
-    .metric-label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: var(--muted);
-    }
-
-    .metric-value {
-      font-size: 26px;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .metric-delta {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--muted);
-    }
-
     .metric-card.highlight {
       background: linear-gradient(135deg, rgba(99,102,241,.12), rgba(245,158,11,.08));
       border-color: rgba(99,102,241,.3);
     }
-
-    .metric-card.good-cpl {
-      background: linear-gradient(135deg, rgba(34,197,94,.1), transparent);
-      border-color: rgba(34,197,94,.25);
+    .metric-card.good {
+      background: linear-gradient(135deg, rgba(34,197,94,.08), transparent);
+      border-color: rgba(34,197,94,.2);
     }
+    .metric-label {
+      font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .08em; color: var(--muted);
+    }
+    .metric-value { font-size: 26px; font-weight: 800; line-height: 1; }
+    .metric-delta { font-size: 12px; font-weight: 500; color: var(--muted); }
 
     /* ── CRIATIVOS ── */
     .criativos-grid {
@@ -157,234 +96,123 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
-
-    @media (max-width: 720px) {
-      .criativos-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 780px) { .criativos-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 500px) { .criativos-grid { grid-template-columns: 1fr; } }
 
     .criativo-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
       transition: border-color .2s;
-      position: relative;
     }
+    .criativo-card.winner  { border-color: rgba(245,158,11,.45); }
+    .criativo-card.cpr-win { border-color: rgba(34,197,94,.35); }
 
-    .criativo-card:hover { border-color: var(--accent); }
-
-    .criativo-card.winner { border-color: rgba(245,158,11,.4); }
-
-    .winner-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      z-index: 5;
-      background: var(--gold);
-      color: #000;
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      padding: 4px 10px;
-      border-radius: 20px;
-    }
-
-    .cpr-star-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      z-index: 5;
-      background: var(--success);
-      color: #000;
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      padding: 4px 10px;
-      border-radius: 20px;
-    }
-
-    .criativo-iframe-wrap {
-      width: 100%;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
+    /* Cabeçalho tipo rede social dentro do card */
+    .criativo-page-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px;
       background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, #00c9a7, #0080c8);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; color: #fff; flex-shrink: 0;
+    }
+    .page-info { flex: 1; }
+    .page-name { font-size: 12px; font-weight: 700; color: var(--text); }
+    .page-type { font-size: 10px; color: var(--muted); margin-top: 1px; }
+
+    .badge-winner {
+      font-size: 10px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .06em; color: #000;
+      background: var(--accent2); padding: 3px 8px; border-radius: 20px;
+    }
+    .badge-cpr {
+      font-size: 10px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .06em; color: #000;
+      background: var(--success); padding: 3px 8px; border-radius: 20px;
     }
 
+    /* Wrapper do iframe — escala para caber no card */
+    .criativo-iframe-wrap {
+      width: 100%; overflow: hidden;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+    }
     .criativo-iframe-wrap iframe {
-      width: 335px;
-      height: 450px;
-      border: none;
-      transform-origin: top left;
-      display: block;
+      width: 335px; height: 450px; border: none;
+      transform-origin: top left; display: block;
       pointer-events: none;
     }
 
-    .criativo-info {
-      padding: 14px;
-    }
-
+    .criativo-info { padding: 12px 14px; }
     .criativo-id {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: var(--accent);
-      margin-bottom: 4px;
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em;
+      color: var(--accent); margin-bottom: 3px;
     }
-
     .criativo-nome {
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 1.4;
-      margin-bottom: 10px;
-      color: var(--text);
+      font-size: 12px; font-weight: 600; line-height: 1.4;
+      margin-bottom: 10px; color: var(--text);
     }
-
-    .criativo-stats {
-      display: flex;
-      gap: 14px;
-    }
-
-    .cs-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
+    .criativo-stats { display: flex; gap: 14px; flex-wrap: wrap; }
+    .cs-item { display: flex; flex-direction: column; gap: 2px; }
     .cs-label { font-size: 10px; color: var(--muted); }
     .cs-val   { font-size: 13px; font-weight: 700; }
-    .cs-val.win { color: var(--gold); }
-    .cs-val.star { color: var(--success); }
+    .cs-val.gold  { color: var(--accent2); }
+    .cs-val.green { color: var(--success); }
 
-    .iframe-note {
-      font-size: 10px;
-      color: var(--muted);
-      text-align: center;
-      padding: 6px 12px;
+    .login-note {
+      font-size: 10px; color: var(--muted); text-align: center;
+      padding: 5px; background: rgba(99,102,241,.06);
       border-top: 1px solid var(--border);
-      background: var(--surface2);
     }
 
-    /* ── TABELA DE PERFORMANCE ── */
+    /* ── TABELA ── */
     .table-wrap {
-      overflow-x: auto;
-      border-radius: 12px;
-      border: 1px solid var(--border);
+      overflow-x: auto; border-radius: 12px; border: 1px solid var(--border);
     }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--surface);
-      white-space: nowrap;
-    }
-
+    table { width: 100%; border-collapse: collapse; background: var(--surface); white-space: nowrap; }
     thead th {
-      text-align: left;
-      padding: 11px 16px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .07em;
-      color: var(--muted);
-      background: var(--surface2);
+      text-align: left; padding: 11px 14px;
+      font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .07em;
+      color: var(--muted); background: var(--surface2);
       border-bottom: 1px solid var(--border);
     }
-
-    tbody td {
-      padding: 13px 16px;
-      font-size: 13px;
-      border-bottom: 1px solid var(--border);
-    }
-
+    tbody td { padding: 12px 14px; font-size: 13px; border-bottom: 1px solid var(--border); }
     tbody tr:last-child td { border-bottom: none; }
     tbody tr:hover td { background: var(--surface2); }
     td.num { text-align: right; font-variant-numeric: tabular-nums; }
     td.date-col { font-weight: 600; }
-
-    tr.best-day td { background: rgba(34,197,94,.05); }
-    tr.best-day td.conv-cell { color: var(--success); font-weight: 700; }
-
+    tr.best-row td { background: rgba(34,197,94,.05); }
+    tr.best-row .conv-hi { color: var(--success); font-weight: 700; }
+    tr.zero-row td { opacity: .45; font-style: italic; }
     .tfoot-row td {
-      background: var(--surface2);
-      font-weight: 700;
-      font-size: 13px;
+      background: var(--surface2); font-weight: 700; font-size: 13px;
       border-top: 2px solid var(--border);
     }
 
-    /* ── TODOS OS ADS ── */
-    .all-ads-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 10px;
-    }
-
-    .ad-row {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .ad-row.has-results { border-color: rgba(99,102,241,.3); }
-    .ad-row.no-results  { opacity: .55; }
-
-    .ad-rank {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--muted);
-      min-width: 20px;
-    }
-
-    .ad-info { flex: 1; }
-    .ad-name { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.3; }
-    .ad-sub  { font-size: 11px; color: var(--muted); margin-top: 2px; }
-
-    .ad-nums {
-      text-align: right;
-      font-size: 12px;
-    }
-
-    .ad-spend { font-weight: 700; }
-    .ad-cpr   { font-size: 11px; color: var(--muted); margin-top: 2px; }
-    .ad-cpr.good { color: var(--success); }
-
     /* ── OBSERVAÇÕES ── */
     .obs-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: var(--surface); border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px 24px;
-      font-size: 14px;
-      line-height: 1.75;
-      color: var(--muted);
     }
-
     .obs-item {
-      display: flex;
-      gap: 10px;
-      padding: 8px 0;
+      display: flex; gap: 12px; padding: 14px 20px;
       border-bottom: 1px solid var(--border);
     }
-
     .obs-item:last-child { border-bottom: none; }
-
-    .obs-icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
-    .obs-text { font-size: 14px; line-height: 1.6; color: var(--muted); }
+    .obs-icon { flex-shrink: 0; font-size: 16px; margin-top: 2px; }
+    .obs-text { font-size: 14px; line-height: 1.65; color: var(--muted); }
     .obs-text strong { color: var(--text); }
 
     /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 20px 0;
-      text-align: center;
-      font-size: 12px;
-      color: var(--muted);
+      border-top: 1px solid var(--border); padding: 20px 0;
+      text-align: center; font-size: 12px; color: var(--muted);
     }
   </style>
 </head>
@@ -416,146 +244,194 @@
     <div class="container">
       <div class="sec-header">
         <span class="sec-title">Resumo do Período</span>
-        <span class="sec-periodo">22/05/2026 – 04/06/2026 · 19 criativos testados</span>
+        <span class="sec-periodo">22/05/2026 – 18/06/2026 · 19 criativos testados</span>
       </div>
       <div class="metrics-grid">
         <div class="metric-card highlight">
           <span class="metric-label">Total Investido</span>
-          <span class="metric-value">R$ 614,59</span>
-          <span class="metric-delta">Período completo</span>
+          <span class="metric-value">R$ 1.360</span>
+          <span class="metric-delta">22/05 a 18/06/2026</span>
         </div>
-        <div class="metric-card">
+        <div class="metric-card good">
           <span class="metric-label">Conv. Iniciadas</span>
-          <span class="metric-value" style="color:var(--success)">72</span>
+          <span class="metric-value" style="color:var(--success)">176</span>
           <span class="metric-delta">WhatsApp abertos</span>
         </div>
-        <div class="metric-card good-cpl">
+        <div class="metric-card good">
           <span class="metric-label">Custo por Conv.</span>
-          <span class="metric-value">R$ 8,54</span>
+          <span class="metric-value">R$ 7,73</span>
           <span class="metric-delta">CPL médio geral</span>
         </div>
         <div class="metric-card">
           <span class="metric-label">Impressões</span>
-          <span class="metric-value">29.605</span>
+          <span class="metric-value">64.366</span>
           <span class="metric-delta">Total período</span>
         </div>
         <div class="metric-card">
           <span class="metric-label">Cliques no Link</span>
-          <span class="metric-value">663</span>
-          <span class="metric-delta">CTR médio: 2,24%</span>
+          <span class="metric-value">1.394</span>
+          <span class="metric-delta">CTR médio: 2,17%</span>
         </div>
         <div class="metric-card">
           <span class="metric-label">Alcance Total</span>
-          <span class="metric-value">26.886</span>
+          <span class="metric-value">54.976</span>
           <span class="metric-delta">Pessoas únicas</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── CRIATIVOS DESTAQUE ── -->
+  <!-- ── TOP 6 CRIATIVOS ── -->
   <section>
     <div class="container">
       <div class="sec-header">
-        <span class="sec-title">Criativos em Destaque</span>
-        <span class="sec-periodo">Preview ao vivo direto do Meta (requer login Meta)</span>
+        <span class="sec-title">Top 6 Criativos</span>
+        <span class="sec-periodo">Por investimento · Preview requer login no Meta</span>
       </div>
       <div class="criativos-grid">
 
         <!-- ADI04 — VENCEDOR -->
         <div class="criativo-card winner">
-          <span class="winner-badge">Vencedor</span>
-          <div class="criativo-iframe-wrap">
-            <iframe
-              src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQKBkDAK0dkp62k-veVsyMfC0CFCeeaw4sZOHw03uNZaCfl22uh4vRrglj5y_SiAjAF10mXtyoMJm8jUdqhLJ0drJL0W2IKzaet0Di6ymkDCVYAkzsmquzs5CwZ69nZ5Eu3YQ_a09aer_J3tyh_-_ClYZwD0pk-BaJSsgIXM_707TuWnkbRnV4Up3lAlZ1vt3m7NJSB32_Q4v9USiI601T6iVIGIOmsGXLjCgaSuAmuh1g&amp;t=AQKqdIv9mCr9kt3HXjM"
-              scrolling="no" allow="autoplay"
-            ></iframe>
+          <div class="criativo-page-header">
+            <div class="page-avatar">OO</div>
+            <div class="page-info">
+              <div class="page-name">O Poder do Ozônio</div>
+              <div class="page-type">Patrocinado · Feed</div>
+            </div>
+            <span class="badge-winner">Vencedor</span>
           </div>
-          <div class="iframe-note">Preview Meta · Requer login</div>
+          <div class="criativo-iframe-wrap">
+            <iframe src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQKBkDAK0dkp62k-veVsyMfC0CFCeeaw4sZOHw03uNZaCfl22uh4vRrglj5y_SiAjAF10mXtyoMJm8jUdqhLJ0drJL0W2IKzaet0Di6ymkDCVYAkzsmquzs5CwZ69nZ5Eu3YQ_a09aer_J3tyh_-_ClYZwD0pk-BaJSsgIXM_707TuWnkbRnV4Up3lAlZ1vt3m7NJSB32_Q4v9USiI601T6iVIGIOmsGXLjCgaSuAmuh1g&amp;t=AQKqdIv9mCr9kt3HXjM" scrolling="no" allow="autoplay"></iframe>
+          </div>
+          <div class="login-note">Imagem carrega com login Meta</div>
           <div class="criativo-info">
-            <div class="criativo-id">ADI04 · Mobile Feed</div>
-            <div class="criativo-nome">Aparelho que Limpa o Ar 01</div>
+            <div class="criativo-id">ADI04 · Aparelho que Limpa o Ar</div>
             <div class="criativo-stats">
-              <div class="cs-item">
-                <span class="cs-label">Conv.</span>
-                <span class="cs-val win">61</span>
-              </div>
-              <div class="cs-item">
-                <span class="cs-label">CPL</span>
-                <span class="cs-val win">R$ 7,18</span>
-              </div>
-              <div class="cs-item">
-                <span class="cs-label">Gasto</span>
-                <span class="cs-val">R$ 438,28</span>
-              </div>
-              <div class="cs-item">
-                <span class="cs-label">Share</span>
-                <span class="cs-val">71,3%</span>
-              </div>
+              <div class="cs-item"><span class="cs-label">Conv.</span><span class="cs-val gold">61</span></div>
+              <div class="cs-item"><span class="cs-label">CPL</span><span class="cs-val gold">R$ 7,18</span></div>
+              <div class="cs-item"><span class="cs-label">Gasto</span><span class="cs-val">R$ 438,28</span></div>
+              <div class="cs-item"><span class="cs-label">Share</span><span class="cs-val">71,3%</span></div>
             </div>
           </div>
         </div>
 
         <!-- ADI18 — UNICAMP 02 -->
         <div class="criativo-card">
-          <div class="criativo-iframe-wrap">
-            <iframe
-              src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQL6y5lx3cFAAWT3ADQkRBKR0W4ed8SedhXKZDoic5NM-lv0ra-NH9s8A_8phF1Dt2vYMLTBmWM90lHakSF1idEP1664ZDVp_0jZKQEI18JqIxU7h-oQ-LPq-6Ge2JBVKCrwJOnHzm64Fh20D0ipbyPWDJ8d6ZBXcbe-lkMc07YjXxkjDS3XLuVI584r3Hr_oi_HTwMBtDDlnHTnbZhZgVSwtnuJ6M_KCJS9KHRED9Qtlg&amp;t=AQJYtw1YBcTKI9DR93Q"
-              scrolling="no" allow="autoplay"
-            ></iframe>
+          <div class="criativo-page-header">
+            <div class="page-avatar">OO</div>
+            <div class="page-info">
+              <div class="page-name">O Poder do Ozônio</div>
+              <div class="page-type">Patrocinado · Feed</div>
+            </div>
           </div>
-          <div class="iframe-note">Preview Meta · Requer login</div>
+          <div class="criativo-iframe-wrap">
+            <iframe src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQL6y5lx3cFAAWT3ADQkRBKR0W4ed8SedhXKZDoic5NM-lv0ra-NH9s8A_8phF1Dt2vYMLTBmWM90lHakSF1idEP1664ZDVp_0jZKQEI18JqIxU7h-oQ-LPq-6Ge2JBVKCrwJOnHzm64Fh20D0ipbyPWDJ8d6ZBXcbe-lkMc07YjXxkjDS3XLuVI584r3Hr_oi_HTwMBtDDlnHTnbZhZgVSwtnuJ6M_KCJS9KHRED9Qtlg&amp;t=AQJYtw1YBcTKI9DR93Q" scrolling="no" allow="autoplay"></iframe>
+          </div>
+          <div class="login-note">Imagem carrega com login Meta</div>
           <div class="criativo-info">
-            <div class="criativo-id">ADI18 · Mobile Feed</div>
-            <div class="criativo-nome">UFF e UNICAMP Atestam 02</div>
+            <div class="criativo-id">ADI18 · UFF e UNICAMP Atestam 02</div>
             <div class="criativo-stats">
-              <div class="cs-item">
-                <span class="cs-label">Conv.</span>
-                <span class="cs-val">3</span>
-              </div>
-              <div class="cs-item">
-                <span class="cs-label">CPL</span>
-                <span class="cs-val">R$ 12,25</span>
-              </div>
-              <div class="cs-item">
-                <span class="cs-label">Gasto</span>
-                <span class="cs-val">R$ 36,74</span>
-              </div>
+              <div class="cs-item"><span class="cs-label">Conv.</span><span class="cs-val">3</span></div>
+              <div class="cs-item"><span class="cs-label">CPL</span><span class="cs-val">R$ 12,25</span></div>
+              <div class="cs-item"><span class="cs-label">Gasto</span><span class="cs-val">R$ 36,74</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADI19 — UNICAMP 03 -->
+        <div class="criativo-card">
+          <div class="criativo-page-header">
+            <div class="page-avatar">OO</div>
+            <div class="page-info">
+              <div class="page-name">O Poder do Ozônio</div>
+              <div class="page-type">Patrocinado · Feed</div>
+            </div>
+          </div>
+          <div class="criativo-iframe-wrap">
+            <iframe src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQJe3Kdz3X7MoP81d7Xck2krZRqKiX7cwnzRBr11rwRJ_Ik7q_Y05ymBEmhsL0-YjxAX9ybH_ykH9IeTqO4dplbowubJHCPr1O2jThnj0pOTWjfSAPRa8WAENSw34Bv6cRdVVT2BxoMmTao6oEqk6ePcgIpY-SN6g1_rpDKoMZre6doRhxFgFBJA8hJioHKf_ziBFPSFJMJhaS3AoTmDJtxYDPup-NKjU8YLl9SPZRYYcQ&amp;t=AQIBB5wbNYVT5BAXLD0" scrolling="no" allow="autoplay"></iframe>
+          </div>
+          <div class="login-note">Imagem carrega com login Meta</div>
+          <div class="criativo-info">
+            <div class="criativo-id">ADI19 · UFF e UNICAMP Atestam 03</div>
+            <div class="criativo-stats">
+              <div class="cs-item"><span class="cs-label">Conv.</span><span class="cs-val">2</span></div>
+              <div class="cs-item"><span class="cs-label">CPL</span><span class="cs-val">R$ 16,53</span></div>
+              <div class="cs-item"><span class="cs-label">Gasto</span><span class="cs-val">R$ 33,06</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADI17 — UNICAMP 01 -->
+        <div class="criativo-card">
+          <div class="criativo-page-header">
+            <div class="page-avatar">OO</div>
+            <div class="page-info">
+              <div class="page-name">O Poder do Ozônio</div>
+              <div class="page-type">Patrocinado · Feed</div>
+            </div>
+          </div>
+          <div class="criativo-iframe-wrap">
+            <iframe src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQITjkTyGO9fVSNjA7vdhDwx3MLRpJjfMgpTav-Hpg95HNkzoulbR97SnTxhCkdhXUXuTl6uTga_qMnLpszDnuCWwH_TGpByihzR0QjGE48n5q7Byrrl8gUrfGutvDmMnyHUJJLUjBbfiYSYqMTcXhgGJVqjiRgpBa9Ss2P4wa06poW5IwLICAqYAmD7Da0M9VqQNu8g4SoAsEOnWxUPOwgh5kDtqDhgc0Uf11Ep8pe3hg&amp;t=AQLpr4AZSdhx4dFJ1Fw" scrolling="no" allow="autoplay"></iframe>
+          </div>
+          <div class="login-note">Imagem carrega com login Meta</div>
+          <div class="criativo-info">
+            <div class="criativo-id">ADI17 · UFF e UNICAMP Atestam 01</div>
+            <div class="criativo-stats">
+              <div class="cs-item"><span class="cs-label">Conv.</span><span class="cs-val">1</span></div>
+              <div class="cs-item"><span class="cs-label">CPL</span><span class="cs-val">R$ 28,05</span></div>
+              <div class="cs-item"><span class="cs-label">Gasto</span><span class="cs-val">R$ 28,05</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADI15 — INVERNO 05 -->
+        <div class="criativo-card">
+          <div class="criativo-page-header">
+            <div class="page-avatar">OO</div>
+            <div class="page-info">
+              <div class="page-name">O Poder do Ozônio</div>
+              <div class="page-type">Patrocinado · Feed</div>
+            </div>
+          </div>
+          <div class="criativo-iframe-wrap">
+            <iframe src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQJZcWFVsGieP4SqDxVVMjn9WKNpDDGFk8aESdPzH6AEAupMhG4sbRJdn4UAGnYb1k4esQxeN89VwR7NF5nWIAXhl9VSz3mjc9en4Lu9-cyRb-ZhloYFKecqd-h_j3lxSn9rt2zRDxoRaJtmEZdNhChuIsZa6mP6tHnXhpsbMqIzOTS6JjYqPkPWDqrn9TyuGXtgTxfoQx7QY5vC0cbF_qcSglQhvthDTHWEMEfpLzs0nw&amp;t=AQIVZ1SMEXqfjz9eYy0" scrolling="no" allow="autoplay"></iframe>
+          </div>
+          <div class="login-note">Imagem carrega com login Meta</div>
+          <div class="criativo-info">
+            <div class="criativo-id">ADI15 · Inverno Chegou 05</div>
+            <div class="criativo-stats">
+              <div class="cs-item"><span class="cs-label">Conv.</span><span class="cs-val">2</span></div>
+              <div class="cs-item"><span class="cs-label">CPL</span><span class="cs-val">R$ 12,82</span></div>
+              <div class="cs-item"><span class="cs-label">Gasto</span><span class="cs-val">R$ 25,64</span></div>
             </div>
           </div>
         </div>
 
         <!-- ADI16 — MELHOR CPL -->
-        <div class="criativo-card">
-          <span class="cpr-star-badge">Melhor CPL</span>
-          <div class="criativo-iframe-wrap">
-            <iframe
-              src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQLVsDEl24Ts-C17TUpb70Iwr973-9EOlYwTCur2spEcIGtprWEUgwcwOEIhkS65fFZmTGOM4Li36mPZiP-A3Gm5DEIZfPvH6Jui1S_wvdNUe1GC_mc2xPPHjlEgZSOdIUvbd7gZ6AOvyNQLwFGgz4cHYjzhfc0Cz5UKiU3ybDzTbjp8yFXyMb6gB5kpNt2MvH9rdu8_Ddr0j9af6vbKAViLoHkH74GDg-6Pd3F8rR-CLw&amp;t=AQK_LJRIT6cchqPrqHI"
-              scrolling="no" allow="autoplay"
-            ></iframe>
+        <div class="criativo-card cpr-win">
+          <div class="criativo-page-header">
+            <div class="page-avatar">OO</div>
+            <div class="page-info">
+              <div class="page-name">O Poder do Ozônio</div>
+              <div class="page-type">Patrocinado · Feed</div>
+            </div>
+            <span class="badge-cpr">Melhor CPL</span>
           </div>
-          <div class="iframe-note">Preview Meta · Requer login</div>
+          <div class="criativo-iframe-wrap">
+            <iframe src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQLVsDEl24Ts-C17TUpb70Iwr973-9EOlYwTCur2spEcIGtprWEUgwcwOEIhkS65fFZmTGOM4Li36mPZiP-A3Gm5DEIZfPvH6Jui1S_wvdNUe1GC_mc2xPPHjlEgZSOdIUvbd7gZ6AOvyNQLwFGgz4cHYjzhfc0Cz5UKiU3ybDzTbjp8yFXyMb6gB5kpNt2MvH9rdu8_Ddr0j9af6vbKAViLoHkH74GDg-6Pd3F8rR-CLw&amp;t=AQK_LJRIT6cchqPrqHI" scrolling="no" allow="autoplay"></iframe>
+          </div>
+          <div class="login-note">Imagem carrega com login Meta</div>
           <div class="criativo-info">
-            <div class="criativo-id">ADI16 · Mobile Feed</div>
-            <div class="criativo-nome">Poder do Azônio 01</div>
+            <div class="criativo-id">ADI16 · Poder do Azônio 01</div>
             <div class="criativo-stats">
-              <div class="cs-item">
-                <span class="cs-label">Conv.</span>
-                <span class="cs-val star">3</span>
-              </div>
-              <div class="cs-item">
-                <span class="cs-label">CPL</span>
-                <span class="cs-val star">R$ 2,13</span>
-              </div>
-              <div class="cs-item">
-                <span class="cs-label">Gasto</span>
-                <span class="cs-val">R$ 6,40</span>
-              </div>
+              <div class="cs-item"><span class="cs-label">Conv.</span><span class="cs-val green">3</span></div>
+              <div class="cs-item"><span class="cs-label">CPL</span><span class="cs-val green">R$ 2,13</span></div>
+              <div class="cs-item"><span class="cs-label">Gasto</span><span class="cs-val">R$ 6,40</span></div>
             </div>
           </div>
         </div>
 
-      </div>
+      </div><!-- /criativos-grid -->
     </div>
   </section>
 
@@ -564,7 +440,7 @@
     <div class="container">
       <div class="sec-header">
         <span class="sec-title">Performance por Dia</span>
-        <span class="sec-periodo">Linha destacada = melhor dia</span>
+        <span class="sec-periodo">22/05 – 18/06 · 25 dias registrados</span>
       </div>
       <div class="table-wrap">
         <table>
@@ -576,278 +452,50 @@
               <th style="text-align:right">Alcance</th>
               <th style="text-align:right">Cliques</th>
               <th style="text-align:right">CTR</th>
-              <th style="text-align:right">Conv. Inic.</th>
+              <th style="text-align:right">Conv.</th>
               <th style="text-align:right">CPL</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="date-col">Qui, 22/05</td>
-              <td class="num">R$ 35,46</td>
-              <td class="num">1.953</td>
-              <td class="num">1.737</td>
-              <td class="num">40</td>
-              <td class="num">2,05%</td>
-              <td class="num">4</td>
-              <td class="num">R$ 8,87</td>
-            </tr>
-            <tr>
-              <td class="date-col">Sex, 23/05</td>
-              <td class="num">R$ 43,62</td>
-              <td class="num">2.110</td>
-              <td class="num">1.884</td>
-              <td class="num">48</td>
-              <td class="num">2,27%</td>
-              <td class="num">6</td>
-              <td class="num">R$ 7,27</td>
-            </tr>
-            <tr>
-              <td class="date-col">Dom, 25/05</td>
-              <td class="num">R$ 61,27</td>
-              <td class="num">3.021</td>
-              <td class="num">2.659</td>
-              <td class="num">75</td>
-              <td class="num">2,48%</td>
-              <td class="num conv-cell best-conv">10</td>
-              <td class="num">R$ 6,13</td>
-            </tr>
-            <tr>
-              <td class="date-col">Seg, 26/05</td>
-              <td class="num">R$ 62,15</td>
-              <td class="num">2.414</td>
-              <td class="num">2.227</td>
-              <td class="num">50</td>
-              <td class="num">2,07%</td>
-              <td class="num">7</td>
-              <td class="num">R$ 8,88</td>
-            </tr>
-            <tr>
-              <td class="date-col">Ter, 27/05</td>
-              <td class="num">R$ 61,04</td>
-              <td class="num">3.163</td>
-              <td class="num">2.955</td>
-              <td class="num">75</td>
-              <td class="num">2,37%</td>
-              <td class="num">8</td>
-              <td class="num">R$ 7,63</td>
-            </tr>
-            <tr>
-              <td class="date-col">Qua, 28/05</td>
-              <td class="num">R$ 50,80</td>
-              <td class="num">3.085</td>
-              <td class="num">2.740</td>
-              <td class="num">59</td>
-              <td class="num">1,91%</td>
-              <td class="num">7</td>
-              <td class="num">R$ 7,26</td>
-            </tr>
-            <tr>
-              <td class="date-col">Qui, 29/05</td>
-              <td class="num">R$ 55,43</td>
-              <td class="num">2.679</td>
-              <td class="num">2.458</td>
-              <td class="num">51</td>
-              <td class="num">1,90%</td>
-              <td class="num">6</td>
-              <td class="num">R$ 9,24</td>
-            </tr>
-            <tr>
-              <td class="date-col">Sex, 30/05</td>
-              <td class="num">R$ 59,23</td>
-              <td class="num">2.257</td>
-              <td class="num">2.160</td>
-              <td class="num">75</td>
-              <td class="num">3,32%</td>
-              <td class="num">8</td>
-              <td class="num">R$ 7,40</td>
-            </tr>
-            <tr>
-              <td class="date-col">Seg, 01/06</td>
-              <td class="num">R$ 63,82</td>
-              <td class="num">3.804</td>
-              <td class="num">3.337</td>
-              <td class="num">70</td>
-              <td class="num">1,84%</td>
-              <td class="num">4</td>
-              <td class="num">R$ 15,96</td>
-            </tr>
-            <tr>
-              <td class="date-col">Ter, 02/06</td>
-              <td class="num">R$ 60,71</td>
-              <td class="num">2.391</td>
-              <td class="num">2.236</td>
-              <td class="num">49</td>
-              <td class="num">2,05%</td>
-              <td class="num">6</td>
-              <td class="num">R$ 10,12</td>
-            </tr>
-            <tr>
-              <td class="date-col">Qua, 03/06</td>
-              <td class="num">R$ 56,52</td>
-              <td class="num">2.588</td>
-              <td class="num">2.360</td>
-              <td class="num">56</td>
-              <td class="num">2,16%</td>
-              <td class="num">5</td>
-              <td class="num">R$ 11,30</td>
-            </tr>
-            <tr>
-              <td class="date-col">Qui, 04/06</td>
-              <td class="num">R$ 4,54</td>
-              <td class="num">140</td>
-              <td class="num">133</td>
-              <td class="num">15</td>
-              <td class="num">10,71%</td>
-              <td class="num">1</td>
-              <td class="num">R$ 4,54</td>
-            </tr>
+            <tr><td class="date-col">Sex, 22/05</td><td class="num">R$ 35,46</td><td class="num">1.953</td><td class="num">1.584</td><td class="num">40</td><td class="num">2,05%</td><td class="num">4</td><td class="num">R$ 8,87</td></tr>
+            <tr><td class="date-col">Sáb, 23/05</td><td class="num">R$ 43,62</td><td class="num">2.110</td><td class="num">1.693</td><td class="num">48</td><td class="num">2,27%</td><td class="num">6</td><td class="num">R$ 7,27</td></tr>
+            <tr class="best-row"><td class="date-col">Dom, 25/05</td><td class="num">R$ 61,27</td><td class="num">3.021</td><td class="num">2.288</td><td class="num">75</td><td class="num">2,48%</td><td class="num conv-hi">10</td><td class="num">R$ 6,13</td></tr>
+            <tr><td class="date-col">Seg, 26/05</td><td class="num">R$ 62,15</td><td class="num">2.414</td><td class="num">2.039</td><td class="num">50</td><td class="num">2,07%</td><td class="num">7</td><td class="num">R$ 8,88</td></tr>
+            <tr><td class="date-col">Ter, 27/05</td><td class="num">R$ 61,04</td><td class="num">3.163</td><td class="num">2.728</td><td class="num">75</td><td class="num">2,37%</td><td class="num">8</td><td class="num">R$ 7,63</td></tr>
+            <tr><td class="date-col">Qua, 28/05</td><td class="num">R$ 50,80</td><td class="num">3.085</td><td class="num">2.492</td><td class="num">59</td><td class="num">1,91%</td><td class="num">7</td><td class="num">R$ 7,26</td></tr>
+            <tr><td class="date-col">Qui, 29/05</td><td class="num">R$ 55,43</td><td class="num">2.679</td><td class="num">2.382</td><td class="num">51</td><td class="num">1,90%</td><td class="num">6</td><td class="num">R$ 9,24</td></tr>
+            <tr><td class="date-col">Sex, 30/05</td><td class="num">R$ 59,23</td><td class="num">2.257</td><td class="num">2.022</td><td class="num">75</td><td class="num">3,32%</td><td class="num">8</td><td class="num">R$ 7,40</td></tr>
+            <tr><td class="date-col">Seg, 01/06</td><td class="num">R$ 63,82</td><td class="num">3.804</td><td class="num">3.064</td><td class="num">70</td><td class="num">1,84%</td><td class="num">4</td><td class="num">R$ 15,96</td></tr>
+            <tr><td class="date-col">Ter, 02/06</td><td class="num">R$ 60,71</td><td class="num">2.391</td><td class="num">2.125</td><td class="num">49</td><td class="num">2,05%</td><td class="num">6</td><td class="num">R$ 10,12</td></tr>
+            <tr><td class="date-col">Qua, 03/06</td><td class="num">R$ 56,52</td><td class="num">2.588</td><td class="num">2.249</td><td class="num">56</td><td class="num">2,16%</td><td class="num">5</td><td class="num">R$ 11,30</td></tr>
+            <tr><td class="date-col">Qui, 04/06</td><td class="num">R$ 54,12</td><td class="num">3.008</td><td class="num">2.627</td><td class="num">65</td><td class="num">2,16%</td><td class="num">7</td><td class="num">R$ 7,73</td></tr>
+            <tr><td class="date-col">Sex, 05/06</td><td class="num">R$ 48,49</td><td class="num">2.027</td><td class="num">1.763</td><td class="num">47</td><td class="num">2,32%</td><td class="num">8</td><td class="num">R$ 6,06</td></tr>
+            <tr class="best-row"><td class="date-col">Sáb, 06/06</td><td class="num">R$ 66,27</td><td class="num">3.210</td><td class="num">2.683</td><td class="num">91</td><td class="num">2,83%</td><td class="num conv-hi">11</td><td class="num">R$ 6,02</td></tr>
+            <tr><td class="date-col">Seg, 08/06</td><td class="num">R$ 65,22</td><td class="num">2.367</td><td class="num">2.011</td><td class="num">59</td><td class="num">2,49%</td><td class="num">8</td><td class="num">R$ 8,15</td></tr>
+            <tr><td class="date-col">Ter, 09/06</td><td class="num">R$ 67,56</td><td class="num">3.529</td><td class="num">3.064</td><td class="num">86</td><td class="num">2,44%</td><td class="num">8</td><td class="num">R$ 8,45</td></tr>
+            <tr><td class="date-col">Qua, 10/06</td><td class="num">R$ 51,82</td><td class="num">2.122</td><td class="num">1.806</td><td class="num">39</td><td class="num">1,84%</td><td class="num">8</td><td class="num">R$ 6,48</td></tr>
+            <tr><td class="date-col">Qui, 11/06</td><td class="num">R$ 59,23</td><td class="num">3.211</td><td class="num">2.705</td><td class="num">48</td><td class="num">1,49%</td><td class="num">4</td><td class="num">R$ 14,81</td></tr>
+            <tr><td class="date-col">Sex, 12/06</td><td class="num">R$ 45,73</td><td class="num">2.490</td><td class="num">2.224</td><td class="num">56</td><td class="num">2,25%</td><td class="num">9</td><td class="num">R$ 5,08</td></tr>
+            <tr><td class="date-col">Sáb, 13/06</td><td class="num">R$ 60,44</td><td class="num">3.540</td><td class="num">3.126</td><td class="num">66</td><td class="num">1,86%</td><td class="num">5</td><td class="num">R$ 12,09</td></tr>
+            <tr class="zero-row"><td class="date-col">Dom, 14/06</td><td class="num">R$ 0,00</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">—</td><td class="num">1</td><td class="num">—</td></tr>
+            <tr><td class="date-col">Seg, 15/06</td><td class="num">R$ 69,34</td><td class="num">1.954</td><td class="num">1.702</td><td class="num">49</td><td class="num">2,51%</td><td class="num">10</td><td class="num">R$ 6,93</td></tr>
+            <tr><td class="date-col">Ter, 16/06</td><td class="num">R$ 61,30</td><td class="num">2.470</td><td class="num">2.107</td><td class="num">49</td><td class="num">1,98%</td><td class="num">6</td><td class="num">R$ 10,22</td></tr>
+            <tr><td class="date-col">Qua, 17/06</td><td class="num">R$ 55,19</td><td class="num">2.862</td><td class="num">2.632</td><td class="num">55</td><td class="num">1,92%</td><td class="num">10</td><td class="num">R$ 5,52</td></tr>
+            <tr><td class="date-col">Qui, 18/06</td><td class="num">R$ 45,94</td><td class="num">2.111</td><td class="num">1.860</td><td class="num">36</td><td class="num">1,71%</td><td class="num">10</td><td class="num">R$ 4,59</td></tr>
           </tbody>
           <tfoot>
             <tr class="tfoot-row">
               <td><strong>Total / Média</strong></td>
-              <td class="num">R$ 614,59</td>
-              <td class="num">29.605</td>
-              <td class="num">26.886</td>
-              <td class="num">663</td>
-              <td class="num">2,24%</td>
-              <td class="num">72</td>
-              <td class="num">R$ 8,54</td>
+              <td class="num">R$ 1.360,69</td>
+              <td class="num">64.366</td>
+              <td class="num">54.976</td>
+              <td class="num">1.394</td>
+              <td class="num">2,17%</td>
+              <td class="num">176</td>
+              <td class="num">R$ 7,73</td>
             </tr>
           </tfoot>
         </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── TODOS OS ADS ── -->
-  <section>
-    <div class="container">
-      <div class="sec-header">
-        <span class="sec-title">Todos os Criativos Testados</span>
-        <span class="sec-periodo">19 ads · Ordenados por investimento</span>
-      </div>
-      <div class="all-ads-grid">
-        <div class="ad-row has-results">
-          <span class="ad-rank">#1</span>
-          <div class="ad-info">
-            <div class="ad-name">ADI04 · Aparelho que Limpa o Ar 01</div>
-            <div class="ad-sub">61 conv. iniciadas</div>
-          </div>
-          <div class="ad-nums">
-            <div class="ad-spend">R$ 438,28</div>
-            <div class="ad-cpr good">CPL R$ 7,18</div>
-          </div>
-        </div>
-        <div class="ad-row has-results">
-          <span class="ad-rank">#2</span>
-          <div class="ad-info">
-            <div class="ad-name">ADI18 · UNICAMP 02</div>
-            <div class="ad-sub">3 conv. iniciadas</div>
-          </div>
-          <div class="ad-nums">
-            <div class="ad-spend">R$ 36,74</div>
-            <div class="ad-cpr">CPL R$ 12,25</div>
-          </div>
-        </div>
-        <div class="ad-row has-results">
-          <span class="ad-rank">#3</span>
-          <div class="ad-info">
-            <div class="ad-name">ADI19 · UNICAMP 03</div>
-            <div class="ad-sub">2 conv. iniciadas</div>
-          </div>
-          <div class="ad-nums">
-            <div class="ad-spend">R$ 33,06</div>
-            <div class="ad-cpr">CPL R$ 16,53</div>
-          </div>
-        </div>
-        <div class="ad-row has-results">
-          <span class="ad-rank">#4</span>
-          <div class="ad-info">
-            <div class="ad-name">ADI17 · UNICAMP 01</div>
-            <div class="ad-sub">1 conv. iniciada</div>
-          </div>
-          <div class="ad-nums">
-            <div class="ad-spend">R$ 28,05</div>
-            <div class="ad-cpr">CPL R$ 28,05</div>
-          </div>
-        </div>
-        <div class="ad-row has-results">
-          <span class="ad-rank">#5</span>
-          <div class="ad-info">
-            <div class="ad-name">ADI15 · Inverno Chegou 05</div>
-            <div class="ad-sub">2 conv. iniciadas</div>
-          </div>
-          <div class="ad-nums">
-            <div class="ad-spend">R$ 25,64</div>
-            <div class="ad-cpr">CPL R$ 12,82</div>
-          </div>
-        </div>
-        <div class="ad-row has-results">
-          <span class="ad-rank">#6</span>
-          <div class="ad-info">
-            <div class="ad-name">ADI16 · Poder do Azônio 01 ⭐</div>
-            <div class="ad-sub">3 conv. · Melhor CPL</div>
-          </div>
-          <div class="ad-nums">
-            <div class="ad-spend">R$ 6,40</div>
-            <div class="ad-cpr good">CPL R$ 2,13</div>
-          </div>
-        </div>
-        <div class="ad-row no-results">
-          <span class="ad-rank">#7</span>
-          <div class="ad-info">
-            <div class="ad-name">ADI13 · Inverno Chegou 03</div>
-            <div class="ad-sub">0 conv.</div>
-          </div>
-          <div class="ad-nums">
-            <div class="ad-spend">R$ 9,74</div>
-            <div class="ad-cpr">—</div>
-          </div>
-        </div>
-        <div class="ad-row no-results">
-          <span class="ad-rank">#8</span>
-          <div class="ad-info">
-            <div class="ad-name">ADI08 · Dormiu Bem 02</div>
-            <div class="ad-sub">0 conv.</div>
-          </div>
-          <div class="ad-nums">
-            <div class="ad-spend">R$ 6,65</div>
-            <div class="ad-cpr">—</div>
-          </div>
-        </div>
-        <div class="ad-row no-results">
-          <span class="ad-rank">#9</span>
-          <div class="ad-info">
-            <div class="ad-name">ADI07 · Dormiu Bem 01</div>
-            <div class="ad-sub">0 conv.</div>
-          </div>
-          <div class="ad-nums">
-            <div class="ad-spend">R$ 6,39</div>
-            <div class="ad-cpr">—</div>
-          </div>
-        </div>
-        <div class="ad-row no-results">
-          <span class="ad-rank">#10</span>
-          <div class="ad-info">
-            <div class="ad-name">ADI02 · Não Vê no Quarto 02</div>
-            <div class="ad-sub">0 conv.</div>
-          </div>
-          <div class="ad-nums">
-            <div class="ad-spend">R$ 5,27</div>
-            <div class="ad-cpr">—</div>
-          </div>
-        </div>
-        <div class="ad-row no-results">
-          <span class="ad-rank">11–19</span>
-          <div class="ad-info">
-            <div class="ad-name">ADI09, ADI11, ADI06, ADI10, ADI12, ADI05, ADI03, ADI14, ADI01</div>
-            <div class="ad-sub">0 conv. cada · Gasto individual abaixo de R$ 5,00</div>
-          </div>
-          <div class="ad-nums">
-            <div class="ad-spend">R$ 14,46</div>
-            <div class="ad-cpr">—</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -856,26 +504,26 @@
   <section>
     <div class="container">
       <p class="sec-title">Observações e Análise</p>
-      <div class="obs-box">
+      <div class="obs-box" style="margin-top:18px">
         <div class="obs-item">
           <span class="obs-icon">🏆</span>
-          <span class="obs-text"><strong>ADI04 é o criativo vencedor.</strong> Concentrou 71,3% do investimento total (R$ 438,28) e gerou 84,7% das conversas iniciadas (61 de 72). CPL de R$ 7,18 — abaixo da meta.</span>
+          <span class="obs-text"><strong>ADI04 é o criativo dominante:</strong> concentrou 71% do budget (R$ 438,28) e entregou 84,7% das conversas iniciadas (61 de 72 nas primeiras semanas). CPL de R$ 7,18 — bem abaixo da média da conta.</span>
         </div>
         <div class="obs-item">
           <span class="obs-icon">⭐</span>
-          <span class="obs-text"><strong>ADI16 (Poder do Azônio) tem o melhor CPL da campanha: R$ 2,13</strong>, com 3 conversas em apenas R$ 6,40 investidos. Candidato forte a escalar — recebeu orçamento mínimo e entregou a melhor eficiência.</span>
+          <span class="obs-text"><strong>ADI16 (Poder do Azônio) tem o melhor CPL da conta: R$ 2,13</strong> — 3 conversas em apenas R$ 6,40 investidos. Recebeu orçamento mínimo mas entregou a maior eficiência. Candidato forte a escalar.</span>
         </div>
         <div class="obs-item">
           <span class="obs-icon">📅</span>
-          <span class="obs-text"><strong>Melhor dia: 25/05 (domingo)</strong> com 10 conversas iniciadas e CPL de R$ 6,13. O dia 01/06 (segunda) foi o pior, com apenas 4 conv. e CPL de R$ 15,96 — sugestão de excluir segunda-feira ou reduzir orçamento no início da semana.</span>
+          <span class="obs-text"><strong>Melhores dias:</strong> 06/06 (sáb) com 11 conv. a R$ 6,02/conv e 25/05 (dom) com 10 conv. a R$ 6,13/conv. Domingos e sábados parecem converter melhor. <strong>Pior dia:</strong> 01/06 (segunda) com apenas 4 conv. a R$ 15,96.</span>
         </div>
         <div class="obs-item">
-          <span class="obs-icon">🧪</span>
-          <span class="obs-text"><strong>12 dos 19 criativos testados não geraram nenhuma conversação.</strong> O algoritmo realocou o orçamento rapidamente para ADI04. Estratégia de teste funcionou como esperado.</span>
+          <span class="obs-icon">📷</span>
+          <span class="obs-text"><strong>Sobre as imagens dos criativos:</strong> os criativos GDO (ADI01–ADI19) foram enviados diretamente ao Meta sem cópia no Drive. Para que as imagens abram ao clicar e fiquem permanentes no relatório, basta salvar cada criativo no Drive e me passar a pasta — vinculo automaticamente.</span>
         </div>
         <div class="obs-item">
-          <span class="obs-icon">⏸️</span>
-          <span class="obs-text"><strong>Gasto zerado após 04/06/2026.</strong> Verificar se a campanha foi pausada, o orçamento do conjunto foi esgotado ou o conjunto foi encerrado. Os criativos ADI21, ADI22 e ADI23 foram criados na biblioteca mas ainda não aparecem nessa campanha.</span>
+          <span class="obs-icon">🆕</span>
+          <span class="obs-text"><strong>ADI20, ADI21, ADI22, ADI23</strong> foram adicionados à biblioteca de mídia do Meta mas ainda não aparecem como anúncios ativos nessa campanha. Quando subirem, os dados aparecerão aqui na próxima atualização.</span>
         </div>
       </div>
     </div>
@@ -886,25 +534,20 @@
 <footer>
   <div class="container">
     Brito Mídias Company · TM Vendas &amp; Consultoria · GDO CTWA Sul
-    &nbsp;·&nbsp;
-    Dados: 22/05/2026 – 04/06/2026
-    &nbsp;·&nbsp;
-    <a href="index.html" style="color:var(--accent);text-decoration:none;">← Voltar ao Hub</a>
+    &nbsp;·&nbsp; 22/05/2026 – 18/06/2026
+    &nbsp;·&nbsp; <a href="index.html" style="color:var(--accent);text-decoration:none;">← Voltar ao Hub</a>
   </div>
 </footer>
 
 <script>
-  // Data badge
-  const d = new Date();
   document.getElementById('date-badge').textContent =
-    'Gerado em ' + d.toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' });
+    'Gerado em ' + new Date().toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' });
 
-  // Escala os iframes de preview para caber no card
   function scaleIframes() {
-    document.querySelectorAll('.criativo-iframe-wrap').forEach(wrap => {
-      const iframe = wrap.querySelector('iframe');
+    document.querySelectorAll('.criativo-iframe-wrap').forEach(function(wrap) {
+      var iframe = wrap.querySelector('iframe');
       if (!iframe) return;
-      const scale = wrap.clientWidth / 335;
+      var scale = wrap.clientWidth / 335;
       iframe.style.transform = 'scale(' + scale + ')';
       wrap.style.height = Math.round(450 * scale) + 'px';
     });
