@@ -107,7 +107,7 @@
     .criativo-card.winner  { border-color: rgba(245,158,11,.45); }
     .criativo-card.cpr-win { border-color: rgba(34,197,94,.35); }
 
-    /* Cabeçalho tipo rede social dentro do card */
+    /* Cabeçalho tipo rede social */
     .criativo-page-header {
       display: flex; align-items: center; gap: 10px;
       padding: 10px 12px;
@@ -135,27 +135,27 @@
       background: var(--success); padding: 3px 8px; border-radius: 20px;
     }
 
-    /* Wrapper do iframe — escala para caber no card */
-    .criativo-iframe-wrap {
-      width: 100%; overflow: hidden;
-      background: var(--surface2);
+    /* Imagem do criativo */
+    .criativo-img-link {
+      display: block;
       border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      transition: opacity .15s;
     }
-    .criativo-iframe-wrap iframe {
-      width: 335px; height: 450px; border: none;
-      transform-origin: top left; display: block;
-      pointer-events: none;
+    .criativo-img-link:hover { opacity: .88; }
+    .criativo-img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 1 / 1.78;
+      object-fit: cover;
+      object-position: top;
     }
 
     .criativo-info { padding: 12px 14px; }
     .criativo-id {
       font-size: 10px; font-weight: 700;
       text-transform: uppercase; letter-spacing: .1em;
-      color: var(--accent); margin-bottom: 3px;
-    }
-    .criativo-nome {
-      font-size: 12px; font-weight: 600; line-height: 1.4;
-      margin-bottom: 10px; color: var(--text);
+      color: var(--accent); margin-bottom: 6px;
     }
     .criativo-stats { display: flex; gap: 14px; flex-wrap: wrap; }
     .cs-item { display: flex; flex-direction: column; gap: 2px; }
@@ -163,12 +163,6 @@
     .cs-val   { font-size: 13px; font-weight: 700; }
     .cs-val.gold  { color: var(--accent2); }
     .cs-val.green { color: var(--success); }
-
-    .login-note {
-      font-size: 10px; color: var(--muted); text-align: center;
-      padding: 5px; background: rgba(99,102,241,.06);
-      border-top: 1px solid var(--border);
-    }
 
     /* ── TABELA ── */
     .table-wrap {
@@ -286,7 +280,7 @@
     <div class="container">
       <div class="sec-header">
         <span class="sec-title">Top 6 Criativos</span>
-        <span class="sec-periodo">Por investimento · Preview requer login no Meta</span>
+        <span class="sec-periodo">Por investimento · Clique na imagem para abrir no Drive</span>
       </div>
       <div class="criativos-grid">
 
@@ -300,10 +294,9 @@
             </div>
             <span class="badge-winner">Vencedor</span>
           </div>
-          <div class="criativo-iframe-wrap">
-            <iframe src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQKBkDAK0dkp62k-veVsyMfC0CFCeeaw4sZOHw03uNZaCfl22uh4vRrglj5y_SiAjAF10mXtyoMJm8jUdqhLJ0drJL0W2IKzaet0Di6ymkDCVYAkzsmquzs5CwZ69nZ5Eu3YQ_a09aer_J3tyh_-_ClYZwD0pk-BaJSsgIXM_707TuWnkbRnV4Up3lAlZ1vt3m7NJSB32_Q4v9USiI601T6iVIGIOmsGXLjCgaSuAmuh1g&amp;t=AQKqdIv9mCr9kt3HXjM" scrolling="no" allow="autoplay"></iframe>
-          </div>
-          <div class="login-note">Imagem carrega com login Meta</div>
+          <a href="https://drive.google.com/file/d/126SUUmFYZ_X0MYNM_beZfWBwq85Gkj5Z/view" target="_blank" class="criativo-img-link">
+            <img src="img/ADI04.jpg" alt="ADI04 - Aparelho que Limpa o Ar" class="criativo-img">
+          </a>
           <div class="criativo-info">
             <div class="criativo-id">ADI04 · Aparelho que Limpa o Ar</div>
             <div class="criativo-stats">
@@ -324,10 +317,9 @@
               <div class="page-type">Patrocinado · Feed</div>
             </div>
           </div>
-          <div class="criativo-iframe-wrap">
-            <iframe src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQL6y5lx3cFAAWT3ADQkRBKR0W4ed8SedhXKZDoic5NM-lv0ra-NH9s8A_8phF1Dt2vYMLTBmWM90lHakSF1idEP1664ZDVp_0jZKQEI18JqIxU7h-oQ-LPq-6Ge2JBVKCrwJOnHzm64Fh20D0ipbyPWDJ8d6ZBXcbe-lkMc07YjXxkjDS3XLuVI584r3Hr_oi_HTwMBtDDlnHTnbZhZgVSwtnuJ6M_KCJS9KHRED9Qtlg&amp;t=AQJYtw1YBcTKI9DR93Q" scrolling="no" allow="autoplay"></iframe>
-          </div>
-          <div class="login-note">Imagem carrega com login Meta</div>
+          <a href="https://drive.google.com/file/d/1Vkj9UITlq_BNoaisfmEWx413eeAXXHB0/view" target="_blank" class="criativo-img-link">
+            <img src="img/ADI18.jpg" alt="ADI18 - UFF e UNICAMP Atestam 02" class="criativo-img">
+          </a>
           <div class="criativo-info">
             <div class="criativo-id">ADI18 · UFF e UNICAMP Atestam 02</div>
             <div class="criativo-stats">
@@ -347,10 +339,9 @@
               <div class="page-type">Patrocinado · Feed</div>
             </div>
           </div>
-          <div class="criativo-iframe-wrap">
-            <iframe src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQJe3Kdz3X7MoP81d7Xck2krZRqKiX7cwnzRBr11rwRJ_Ik7q_Y05ymBEmhsL0-YjxAX9ybH_ykH9IeTqO4dplbowubJHCPr1O2jThnj0pOTWjfSAPRa8WAENSw34Bv6cRdVVT2BxoMmTao6oEqk6ePcgIpY-SN6g1_rpDKoMZre6doRhxFgFBJA8hJioHKf_ziBFPSFJMJhaS3AoTmDJtxYDPup-NKjU8YLl9SPZRYYcQ&amp;t=AQIBB5wbNYVT5BAXLD0" scrolling="no" allow="autoplay"></iframe>
-          </div>
-          <div class="login-note">Imagem carrega com login Meta</div>
+          <a href="https://drive.google.com/file/d/1dTIQ8cOZpzHGudyHoJQ3m1YctvgWcPE1/view" target="_blank" class="criativo-img-link">
+            <img src="img/ADI19.jpg" alt="ADI19 - UFF e UNICAMP Atestam 03" class="criativo-img">
+          </a>
           <div class="criativo-info">
             <div class="criativo-id">ADI19 · UFF e UNICAMP Atestam 03</div>
             <div class="criativo-stats">
@@ -370,10 +361,9 @@
               <div class="page-type">Patrocinado · Feed</div>
             </div>
           </div>
-          <div class="criativo-iframe-wrap">
-            <iframe src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQITjkTyGO9fVSNjA7vdhDwx3MLRpJjfMgpTav-Hpg95HNkzoulbR97SnTxhCkdhXUXuTl6uTga_qMnLpszDnuCWwH_TGpByihzR0QjGE48n5q7Byrrl8gUrfGutvDmMnyHUJJLUjBbfiYSYqMTcXhgGJVqjiRgpBa9Ss2P4wa06poW5IwLICAqYAmD7Da0M9VqQNu8g4SoAsEOnWxUPOwgh5kDtqDhgc0Uf11Ep8pe3hg&amp;t=AQLpr4AZSdhx4dFJ1Fw" scrolling="no" allow="autoplay"></iframe>
-          </div>
-          <div class="login-note">Imagem carrega com login Meta</div>
+          <a href="https://drive.google.com/file/d/1AeZIWMNSNnUbU7fmzHCsahjtdeYJKK5I/view" target="_blank" class="criativo-img-link">
+            <img src="img/ADI17.jpg" alt="ADI17 - UFF e UNICAMP Atestam 01" class="criativo-img">
+          </a>
           <div class="criativo-info">
             <div class="criativo-id">ADI17 · UFF e UNICAMP Atestam 01</div>
             <div class="criativo-stats">
@@ -393,10 +383,9 @@
               <div class="page-type">Patrocinado · Feed</div>
             </div>
           </div>
-          <div class="criativo-iframe-wrap">
-            <iframe src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQJZcWFVsGieP4SqDxVVMjn9WKNpDDGFk8aESdPzH6AEAupMhG4sbRJdn4UAGnYb1k4esQxeN89VwR7NF5nWIAXhl9VSz3mjc9en4Lu9-cyRb-ZhloYFKecqd-h_j3lxSn9rt2zRDxoRaJtmEZdNhChuIsZa6mP6tHnXhpsbMqIzOTS6JjYqPkPWDqrn9TyuGXtgTxfoQx7QY5vC0cbF_qcSglQhvthDTHWEMEfpLzs0nw&amp;t=AQIVZ1SMEXqfjz9eYy0" scrolling="no" allow="autoplay"></iframe>
-          </div>
-          <div class="login-note">Imagem carrega com login Meta</div>
+          <a href="https://drive.google.com/file/d/1gnXiBonL2NLBYP3BmL4WfNDzOdeH8qK4/view" target="_blank" class="criativo-img-link">
+            <img src="img/ADI15.jpg" alt="ADI15 - Inverno Chegou 05" class="criativo-img">
+          </a>
           <div class="criativo-info">
             <div class="criativo-id">ADI15 · Inverno Chegou 05</div>
             <div class="criativo-stats">
@@ -417,10 +406,9 @@
             </div>
             <span class="badge-cpr">Melhor CPL</span>
           </div>
-          <div class="criativo-iframe-wrap">
-            <iframe src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQLVsDEl24Ts-C17TUpb70Iwr973-9EOlYwTCur2spEcIGtprWEUgwcwOEIhkS65fFZmTGOM4Li36mPZiP-A3Gm5DEIZfPvH6Jui1S_wvdNUe1GC_mc2xPPHjlEgZSOdIUvbd7gZ6AOvyNQLwFGgz4cHYjzhfc0Cz5UKiU3ybDzTbjp8yFXyMb6gB5kpNt2MvH9rdu8_Ddr0j9af6vbKAViLoHkH74GDg-6Pd3F8rR-CLw&amp;t=AQK_LJRIT6cchqPrqHI" scrolling="no" allow="autoplay"></iframe>
-          </div>
-          <div class="login-note">Imagem carrega com login Meta</div>
+          <a href="https://drive.google.com/file/d/1kfmLEIe9hno_uJ3MxGEbIOt_jPHed03I/view" target="_blank" class="criativo-img-link">
+            <img src="img/ADI16.jpg" alt="ADI16 - Poder do Azônio 01" class="criativo-img">
+          </a>
           <div class="criativo-info">
             <div class="criativo-id">ADI16 · Poder do Azônio 01</div>
             <div class="criativo-stats">
@@ -507,7 +495,7 @@
       <div class="obs-box" style="margin-top:18px">
         <div class="obs-item">
           <span class="obs-icon">🏆</span>
-          <span class="obs-text"><strong>ADI04 é o criativo dominante:</strong> concentrou 71% do budget (R$ 438,28) e entregou 84,7% das conversas iniciadas (61 de 72 nas primeiras semanas). CPL de R$ 7,18 — bem abaixo da média da conta.</span>
+          <span class="obs-text"><strong>ADI04 é o criativo dominante:</strong> concentrou 71% do budget (R$ 438,28) e entregou a maior parte das conversas iniciadas. CPL de R$ 7,18 — abaixo da média da conta.</span>
         </div>
         <div class="obs-item">
           <span class="obs-icon">⭐</span>
@@ -515,11 +503,7 @@
         </div>
         <div class="obs-item">
           <span class="obs-icon">📅</span>
-          <span class="obs-text"><strong>Melhores dias:</strong> 06/06 (sáb) com 11 conv. a R$ 6,02/conv e 25/05 (dom) com 10 conv. a R$ 6,13/conv. Domingos e sábados parecem converter melhor. <strong>Pior dia:</strong> 01/06 (segunda) com apenas 4 conv. a R$ 15,96.</span>
-        </div>
-        <div class="obs-item">
-          <span class="obs-icon">📷</span>
-          <span class="obs-text"><strong>Sobre as imagens dos criativos:</strong> os criativos GDO (ADI01–ADI19) foram enviados diretamente ao Meta sem cópia no Drive. Para que as imagens abram ao clicar e fiquem permanentes no relatório, basta salvar cada criativo no Drive e me passar a pasta — vinculo automaticamente.</span>
+          <span class="obs-text"><strong>Melhores dias:</strong> 06/06 (sáb) com 11 conv. a R$ 6,02 e 25/05 (dom) com 10 conv. a R$ 6,13. Domingos e sábados convertem melhor. <strong>Pior dia:</strong> 01/06 (segunda) com apenas 4 conv. a R$ 15,96.</span>
         </div>
         <div class="obs-item">
           <span class="obs-icon">🆕</span>
@@ -542,18 +526,6 @@
 <script>
   document.getElementById('date-badge').textContent =
     'Gerado em ' + new Date().toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' });
-
-  function scaleIframes() {
-    document.querySelectorAll('.criativo-iframe-wrap').forEach(function(wrap) {
-      var iframe = wrap.querySelector('iframe');
-      if (!iframe) return;
-      var scale = wrap.clientWidth / 335;
-      iframe.style.transform = 'scale(' + scale + ')';
-      wrap.style.height = Math.round(450 * scale) + 'px';
-    });
-  }
-  scaleIframes();
-  window.addEventListener('resize', scaleIframes);
 </script>
 
 </body>
