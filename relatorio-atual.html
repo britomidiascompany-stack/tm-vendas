@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Relatório Atual · GDO · TM Vendas</title>
+  <title>Relatório · GDO · TM Vendas</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -19,6 +19,7 @@
       --muted:     #8b8fa8;
       --success:   #22c55e;
       --danger:    #f87171;
+      --gold:      #f59e0b;
     }
 
     body {
@@ -82,19 +83,31 @@
     section { padding: 36px 0; border-bottom: 1px solid var(--border); }
     section:last-of-type { border-bottom: none; }
 
+    .sec-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
     .sec-title {
       font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: .1em;
       color: var(--muted);
-      margin-bottom: 18px;
+    }
+
+    .sec-periodo {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 500;
     }
 
     /* ── METRICS ── */
     .metrics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 14px;
     }
 
@@ -125,22 +138,28 @@
     .metric-delta {
       font-size: 12px;
       font-weight: 500;
+      color: var(--muted);
     }
-
-    .delta-up   { color: var(--success); }
-    .delta-down { color: var(--danger); }
-    .delta-neu  { color: var(--muted); }
 
     .metric-card.highlight {
       background: linear-gradient(135deg, rgba(99,102,241,.12), rgba(245,158,11,.08));
       border-color: rgba(99,102,241,.3);
     }
 
+    .metric-card.good-cpl {
+      background: linear-gradient(135deg, rgba(34,197,94,.1), transparent);
+      border-color: rgba(34,197,94,.25);
+    }
+
     /* ── CRIATIVOS ── */
     .criativos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
+    }
+
+    @media (max-width: 720px) {
+      .criativos-grid { grid-template-columns: 1fr; }
     }
 
     .criativo-card {
@@ -149,35 +168,58 @@
       border-radius: 12px;
       overflow: hidden;
       transition: border-color .2s;
+      position: relative;
     }
 
     .criativo-card:hover { border-color: var(--accent); }
 
-    .criativo-thumb {
+    .criativo-card.winner { border-color: rgba(245,158,11,.4); }
+
+    .winner-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 5;
+      background: var(--gold);
+      color: #000;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .cpr-star-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 5;
+      background: var(--success);
+      color: #000;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .criativo-iframe-wrap {
       width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      display: block;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
       background: var(--surface2);
     }
 
-    /* Placeholder quando não tem imagem */
-    .criativo-thumb-placeholder {
-      width: 100%;
-      aspect-ratio: 4/5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      font-weight: 800;
-      color: rgba(255,255,255,.08);
-      letter-spacing: .05em;
+    .criativo-iframe-wrap iframe {
+      width: 335px;
+      height: 450px;
+      border: none;
+      transform-origin: top left;
+      display: block;
+      pointer-events: none;
     }
-
-    .adi20-ph { background: linear-gradient(160deg, #1e1e3a, #2a1f3d); }
-    .adi21-ph { background: linear-gradient(160deg, #1a2a3a, #0f1f2d); }
-    .adi22-ph { background: linear-gradient(160deg, #2a1a2a, #1f0f1f); }
-    .adi23-ph { background: linear-gradient(160deg, #1a2a1a, #0f1f0f); }
 
     .criativo-info {
       padding: 14px;
@@ -202,7 +244,7 @@
 
     .criativo-stats {
       display: flex;
-      gap: 12px;
+      gap: 14px;
     }
 
     .cs-item {
@@ -212,7 +254,18 @@
     }
 
     .cs-label { font-size: 10px; color: var(--muted); }
-    .cs-val   { font-size: 13px; font-weight: 600; }
+    .cs-val   { font-size: 13px; font-weight: 700; }
+    .cs-val.win { color: var(--gold); }
+    .cs-val.star { color: var(--success); }
+
+    .iframe-note {
+      font-size: 10px;
+      color: var(--muted);
+      text-align: center;
+      padding: 6px 12px;
+      border-top: 1px solid var(--border);
+      background: var(--surface2);
+    }
 
     /* ── TABELA DE PERFORMANCE ── */
     .table-wrap {
@@ -247,12 +300,12 @@
     }
 
     tbody tr:last-child td { border-bottom: none; }
-
     tbody tr:hover td { background: var(--surface2); }
-
     td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    td.date-col { font-weight: 600; }
 
-    td.date-col { font-weight: 600; color: var(--text); }
+    tr.best-day td { background: rgba(34,197,94,.05); }
+    tr.best-day td.conv-cell { color: var(--success); font-weight: 700; }
 
     .tfoot-row td {
       background: var(--surface2);
@@ -261,18 +314,69 @@
       border-top: 2px solid var(--border);
     }
 
+    /* ── TODOS OS ADS ── */
+    .all-ads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 10px;
+    }
+
+    .ad-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ad-row.has-results { border-color: rgba(99,102,241,.3); }
+    .ad-row.no-results  { opacity: .55; }
+
+    .ad-rank {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      min-width: 20px;
+    }
+
+    .ad-info { flex: 1; }
+    .ad-name { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.3; }
+    .ad-sub  { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    .ad-nums {
+      text-align: right;
+      font-size: 12px;
+    }
+
+    .ad-spend { font-weight: 700; }
+    .ad-cpr   { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .ad-cpr.good { color: var(--success); }
+
     /* ── OBSERVAÇÕES ── */
     .obs-box {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px;
+      padding: 20px 24px;
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.75;
       color: var(--muted);
     }
 
-    .obs-box p + p { margin-top: 8px; }
+    .obs-item {
+      display: flex;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .obs-item:last-child { border-bottom: none; }
+
+    .obs-icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
+    .obs-text { font-size: 14px; line-height: 1.6; color: var(--muted); }
+    .obs-text strong { color: var(--text); }
 
     /* ── FOOTER ── */
     footer {
@@ -296,8 +400,8 @@
         </a>
         <div class="divider"></div>
         <div>
-          <div class="report-title">Relatório Diário · GDO</div>
-          <div class="report-sub">Gerador de Ozônio · Campanha CTWA Sul</div>
+          <div class="report-title">Relatório de Performance · GDO</div>
+          <div class="report-sub">Gerador de Ozônio · CTWA Sul · Conta 857209303367605</div>
         </div>
       </div>
       <div class="date-badge" id="date-badge">—</div>
@@ -310,130 +414,158 @@
   <!-- ── MÉTRICAS GERAIS ── -->
   <section>
     <div class="container">
-      <p class="sec-title">Resumo do Período</p>
+      <div class="sec-header">
+        <span class="sec-title">Resumo do Período</span>
+        <span class="sec-periodo">22/05/2026 – 04/06/2026 · 19 criativos testados</span>
+      </div>
       <div class="metrics-grid">
         <div class="metric-card highlight">
           <span class="metric-label">Total Investido</span>
-          <span class="metric-value">R$ —</span>
-          <span class="metric-delta delta-neu">Período completo</span>
+          <span class="metric-value">R$ 614,59</span>
+          <span class="metric-delta">Período completo</span>
         </div>
         <div class="metric-card">
           <span class="metric-label">Conv. Iniciadas</span>
-          <span class="metric-value">—</span>
-          <span class="metric-delta delta-neu">WhatsApp clicks</span>
+          <span class="metric-value" style="color:var(--success)">72</span>
+          <span class="metric-delta">WhatsApp abertos</span>
         </div>
-        <div class="metric-card">
+        <div class="metric-card good-cpl">
           <span class="metric-label">Custo por Conv.</span>
-          <span class="metric-value">R$ —</span>
-          <span class="metric-delta delta-neu">CPL médio</span>
+          <span class="metric-value">R$ 8,54</span>
+          <span class="metric-delta">CPL médio geral</span>
         </div>
         <div class="metric-card">
           <span class="metric-label">Impressões</span>
-          <span class="metric-value">—</span>
-          <span class="metric-delta delta-neu">Total período</span>
+          <span class="metric-value">29.605</span>
+          <span class="metric-delta">Total período</span>
         </div>
         <div class="metric-card">
           <span class="metric-label">Cliques no Link</span>
-          <span class="metric-value">—</span>
-          <span class="metric-delta delta-neu">—% CTR</span>
+          <span class="metric-value">663</span>
+          <span class="metric-delta">CTR médio: 2,24%</span>
         </div>
         <div class="metric-card">
-          <span class="metric-label">Criativos Ativos</span>
-          <span class="metric-value">3</span>
-          <span class="metric-delta delta-neu">ADI21 · ADI22 · ADI23</span>
+          <span class="metric-label">Alcance Total</span>
+          <span class="metric-value">26.886</span>
+          <span class="metric-delta">Pessoas únicas</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── CRIATIVOS ── -->
+  <!-- ── CRIATIVOS DESTAQUE ── -->
   <section>
     <div class="container">
-      <p class="sec-title">Criativos em Veiculação</p>
+      <div class="sec-header">
+        <span class="sec-title">Criativos em Destaque</span>
+        <span class="sec-periodo">Preview ao vivo direto do Meta (requer login Meta)</span>
+      </div>
       <div class="criativos-grid">
 
-        <!-- ADI21 -->
-        <div class="criativo-card">
-          <!--
-            Para exibir a imagem real do Google Drive:
-            <img class="criativo-thumb" src="https://drive.google.com/thumbnail?id=ID_DO_ARQUIVO&sz=w400" alt="ADI21">
-            Substitua ID_DO_ARQUIVO pelo ID do arquivo público no Drive.
-          -->
-          <div class="criativo-thumb-placeholder adi21-ph">ADI21</div>
+        <!-- ADI04 — VENCEDOR -->
+        <div class="criativo-card winner">
+          <span class="winner-badge">Vencedor</span>
+          <div class="criativo-iframe-wrap">
+            <iframe
+              src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQKBkDAK0dkp62k-veVsyMfC0CFCeeaw4sZOHw03uNZaCfl22uh4vRrglj5y_SiAjAF10mXtyoMJm8jUdqhLJ0drJL0W2IKzaet0Di6ymkDCVYAkzsmquzs5CwZ69nZ5Eu3YQ_a09aer_J3tyh_-_ClYZwD0pk-BaJSsgIXM_707TuWnkbRnV4Up3lAlZ1vt3m7NJSB32_Q4v9USiI601T6iVIGIOmsGXLjCgaSuAmuh1g&amp;t=AQKqdIv9mCr9kt3HXjM"
+              scrolling="no" allow="autoplay"
+            ></iframe>
+          </div>
+          <div class="iframe-note">Preview Meta · Requer login</div>
           <div class="criativo-info">
-            <div class="criativo-id">ADI21 · Feed + Stories</div>
-            <div class="criativo-nome">Mãe Atípica Tentou Tudo 02</div>
+            <div class="criativo-id">ADI04 · Mobile Feed</div>
+            <div class="criativo-nome">Aparelho que Limpa o Ar 01</div>
             <div class="criativo-stats">
               <div class="cs-item">
                 <span class="cs-label">Conv.</span>
-                <span class="cs-val">—</span>
+                <span class="cs-val win">61</span>
               </div>
               <div class="cs-item">
                 <span class="cs-label">CPL</span>
-                <span class="cs-val">—</span>
+                <span class="cs-val win">R$ 7,18</span>
               </div>
               <div class="cs-item">
                 <span class="cs-label">Gasto</span>
-                <span class="cs-val">—</span>
+                <span class="cs-val">R$ 438,28</span>
+              </div>
+              <div class="cs-item">
+                <span class="cs-label">Share</span>
+                <span class="cs-val">71,3%</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ADI22 -->
+        <!-- ADI18 — UNICAMP 02 -->
         <div class="criativo-card">
-          <div class="criativo-thumb-placeholder adi22-ph">ADI22</div>
+          <div class="criativo-iframe-wrap">
+            <iframe
+              src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQL6y5lx3cFAAWT3ADQkRBKR0W4ed8SedhXKZDoic5NM-lv0ra-NH9s8A_8phF1Dt2vYMLTBmWM90lHakSF1idEP1664ZDVp_0jZKQEI18JqIxU7h-oQ-LPq-6Ge2JBVKCrwJOnHzm64Fh20D0ipbyPWDJ8d6ZBXcbe-lkMc07YjXxkjDS3XLuVI584r3Hr_oi_HTwMBtDDlnHTnbZhZgVSwtnuJ6M_KCJS9KHRED9Qtlg&amp;t=AQJYtw1YBcTKI9DR93Q"
+              scrolling="no" allow="autoplay"
+            ></iframe>
+          </div>
+          <div class="iframe-note">Preview Meta · Requer login</div>
           <div class="criativo-info">
-            <div class="criativo-id">ADI22 · Feed + Stories</div>
-            <div class="criativo-nome">Mãe Atípica Tentou Tudo 03</div>
+            <div class="criativo-id">ADI18 · Mobile Feed</div>
+            <div class="criativo-nome">UFF e UNICAMP Atestam 02</div>
             <div class="criativo-stats">
               <div class="cs-item">
                 <span class="cs-label">Conv.</span>
-                <span class="cs-val">—</span>
+                <span class="cs-val">3</span>
               </div>
               <div class="cs-item">
                 <span class="cs-label">CPL</span>
-                <span class="cs-val">—</span>
+                <span class="cs-val">R$ 12,25</span>
               </div>
               <div class="cs-item">
                 <span class="cs-label">Gasto</span>
-                <span class="cs-val">—</span>
+                <span class="cs-val">R$ 36,74</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ADI23 -->
+        <!-- ADI16 — MELHOR CPL -->
         <div class="criativo-card">
-          <div class="criativo-thumb-placeholder adi23-ph">ADI23</div>
+          <span class="cpr-star-badge">Melhor CPL</span>
+          <div class="criativo-iframe-wrap">
+            <iframe
+              src="https://business.facebook.com/ads/api/preview_iframe.php?d=AQLVsDEl24Ts-C17TUpb70Iwr973-9EOlYwTCur2spEcIGtprWEUgwcwOEIhkS65fFZmTGOM4Li36mPZiP-A3Gm5DEIZfPvH6Jui1S_wvdNUe1GC_mc2xPPHjlEgZSOdIUvbd7gZ6AOvyNQLwFGgz4cHYjzhfc0Cz5UKiU3ybDzTbjp8yFXyMb6gB5kpNt2MvH9rdu8_Ddr0j9af6vbKAViLoHkH74GDg-6Pd3F8rR-CLw&amp;t=AQK_LJRIT6cchqPrqHI"
+              scrolling="no" allow="autoplay"
+            ></iframe>
+          </div>
+          <div class="iframe-note">Preview Meta · Requer login</div>
           <div class="criativo-info">
-            <div class="criativo-id">ADI23 · Feed + Stories</div>
-            <div class="criativo-nome">Dormiu a Noite Inteira 01</div>
+            <div class="criativo-id">ADI16 · Mobile Feed</div>
+            <div class="criativo-nome">Poder do Azônio 01</div>
             <div class="criativo-stats">
               <div class="cs-item">
                 <span class="cs-label">Conv.</span>
-                <span class="cs-val">—</span>
+                <span class="cs-val star">3</span>
               </div>
               <div class="cs-item">
                 <span class="cs-label">CPL</span>
-                <span class="cs-val">—</span>
+                <span class="cs-val star">R$ 2,13</span>
               </div>
               <div class="cs-item">
                 <span class="cs-label">Gasto</span>
-                <span class="cs-val">—</span>
+                <span class="cs-val">R$ 6,40</span>
               </div>
             </div>
           </div>
         </div>
 
-      </div><!-- /criativos-grid -->
+      </div>
     </div>
   </section>
 
   <!-- ── PERFORMANCE POR DIA ── -->
   <section>
     <div class="container">
-      <p class="sec-title">Performance por Dia</p>
+      <div class="sec-header">
+        <span class="sec-title">Performance por Dia</span>
+        <span class="sec-periodo">Linha destacada = melhor dia</span>
+      </div>
       <div class="table-wrap">
         <table>
           <thead>
@@ -445,40 +577,306 @@
               <th style="text-align:right">Cliques</th>
               <th style="text-align:right">CTR</th>
               <th style="text-align:right">Conv. Inic.</th>
-              <th style="text-align:right">Custo Conv.</th>
+              <th style="text-align:right">CPL</th>
             </tr>
           </thead>
-          <tbody id="perf-body">
-            <!-- Linhas preenchidas via JS ou manualmente -->
+          <tbody>
             <tr>
-              <td colspan="8" style="text-align:center;padding:32px;color:var(--muted);font-size:14px;">
-                Dados serão inseridos quando o relatório for gerado.
-              </td>
+              <td class="date-col">Qui, 22/05</td>
+              <td class="num">R$ 35,46</td>
+              <td class="num">1.953</td>
+              <td class="num">1.737</td>
+              <td class="num">40</td>
+              <td class="num">2,05%</td>
+              <td class="num">4</td>
+              <td class="num">R$ 8,87</td>
+            </tr>
+            <tr>
+              <td class="date-col">Sex, 23/05</td>
+              <td class="num">R$ 43,62</td>
+              <td class="num">2.110</td>
+              <td class="num">1.884</td>
+              <td class="num">48</td>
+              <td class="num">2,27%</td>
+              <td class="num">6</td>
+              <td class="num">R$ 7,27</td>
+            </tr>
+            <tr>
+              <td class="date-col">Dom, 25/05</td>
+              <td class="num">R$ 61,27</td>
+              <td class="num">3.021</td>
+              <td class="num">2.659</td>
+              <td class="num">75</td>
+              <td class="num">2,48%</td>
+              <td class="num conv-cell best-conv">10</td>
+              <td class="num">R$ 6,13</td>
+            </tr>
+            <tr>
+              <td class="date-col">Seg, 26/05</td>
+              <td class="num">R$ 62,15</td>
+              <td class="num">2.414</td>
+              <td class="num">2.227</td>
+              <td class="num">50</td>
+              <td class="num">2,07%</td>
+              <td class="num">7</td>
+              <td class="num">R$ 8,88</td>
+            </tr>
+            <tr>
+              <td class="date-col">Ter, 27/05</td>
+              <td class="num">R$ 61,04</td>
+              <td class="num">3.163</td>
+              <td class="num">2.955</td>
+              <td class="num">75</td>
+              <td class="num">2,37%</td>
+              <td class="num">8</td>
+              <td class="num">R$ 7,63</td>
+            </tr>
+            <tr>
+              <td class="date-col">Qua, 28/05</td>
+              <td class="num">R$ 50,80</td>
+              <td class="num">3.085</td>
+              <td class="num">2.740</td>
+              <td class="num">59</td>
+              <td class="num">1,91%</td>
+              <td class="num">7</td>
+              <td class="num">R$ 7,26</td>
+            </tr>
+            <tr>
+              <td class="date-col">Qui, 29/05</td>
+              <td class="num">R$ 55,43</td>
+              <td class="num">2.679</td>
+              <td class="num">2.458</td>
+              <td class="num">51</td>
+              <td class="num">1,90%</td>
+              <td class="num">6</td>
+              <td class="num">R$ 9,24</td>
+            </tr>
+            <tr>
+              <td class="date-col">Sex, 30/05</td>
+              <td class="num">R$ 59,23</td>
+              <td class="num">2.257</td>
+              <td class="num">2.160</td>
+              <td class="num">75</td>
+              <td class="num">3,32%</td>
+              <td class="num">8</td>
+              <td class="num">R$ 7,40</td>
+            </tr>
+            <tr>
+              <td class="date-col">Seg, 01/06</td>
+              <td class="num">R$ 63,82</td>
+              <td class="num">3.804</td>
+              <td class="num">3.337</td>
+              <td class="num">70</td>
+              <td class="num">1,84%</td>
+              <td class="num">4</td>
+              <td class="num">R$ 15,96</td>
+            </tr>
+            <tr>
+              <td class="date-col">Ter, 02/06</td>
+              <td class="num">R$ 60,71</td>
+              <td class="num">2.391</td>
+              <td class="num">2.236</td>
+              <td class="num">49</td>
+              <td class="num">2,05%</td>
+              <td class="num">6</td>
+              <td class="num">R$ 10,12</td>
+            </tr>
+            <tr>
+              <td class="date-col">Qua, 03/06</td>
+              <td class="num">R$ 56,52</td>
+              <td class="num">2.588</td>
+              <td class="num">2.360</td>
+              <td class="num">56</td>
+              <td class="num">2,16%</td>
+              <td class="num">5</td>
+              <td class="num">R$ 11,30</td>
+            </tr>
+            <tr>
+              <td class="date-col">Qui, 04/06</td>
+              <td class="num">R$ 4,54</td>
+              <td class="num">140</td>
+              <td class="num">133</td>
+              <td class="num">15</td>
+              <td class="num">10,71%</td>
+              <td class="num">1</td>
+              <td class="num">R$ 4,54</td>
             </tr>
           </tbody>
           <tfoot>
             <tr class="tfoot-row">
               <td><strong>Total / Média</strong></td>
-              <td class="num" id="tot-investido">—</td>
-              <td class="num" id="tot-impressoes">—</td>
-              <td class="num" id="tot-alcance">—</td>
-              <td class="num" id="tot-cliques">—</td>
-              <td class="num" id="avg-ctr">—</td>
-              <td class="num" id="tot-conv">—</td>
-              <td class="num" id="avg-cpl">—</td>
+              <td class="num">R$ 614,59</td>
+              <td class="num">29.605</td>
+              <td class="num">26.886</td>
+              <td class="num">663</td>
+              <td class="num">2,24%</td>
+              <td class="num">72</td>
+              <td class="num">R$ 8,54</td>
             </tr>
           </tfoot>
         </table>
-      </div><!-- /table-wrap -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TODOS OS ADS ── -->
+  <section>
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-title">Todos os Criativos Testados</span>
+        <span class="sec-periodo">19 ads · Ordenados por investimento</span>
+      </div>
+      <div class="all-ads-grid">
+        <div class="ad-row has-results">
+          <span class="ad-rank">#1</span>
+          <div class="ad-info">
+            <div class="ad-name">ADI04 · Aparelho que Limpa o Ar 01</div>
+            <div class="ad-sub">61 conv. iniciadas</div>
+          </div>
+          <div class="ad-nums">
+            <div class="ad-spend">R$ 438,28</div>
+            <div class="ad-cpr good">CPL R$ 7,18</div>
+          </div>
+        </div>
+        <div class="ad-row has-results">
+          <span class="ad-rank">#2</span>
+          <div class="ad-info">
+            <div class="ad-name">ADI18 · UNICAMP 02</div>
+            <div class="ad-sub">3 conv. iniciadas</div>
+          </div>
+          <div class="ad-nums">
+            <div class="ad-spend">R$ 36,74</div>
+            <div class="ad-cpr">CPL R$ 12,25</div>
+          </div>
+        </div>
+        <div class="ad-row has-results">
+          <span class="ad-rank">#3</span>
+          <div class="ad-info">
+            <div class="ad-name">ADI19 · UNICAMP 03</div>
+            <div class="ad-sub">2 conv. iniciadas</div>
+          </div>
+          <div class="ad-nums">
+            <div class="ad-spend">R$ 33,06</div>
+            <div class="ad-cpr">CPL R$ 16,53</div>
+          </div>
+        </div>
+        <div class="ad-row has-results">
+          <span class="ad-rank">#4</span>
+          <div class="ad-info">
+            <div class="ad-name">ADI17 · UNICAMP 01</div>
+            <div class="ad-sub">1 conv. iniciada</div>
+          </div>
+          <div class="ad-nums">
+            <div class="ad-spend">R$ 28,05</div>
+            <div class="ad-cpr">CPL R$ 28,05</div>
+          </div>
+        </div>
+        <div class="ad-row has-results">
+          <span class="ad-rank">#5</span>
+          <div class="ad-info">
+            <div class="ad-name">ADI15 · Inverno Chegou 05</div>
+            <div class="ad-sub">2 conv. iniciadas</div>
+          </div>
+          <div class="ad-nums">
+            <div class="ad-spend">R$ 25,64</div>
+            <div class="ad-cpr">CPL R$ 12,82</div>
+          </div>
+        </div>
+        <div class="ad-row has-results">
+          <span class="ad-rank">#6</span>
+          <div class="ad-info">
+            <div class="ad-name">ADI16 · Poder do Azônio 01 ⭐</div>
+            <div class="ad-sub">3 conv. · Melhor CPL</div>
+          </div>
+          <div class="ad-nums">
+            <div class="ad-spend">R$ 6,40</div>
+            <div class="ad-cpr good">CPL R$ 2,13</div>
+          </div>
+        </div>
+        <div class="ad-row no-results">
+          <span class="ad-rank">#7</span>
+          <div class="ad-info">
+            <div class="ad-name">ADI13 · Inverno Chegou 03</div>
+            <div class="ad-sub">0 conv.</div>
+          </div>
+          <div class="ad-nums">
+            <div class="ad-spend">R$ 9,74</div>
+            <div class="ad-cpr">—</div>
+          </div>
+        </div>
+        <div class="ad-row no-results">
+          <span class="ad-rank">#8</span>
+          <div class="ad-info">
+            <div class="ad-name">ADI08 · Dormiu Bem 02</div>
+            <div class="ad-sub">0 conv.</div>
+          </div>
+          <div class="ad-nums">
+            <div class="ad-spend">R$ 6,65</div>
+            <div class="ad-cpr">—</div>
+          </div>
+        </div>
+        <div class="ad-row no-results">
+          <span class="ad-rank">#9</span>
+          <div class="ad-info">
+            <div class="ad-name">ADI07 · Dormiu Bem 01</div>
+            <div class="ad-sub">0 conv.</div>
+          </div>
+          <div class="ad-nums">
+            <div class="ad-spend">R$ 6,39</div>
+            <div class="ad-cpr">—</div>
+          </div>
+        </div>
+        <div class="ad-row no-results">
+          <span class="ad-rank">#10</span>
+          <div class="ad-info">
+            <div class="ad-name">ADI02 · Não Vê no Quarto 02</div>
+            <div class="ad-sub">0 conv.</div>
+          </div>
+          <div class="ad-nums">
+            <div class="ad-spend">R$ 5,27</div>
+            <div class="ad-cpr">—</div>
+          </div>
+        </div>
+        <div class="ad-row no-results">
+          <span class="ad-rank">11–19</span>
+          <div class="ad-info">
+            <div class="ad-name">ADI09, ADI11, ADI06, ADI10, ADI12, ADI05, ADI03, ADI14, ADI01</div>
+            <div class="ad-sub">0 conv. cada · Gasto individual abaixo de R$ 5,00</div>
+          </div>
+          <div class="ad-nums">
+            <div class="ad-spend">R$ 14,46</div>
+            <div class="ad-cpr">—</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ── OBSERVAÇÕES ── -->
   <section>
     <div class="container">
-      <p class="sec-title">Observações do Período</p>
-      <div class="obs-box" id="obs-text">
-        <p>—</p>
+      <p class="sec-title">Observações e Análise</p>
+      <div class="obs-box">
+        <div class="obs-item">
+          <span class="obs-icon">🏆</span>
+          <span class="obs-text"><strong>ADI04 é o criativo vencedor.</strong> Concentrou 71,3% do investimento total (R$ 438,28) e gerou 84,7% das conversas iniciadas (61 de 72). CPL de R$ 7,18 — abaixo da meta.</span>
+        </div>
+        <div class="obs-item">
+          <span class="obs-icon">⭐</span>
+          <span class="obs-text"><strong>ADI16 (Poder do Azônio) tem o melhor CPL da campanha: R$ 2,13</strong>, com 3 conversas em apenas R$ 6,40 investidos. Candidato forte a escalar — recebeu orçamento mínimo e entregou a melhor eficiência.</span>
+        </div>
+        <div class="obs-item">
+          <span class="obs-icon">📅</span>
+          <span class="obs-text"><strong>Melhor dia: 25/05 (domingo)</strong> com 10 conversas iniciadas e CPL de R$ 6,13. O dia 01/06 (segunda) foi o pior, com apenas 4 conv. e CPL de R$ 15,96 — sugestão de excluir segunda-feira ou reduzir orçamento no início da semana.</span>
+        </div>
+        <div class="obs-item">
+          <span class="obs-icon">🧪</span>
+          <span class="obs-text"><strong>12 dos 19 criativos testados não geraram nenhuma conversação.</strong> O algoritmo realocou o orçamento rapidamente para ADI04. Estratégia de teste funcionou como esperado.</span>
+        </div>
+        <div class="obs-item">
+          <span class="obs-icon">⏸️</span>
+          <span class="obs-text"><strong>Gasto zerado após 04/06/2026.</strong> Verificar se a campanha foi pausada, o orçamento do conjunto foi esgotado ou o conjunto foi encerrado. Os criativos ADI21, ADI22 e ADI23 foram criados na biblioteca mas ainda não aparecem nessa campanha.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -487,55 +885,32 @@
 
 <footer>
   <div class="container">
-    Brito Mídias Company · TM Vendas &amp; Consultoria · Campanha GDO CTWA Sul
-    &nbsp;·&nbsp; <a href="index.html" style="color:var(--accent);text-decoration:none;">← Voltar ao Hub</a>
+    Brito Mídias Company · TM Vendas &amp; Consultoria · GDO CTWA Sul
+    &nbsp;·&nbsp;
+    Dados: 22/05/2026 – 04/06/2026
+    &nbsp;·&nbsp;
+    <a href="index.html" style="color:var(--accent);text-decoration:none;">← Voltar ao Hub</a>
   </div>
 </footer>
 
 <script>
-  // Data atual no badge do header
+  // Data badge
   const d = new Date();
-  document.getElementById('date-badge').textContent = d.toLocaleDateString('pt-BR', {
-    day: '2-digit', month: 'long', year: 'numeric'
-  });
+  document.getElementById('date-badge').textContent =
+    'Gerado em ' + d.toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' });
 
-  /*
-  ─────────────────────────────────────────────────────────
-  COMO POPULAR O RELATÓRIO:
-
-  Os dados abaixo são gerados automaticamente pelo assistente
-  quando solicitado um relatório. Basta substituir os valores
-  no objeto `reportData` e o script preenche tudo.
-  ─────────────────────────────────────────────────────────
-
-  const reportData = {
-    periodo: "16 a 18 de junho de 2026",
-    metricas: {
-      investido: "R$ 450,00",
-      conversas: "42",
-      cpl: "R$ 10,71",
-      impressoes: "18.400",
-      cliques: "310",
-      ctr: "1,68%",
-      criativos: "3"
-    },
-    criativos: [
-      {
-        id: "ADI21",
-        nome: "Mãe Atípica Tentou Tudo 02",
-        imagem: "https://drive.google.com/thumbnail?id=XXXX&sz=w400",
-        conv: "16", cpl: "R$ 9,50", gasto: "R$ 152,00"
-      },
-      ...
-    ],
-    dias: [
-      { data: "Seg, 16/06", investido: "R$ 150,00", impressoes: "6.100",
-        alcance: "4.800", cliques: "102", ctr: "1,67%", conv: "14", cpl: "R$ 10,71" },
-      ...
-    ],
-    observacoes: "Campanha iniciada com 3 criativos. ADI21 apresentou melhor CPL..."
-  };
-  */
+  // Escala os iframes de preview para caber no card
+  function scaleIframes() {
+    document.querySelectorAll('.criativo-iframe-wrap').forEach(wrap => {
+      const iframe = wrap.querySelector('iframe');
+      if (!iframe) return;
+      const scale = wrap.clientWidth / 335;
+      iframe.style.transform = 'scale(' + scale + ')';
+      wrap.style.height = Math.round(450 * scale) + 'px';
+    });
+  }
+  scaleIframes();
+  window.addEventListener('resize', scaleIframes);
 </script>
 
 </body>
