@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório Atual · GDO · TM Vendas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #07080f;
+      --surface:   #0f111a;
+      --surface2:  #171a27;
+      --border:    #252840;
+      --accent:    #6366f1;
+      --accent2:   #f59e0b;
+      --text:      #e8eaf6;
+      --muted:     #8b8fa8;
+      --success:   #22c55e;
+      --danger:    #f87171;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+      position: sticky; top: 0; z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color .15s;
+    }
+
+    .back-link:hover { color: var(--text); }
+
+    .divider { width: 1px; height: 20px; background: var(--border); }
+
+    .report-title { font-size: 15px; font-weight: 700; }
+    .report-sub   { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    .date-badge {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    /* ── SECTION LAYOUT ── */
+    section { padding: 36px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+
+    .sec-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* ── METRICS ── */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+    }
+
+    .metric-value {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .metric-delta {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .delta-up   { color: var(--success); }
+    .delta-down { color: var(--danger); }
+    .delta-neu  { color: var(--muted); }
+
+    .metric-card.highlight {
+      background: linear-gradient(135deg, rgba(99,102,241,.12), rgba(245,158,11,.08));
+      border-color: rgba(99,102,241,.3);
+    }
+
+    /* ── CRIATIVOS ── */
+    .criativos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .criativo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+
+    .criativo-card:hover { border-color: var(--accent); }
+
+    .criativo-thumb {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+      background: var(--surface2);
+    }
+
+    /* Placeholder quando não tem imagem */
+    .criativo-thumb-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: rgba(255,255,255,.08);
+      letter-spacing: .05em;
+    }
+
+    .adi20-ph { background: linear-gradient(160deg, #1e1e3a, #2a1f3d); }
+    .adi21-ph { background: linear-gradient(160deg, #1a2a3a, #0f1f2d); }
+    .adi22-ph { background: linear-gradient(160deg, #2a1a2a, #1f0f1f); }
+    .adi23-ph { background: linear-gradient(160deg, #1a2a1a, #0f1f0f); }
+
+    .criativo-info {
+      padding: 14px;
+    }
+
+    .criativo-id {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .criativo-nome {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .criativo-stats {
+      display: flex;
+      gap: 12px;
+    }
+
+    .cs-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .cs-label { font-size: 10px; color: var(--muted); }
+    .cs-val   { font-size: 13px; font-weight: 600; }
+
+    /* ── TABELA DE PERFORMANCE ── */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      white-space: nowrap;
+    }
+
+    thead th {
+      text-align: left;
+      padding: 11px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--muted);
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody td {
+      padding: 13px 16px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    tbody tr:hover td { background: var(--surface2); }
+
+    td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+    td.date-col { font-weight: 600; color: var(--text); }
+
+    .tfoot-row td {
+      background: var(--surface2);
+      font-weight: 700;
+      font-size: 13px;
+      border-top: 2px solid var(--border);
+    }
+
+    /* ── OBSERVAÇÕES ── */
+    .obs-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .obs-box p + p { margin-top: 8px; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="index.html" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
+          Hub
+        </a>
+        <div class="divider"></div>
+        <div>
+          <div class="report-title">Relatório Diário · GDO</div>
+          <div class="report-sub">Gerador de Ozônio · Campanha CTWA Sul</div>
+        </div>
+      </div>
+      <div class="date-badge" id="date-badge">—</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── MÉTRICAS GERAIS ── -->
+  <section>
+    <div class="container">
+      <p class="sec-title">Resumo do Período</p>
+      <div class="metrics-grid">
+        <div class="metric-card highlight">
+          <span class="metric-label">Total Investido</span>
+          <span class="metric-value">R$ —</span>
+          <span class="metric-delta delta-neu">Período completo</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Conv. Iniciadas</span>
+          <span class="metric-value">—</span>
+          <span class="metric-delta delta-neu">WhatsApp clicks</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Custo por Conv.</span>
+          <span class="metric-value">R$ —</span>
+          <span class="metric-delta delta-neu">CPL médio</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Impressões</span>
+          <span class="metric-value">—</span>
+          <span class="metric-delta delta-neu">Total período</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Cliques no Link</span>
+          <span class="metric-value">—</span>
+          <span class="metric-delta delta-neu">—% CTR</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Criativos Ativos</span>
+          <span class="metric-value">3</span>
+          <span class="metric-delta delta-neu">ADI21 · ADI22 · ADI23</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CRIATIVOS ── -->
+  <section>
+    <div class="container">
+      <p class="sec-title">Criativos em Veiculação</p>
+      <div class="criativos-grid">
+
+        <!-- ADI21 -->
+        <div class="criativo-card">
+          <!--
+            Para exibir a imagem real do Google Drive:
+            <img class="criativo-thumb" src="https://drive.google.com/thumbnail?id=ID_DO_ARQUIVO&sz=w400" alt="ADI21">
+            Substitua ID_DO_ARQUIVO pelo ID do arquivo público no Drive.
+          -->
+          <div class="criativo-thumb-placeholder adi21-ph">ADI21</div>
+          <div class="criativo-info">
+            <div class="criativo-id">ADI21 · Feed + Stories</div>
+            <div class="criativo-nome">Mãe Atípica Tentou Tudo 02</div>
+            <div class="criativo-stats">
+              <div class="cs-item">
+                <span class="cs-label">Conv.</span>
+                <span class="cs-val">—</span>
+              </div>
+              <div class="cs-item">
+                <span class="cs-label">CPL</span>
+                <span class="cs-val">—</span>
+              </div>
+              <div class="cs-item">
+                <span class="cs-label">Gasto</span>
+                <span class="cs-val">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADI22 -->
+        <div class="criativo-card">
+          <div class="criativo-thumb-placeholder adi22-ph">ADI22</div>
+          <div class="criativo-info">
+            <div class="criativo-id">ADI22 · Feed + Stories</div>
+            <div class="criativo-nome">Mãe Atípica Tentou Tudo 03</div>
+            <div class="criativo-stats">
+              <div class="cs-item">
+                <span class="cs-label">Conv.</span>
+                <span class="cs-val">—</span>
+              </div>
+              <div class="cs-item">
+                <span class="cs-label">CPL</span>
+                <span class="cs-val">—</span>
+              </div>
+              <div class="cs-item">
+                <span class="cs-label">Gasto</span>
+                <span class="cs-val">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADI23 -->
+        <div class="criativo-card">
+          <div class="criativo-thumb-placeholder adi23-ph">ADI23</div>
+          <div class="criativo-info">
+            <div class="criativo-id">ADI23 · Feed + Stories</div>
+            <div class="criativo-nome">Dormiu a Noite Inteira 01</div>
+            <div class="criativo-stats">
+              <div class="cs-item">
+                <span class="cs-label">Conv.</span>
+                <span class="cs-val">—</span>
+              </div>
+              <div class="cs-item">
+                <span class="cs-label">CPL</span>
+                <span class="cs-val">—</span>
+              </div>
+              <div class="cs-item">
+                <span class="cs-label">Gasto</span>
+                <span class="cs-val">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /criativos-grid -->
+    </div>
+  </section>
+
+  <!-- ── PERFORMANCE POR DIA ── -->
+  <section>
+    <div class="container">
+      <p class="sec-title">Performance por Dia</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th style="text-align:right">Investido</th>
+              <th style="text-align:right">Impressões</th>
+              <th style="text-align:right">Alcance</th>
+              <th style="text-align:right">Cliques</th>
+              <th style="text-align:right">CTR</th>
+              <th style="text-align:right">Conv. Inic.</th>
+              <th style="text-align:right">Custo Conv.</th>
+            </tr>
+          </thead>
+          <tbody id="perf-body">
+            <!-- Linhas preenchidas via JS ou manualmente -->
+            <tr>
+              <td colspan="8" style="text-align:center;padding:32px;color:var(--muted);font-size:14px;">
+                Dados serão inseridos quando o relatório for gerado.
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="tfoot-row">
+              <td><strong>Total / Média</strong></td>
+              <td class="num" id="tot-investido">—</td>
+              <td class="num" id="tot-impressoes">—</td>
+              <td class="num" id="tot-alcance">—</td>
+              <td class="num" id="tot-cliques">—</td>
+              <td class="num" id="avg-ctr">—</td>
+              <td class="num" id="tot-conv">—</td>
+              <td class="num" id="avg-cpl">—</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div><!-- /table-wrap -->
+    </div>
+  </section>
+
+  <!-- ── OBSERVAÇÕES ── -->
+  <section>
+    <div class="container">
+      <p class="sec-title">Observações do Período</p>
+      <div class="obs-box" id="obs-text">
+        <p>—</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    Brito Mídias Company · TM Vendas &amp; Consultoria · Campanha GDO CTWA Sul
+    &nbsp;·&nbsp; <a href="index.html" style="color:var(--accent);text-decoration:none;">← Voltar ao Hub</a>
+  </div>
+</footer>
+
+<script>
+  // Data atual no badge do header
+  const d = new Date();
+  document.getElementById('date-badge').textContent = d.toLocaleDateString('pt-BR', {
+    day: '2-digit', month: 'long', year: 'numeric'
+  });
+
+  /*
+  ─────────────────────────────────────────────────────────
+  COMO POPULAR O RELATÓRIO:
+
+  Os dados abaixo são gerados automaticamente pelo assistente
+  quando solicitado um relatório. Basta substituir os valores
+  no objeto `reportData` e o script preenche tudo.
+  ─────────────────────────────────────────────────────────
+
+  const reportData = {
+    periodo: "16 a 18 de junho de 2026",
+    metricas: {
+      investido: "R$ 450,00",
+      conversas: "42",
+      cpl: "R$ 10,71",
+      impressoes: "18.400",
+      cliques: "310",
+      ctr: "1,68%",
+      criativos: "3"
+    },
+    criativos: [
+      {
+        id: "ADI21",
+        nome: "Mãe Atípica Tentou Tudo 02",
+        imagem: "https://drive.google.com/thumbnail?id=XXXX&sz=w400",
+        conv: "16", cpl: "R$ 9,50", gasto: "R$ 152,00"
+      },
+      ...
+    ],
+    dias: [
+      { data: "Seg, 16/06", investido: "R$ 150,00", impressoes: "6.100",
+        alcance: "4.800", cliques: "102", ctr: "1,67%", conv: "14", cpl: "R$ 10,71" },
+      ...
+    ],
+    observacoes: "Campanha iniciada com 3 criativos. ADI21 apresentou melhor CPL..."
+  };
+  */
+</script>
+
+</body>
+</html>
