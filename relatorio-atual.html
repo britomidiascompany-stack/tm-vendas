@@ -394,6 +394,37 @@
     .dtable .td-invest { color: var(--gray-300); }
     .dtable .td-conv { color: var(--white); font-weight: 700; }
 
+
+    /* ── DOW TABLE (dia a dia por semana) ── */
+    .dow-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; }
+    .dow-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+    .dow-table thead th {
+      background: var(--gray-850); padding: 10px 12px; text-align: center;
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--purple-300);
+      border-bottom: 2px solid rgba(167,139,250,.2);
+    }
+    .dow-table thead th.wk-head { text-align: left; color: var(--gray-500); }
+    .dow-table td { border: 1px solid rgba(167,139,250,.08); vertical-align: top; padding: 0; min-width: 105px; }
+    .dow-table .wk-label {
+      background: var(--gray-900); color: var(--gray-500); font-size: 0.62rem;
+      font-weight: 600; padding: 8px 10px; white-space: nowrap;
+      letter-spacing: 0.04em; border-right: 1px solid rgba(167,139,250,.12);
+      vertical-align: middle; text-align: center;
+    }
+    .dc { display: flex; flex-direction: column; padding: 8px 10px; gap: 3px; height: 100%; }
+    .dc-date { font-size: 0.62rem; color: var(--gray-500); font-weight: 500; }
+    .dc-invest { font-size: 0.72rem; color: var(--gray-400); }
+    .dc-conv { font-size: 0.92rem; font-weight: 700; color: var(--white); }
+    .dc-cpl { font-size: 0.72rem; font-weight: 600; border-radius: 4px; padding: 2px 5px; display: inline-block; margin-top: 2px; }
+    .dc-cpl.cpl-low  { color: #4ade80; background: rgba(74,222,128,.13); }
+    .dc-cpl.cpl-mid  { color: #fbbf24; background: rgba(251,191,36,.10); }
+    .dc-cpl.cpl-high { color: #f87171; background: rgba(248,113,113,.12); }
+    .dc-empty  { background: rgba(0,0,0,.20); min-height: 78px; }
+    .dc-future { background: rgba(255,255,255,.02); min-height: 78px; }
+    .dc.dc-best    { background: rgba(74,222,128,.07); }
+    .dc.dc-parcial { background: rgba(251,191,36,.05); }
+
     /* ── HOURLY TABLE ── */
     .htable-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; }
     .htable { width: max-content; border-collapse: collapse; font-size: 0.78rem; min-width: 100%; }
@@ -620,448 +651,221 @@
 
   <!-- ── DIA A DIA ── -->
   <section class="card">
-    <h2>Dia a dia: custo por conversa</h2>
-    <p class="card-intro">Investimento, conversas e CPL de cada dia. Mais recente à esquerda.</p>
-    <div class="dtable-wrap">
-      <table class="dtable">
+    <h2>Dia a dia</h2>
+    <p class="card-intro">Cada célula mostra investimento, conversas e CPL. A tabela cresce para baixo a cada semana. Verde = abaixo de R$8 · Amarelo = R$8–12 · Vermelho = acima de R$12.</p>
+    <div class="dow-table-wrap">
+      <table class="dow-table">
         <thead>
           <tr>
-            <th class="row-label"></th>
-            <th class="th-best"><span class="th-dow">Seg*</span><span class="th-date">23/jun</span></th>
-            <th><span class="th-dow">Seg</span><span class="th-date">22/jun</span></th>
-            <th><span class="th-dow">Sáb</span><span class="th-date">20/jun</span></th>
-            <th><span class="th-dow">Sex</span><span class="th-date">19/jun</span></th>
-            <th><span class="th-dow">Qui</span><span class="th-date">18/jun</span></th>
-            <th><span class="th-dow">Qua</span><span class="th-date">17/jun</span></th>
-            <th><span class="th-dow">Ter</span><span class="th-date">16/jun</span></th>
-            <th><span class="th-dow">Seg</span><span class="th-date">15/jun</span></th>
-            <th><span class="th-dow">Sáb</span><span class="th-date">13/jun</span></th>
-            <th><span class="th-dow">Sex</span><span class="th-date">12/jun</span></th>
-            <th><span class="th-dow">Qui</span><span class="th-date">11/jun</span></th>
-            <th><span class="th-dow">Qua</span><span class="th-date">10/jun</span></th>
-            <th><span class="th-dow">Ter</span><span class="th-date">09/jun</span></th>
-            <th><span class="th-dow">Seg</span><span class="th-date">08/jun</span></th>
-            <th><span class="th-dow">Sáb</span><span class="th-date">06/jun</span></th>
-            <th><span class="th-dow">Sex</span><span class="th-date">05/jun</span></th>
-            <th><span class="th-dow">Qui</span><span class="th-date">04/jun</span></th>
-            <th><span class="th-dow">Qua</span><span class="th-date">03/jun</span></th>
-            <th><span class="th-dow">Ter</span><span class="th-date">02/jun</span></th>
-            <th><span class="th-dow">Seg</span><span class="th-date">01/jun</span></th>
-            <th><span class="th-dow">Sáb</span><span class="th-date">30/mai</span></th>
-            <th><span class="th-dow">Sex</span><span class="th-date">29/mai</span></th>
-            <th><span class="th-dow">Qui</span><span class="th-date">28/mai</span></th>
-            <th><span class="th-dow">Qua</span><span class="th-date">27/mai</span></th>
-            <th><span class="th-dow">Ter</span><span class="th-date">26/mai</span></th>
-            <th><span class="th-dow">Seg</span><span class="th-date">25/mai</span></th>
-            <th><span class="th-dow">Sáb</span><span class="th-date">23/mai</span></th>
-            <th><span class="th-dow">Sex</span><span class="th-date">22/mai</span></th>
+            <th class="wk-head">Semana</th>
+            <th>Segunda</th>
+            <th>Terça</th>
+            <th>Quarta</th>
+            <th>Quinta</th>
+            <th>Sexta</th>
+            <th>Sábado</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="row-label">Investimento</td>
-            <td class="td-invest col-best">R$92,16</td>
-            <td class="td-invest">R$153,31</td>
-            <td class="td-invest">R$96,79</td>
-            <td class="td-invest">R$57,25</td>
-            <td class="td-invest">R$56,87</td>
-            <td class="td-invest">R$55,19</td>
-            <td class="td-invest">R$61,30</td>
-            <td class="td-invest">R$69,34</td>
-            <td class="td-invest">R$60,44</td>
-            <td class="td-invest">R$45,73</td>
-            <td class="td-invest">R$59,23</td>
-            <td class="td-invest">R$51,82</td>
-            <td class="td-invest">R$67,56</td>
-            <td class="td-invest">R$65,22</td>
-            <td class="td-invest">R$66,27</td>
-            <td class="td-invest">R$48,49</td>
-            <td class="td-invest">R$54,12</td>
-            <td class="td-invest">R$56,52</td>
-            <td class="td-invest">R$60,71</td>
-            <td class="td-invest">R$63,82</td>
-            <td class="td-invest">R$59,23</td>
-            <td class="td-invest">R$55,43</td>
-            <td class="td-invest">R$50,80</td>
-            <td class="td-invest">R$61,04</td>
-            <td class="td-invest">R$62,15</td>
-            <td class="td-invest">R$61,27</td>
-            <td class="td-invest">R$43,62</td>
-            <td class="td-invest">R$35,46</td>
+            <td class="wk-label">22–23/mai</td>
+            <td class="dc-empty"></td>
+            <td class="dc-empty"></td>
+            <td class="dc-empty"></td>
+            <td class="dc-empty"></td>
+            <td><div class="dc">
+              <span class="dc-date">22/mai</span>
+              <span class="dc-invest">R$35,46</span>
+              <span class="dc-conv">4 conv</span>
+              <span class="dc-cpl cpl-mid">R$8,87</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">23/mai</span>
+              <span class="dc-invest">R$43,62</span>
+              <span class="dc-conv">6 conv</span>
+              <span class="dc-cpl cpl-low">R$7,27</span>
+            </div></td>
           </tr>
           <tr>
-            <td class="row-label">Conversas</td>
-            <td class="td-conv col-best">24</td>
-            <td class="td-conv">28</td>
-            <td class="td-conv">19</td>
-            <td class="td-conv">7</td>
-            <td class="td-conv">14</td>
-            <td class="td-conv">10</td>
-            <td class="td-conv">6</td>
-            <td class="td-conv">10</td>
-            <td class="td-conv">5</td>
-            <td class="td-conv">9</td>
-            <td class="td-conv">4</td>
-            <td class="td-conv">8</td>
-            <td class="td-conv">8</td>
-            <td class="td-conv">8</td>
-            <td class="td-conv">11</td>
-            <td class="td-conv">8</td>
-            <td class="td-conv">7</td>
-            <td class="td-conv">5</td>
-            <td class="td-conv">6</td>
-            <td class="td-conv">4</td>
-            <td class="td-conv">8</td>
-            <td class="td-conv">6</td>
-            <td class="td-conv">7</td>
-            <td class="td-conv">8</td>
-            <td class="td-conv">7</td>
-            <td class="td-conv">10</td>
-            <td class="td-conv">6</td>
-            <td class="td-conv">4</td>
+            <td class="wk-label">25–30/mai</td>
+            <td><div class="dc">
+              <span class="dc-date">25/mai</span>
+              <span class="dc-invest">R$61,27</span>
+              <span class="dc-conv">10 conv</span>
+              <span class="dc-cpl cpl-low">R$6,13</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">26/mai</span>
+              <span class="dc-invest">R$62,15</span>
+              <span class="dc-conv">7 conv</span>
+              <span class="dc-cpl cpl-mid">R$8,88</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">27/mai</span>
+              <span class="dc-invest">R$61,04</span>
+              <span class="dc-conv">8 conv</span>
+              <span class="dc-cpl cpl-low">R$7,63</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">28/mai</span>
+              <span class="dc-invest">R$50,80</span>
+              <span class="dc-conv">7 conv</span>
+              <span class="dc-cpl cpl-low">R$7,26</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">29/mai</span>
+              <span class="dc-invest">R$55,43</span>
+              <span class="dc-conv">6 conv</span>
+              <span class="dc-cpl cpl-mid">R$9,24</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">30/mai</span>
+              <span class="dc-invest">R$59,23</span>
+              <span class="dc-conv">8 conv</span>
+              <span class="dc-cpl cpl-low">R$7,40</span>
+            </div></td>
           </tr>
           <tr>
-            <td class="row-label">CPL</td>
-            <td class="col-best cpl-low">R$3,84</td>
-            <td class="cpl-low">R$5,48</td>
-            <td class="cpl-low">R$5,09</td>
-            <td class="cpl-mid">R$8,18</td>
-            <td class="cpl-low">R$4,06</td>
-            <td class="cpl-low">R$5,52</td>
-            <td class="cpl-mid">R$10,22</td>
-            <td class="cpl-low">R$6,93</td>
-            <td class="cpl-high">R$12,09</td>
-            <td class="cpl-low">R$5,08</td>
-            <td class="cpl-high">R$14,81</td>
-            <td class="cpl-low">R$6,48</td>
-            <td class="cpl-mid">R$8,45</td>
-            <td class="cpl-mid">R$8,15</td>
-            <td class="cpl-low">R$6,02</td>
-            <td class="cpl-low">R$6,06</td>
-            <td class="cpl-low">R$7,73</td>
-            <td class="cpl-mid">R$11,30</td>
-            <td class="cpl-mid">R$10,12</td>
-            <td class="cpl-high">R$15,96</td>
-            <td class="cpl-low">R$7,40</td>
-            <td class="cpl-mid">R$9,24</td>
-            <td class="cpl-low">R$7,26</td>
-            <td class="cpl-low">R$7,63</td>
-            <td class="cpl-mid">R$8,88</td>
-            <td class="cpl-low">R$6,13</td>
-            <td class="cpl-low">R$7,27</td>
-            <td class="cpl-mid">R$8,87</td>
+            <td class="wk-label">01–06/jun</td>
+            <td><div class="dc">
+              <span class="dc-date">01/jun</span>
+              <span class="dc-invest">R$63,82</span>
+              <span class="dc-conv">4 conv</span>
+              <span class="dc-cpl cpl-high">R$15,96</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">02/jun</span>
+              <span class="dc-invest">R$60,71</span>
+              <span class="dc-conv">6 conv</span>
+              <span class="dc-cpl cpl-mid">R$10,12</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">03/jun</span>
+              <span class="dc-invest">R$56,52</span>
+              <span class="dc-conv">5 conv</span>
+              <span class="dc-cpl cpl-mid">R$11,30</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">04/jun</span>
+              <span class="dc-invest">R$54,12</span>
+              <span class="dc-conv">7 conv</span>
+              <span class="dc-cpl cpl-low">R$7,73</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">05/jun</span>
+              <span class="dc-invest">R$48,49</span>
+              <span class="dc-conv">8 conv</span>
+              <span class="dc-cpl cpl-low">R$6,06</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">06/jun</span>
+              <span class="dc-invest">R$66,27</span>
+              <span class="dc-conv">11 conv</span>
+              <span class="dc-cpl cpl-low">R$6,02</span>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="wk-label">08–13/jun</td>
+            <td><div class="dc">
+              <span class="dc-date">08/jun</span>
+              <span class="dc-invest">R$65,22</span>
+              <span class="dc-conv">8 conv</span>
+              <span class="dc-cpl cpl-mid">R$8,15</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">09/jun</span>
+              <span class="dc-invest">R$67,56</span>
+              <span class="dc-conv">8 conv</span>
+              <span class="dc-cpl cpl-mid">R$8,45</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">10/jun</span>
+              <span class="dc-invest">R$51,82</span>
+              <span class="dc-conv">8 conv</span>
+              <span class="dc-cpl cpl-low">R$6,48</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">11/jun</span>
+              <span class="dc-invest">R$59,23</span>
+              <span class="dc-conv">4 conv</span>
+              <span class="dc-cpl cpl-high">R$14,81</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">12/jun</span>
+              <span class="dc-invest">R$45,73</span>
+              <span class="dc-conv">9 conv</span>
+              <span class="dc-cpl cpl-low">R$5,08</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">13/jun</span>
+              <span class="dc-invest">R$60,44</span>
+              <span class="dc-conv">5 conv</span>
+              <span class="dc-cpl cpl-high">R$12,09</span>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="wk-label">15–20/jun</td>
+            <td><div class="dc">
+              <span class="dc-date">15/jun</span>
+              <span class="dc-invest">R$69,34</span>
+              <span class="dc-conv">10 conv</span>
+              <span class="dc-cpl cpl-low">R$6,93</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">16/jun</span>
+              <span class="dc-invest">R$61,30</span>
+              <span class="dc-conv">6 conv</span>
+              <span class="dc-cpl cpl-mid">R$10,22</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">17/jun</span>
+              <span class="dc-invest">R$55,19</span>
+              <span class="dc-conv">10 conv</span>
+              <span class="dc-cpl cpl-low">R$5,52</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">18/jun</span>
+              <span class="dc-invest">R$56,87</span>
+              <span class="dc-conv">14 conv</span>
+              <span class="dc-cpl cpl-low">R$4,06</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">19/jun</span>
+              <span class="dc-invest">R$57,25</span>
+              <span class="dc-conv">7 conv</span>
+              <span class="dc-cpl cpl-mid">R$8,18</span>
+            </div></td>
+            <td><div class="dc">
+              <span class="dc-date">20/jun</span>
+              <span class="dc-invest">R$96,79</span>
+              <span class="dc-conv">19 conv</span>
+              <span class="dc-cpl cpl-low">R$5,09</span>
+            </div></td>
+          </tr>
+          <tr>
+            <td class="wk-label">22–23/jun ●</td>
+            <td><div class="dc">
+              <span class="dc-date">22/jun</span>
+              <span class="dc-invest">R$153,31</span>
+              <span class="dc-conv">28 conv</span>
+              <span class="dc-cpl cpl-low">R$5,48</span>
+            </div></td>
+            <td><div class="dc dc-best dc-parcial">
+              <span class="dc-date">23/jun ●</span>
+              <span class="dc-invest">R$92,16</span>
+              <span class="dc-conv">24 conv</span>
+              <span class="dc-cpl cpl-low">R$3,84</span>
+            </div></td>
+            <td class="dc-future"></td>
+            <td class="dc-future"></td>
+            <td class="dc-future"></td>
+            <td class="dc-future"></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="day-grid" style="display:none">
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">22 mai</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 8,87</strong></div>
-        <div class="day-card-math"><b>R$ 35,46</b> ÷ <b>4 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">23 mai</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 7,27</strong></div>
-        <div class="day-card-math"><b>R$ 43,62</b> ÷ <b>6 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">25 mai</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 6,13</strong></div>
-        <div class="day-card-math"><b>R$ 61,27</b> ÷ <b>10 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">26 mai</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 8,88</strong></div>
-        <div class="day-card-math"><b>R$ 62,15</b> ÷ <b>7 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">27 mai</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 7,63</strong></div>
-        <div class="day-card-math"><b>R$ 61,04</b> ÷ <b>8 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">28 mai</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 7,26</strong></div>
-        <div class="day-card-math"><b>R$ 50,80</b> ÷ <b>7 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">29 mai</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 9,24</strong></div>
-        <div class="day-card-math"><b>R$ 55,43</b> ÷ <b>6 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">30 mai</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 7,40</strong></div>
-        <div class="day-card-math"><b>R$ 59,23</b> ÷ <b>8 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">01 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 15,96</strong></div>
-        <div class="day-card-math"><b>R$ 63,82</b> ÷ <b>4 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">02 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 10,12</strong></div>
-        <div class="day-card-math"><b>R$ 60,71</b> ÷ <b>6 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">03 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 11,30</strong></div>
-        <div class="day-card-math"><b>R$ 56,52</b> ÷ <b>5 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">04 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 7,73</strong></div>
-        <div class="day-card-math"><b>R$ 54,12</b> ÷ <b>7 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">05 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 6,06</strong></div>
-        <div class="day-card-math"><b>R$ 48,49</b> ÷ <b>8 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">06 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 6,02</strong></div>
-        <div class="day-card-math"><b>R$ 66,27</b> ÷ <b>11 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">08 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 8,15</strong></div>
-        <div class="day-card-math"><b>R$ 65,22</b> ÷ <b>8 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">09 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 8,45</strong></div>
-        <div class="day-card-math"><b>R$ 67,56</b> ÷ <b>8 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">10 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 6,48</strong></div>
-        <div class="day-card-math"><b>R$ 51,82</b> ÷ <b>8 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">11 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 14,81</strong></div>
-        <div class="day-card-math"><b>R$ 59,23</b> ÷ <b>4 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">12 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 5,08</strong></div>
-        <div class="day-card-math"><b>R$ 45,73</b> ÷ <b>9 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">13 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 12,09</strong></div>
-        <div class="day-card-math"><b>R$ 60,44</b> ÷ <b>5 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">15 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 6,93</strong></div>
-        <div class="day-card-math"><b>R$ 69,34</b> ÷ <b>10 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">16 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 10,22</strong></div>
-        <div class="day-card-math"><b>R$ 61,30</b> ÷ <b>6 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">17 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 5,52</strong></div>
-        <div class="day-card-math"><b>R$ 55,19</b> ÷ <b>10 conv.</b></div>
-      </article>
-      <article class="day-card best">
-        <div class="day-card-date">18 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 4,06</strong></div>
-        <div class="day-card-math"><b>R$ 56,87</b> ÷ <b>14 conv.</b></div>
-        <div class="day-card-badge">Melhor dia — recorde CPL</div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">19 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 8,18</strong></div>
-        <div class="day-card-math"><b>R$ 57,25</b> ÷ <b>7 conv.</b></div>
-      </article>
-      <article class="day-card">
-        <div class="day-card-top"></div>
-        <div class="day-card-date">20 jun</div>
-        <div class="day-card-cost"><span>Custo por conversa</span><strong>R$ 5,09</strong></div>
-        <div class="day-card-math"><b>R$ 96,79</b> ÷ <b>19 conv.</b></div>
-      </article>
-      <article class="day-card partial">
-        <div class="day-card-date">22 jun*</div>
-        <div class="day-card-cost"><span>Em curso</span><strong>R$ 16,58</strong></div>
-        <div class="day-card-math"><b>R$ 99,49</b> ÷ <b>6 conv.</b></div>
-        <div class="day-card-badge">Em veiculação</div>
-      </article>
-    </div>
     <div class="note">
-      <strong>23/jun é o melhor dia da campanha: R$3,84/conv com 24 conversas</strong> — novo recorde absoluto de CPL e de volume. <strong>22/jun completo: 28 conversas e R$5,48/conv</strong> — as ADVs entregaram muito após as 17h34. 20/jun tinha o recorde de volume anterior (19 conv). <span style="margin-left:8px;opacity:.8">Verde = CPL abaixo de R$8 · Amarelo = R$8–12 · Vermelho = acima de R$12</span>
-    </div>
-  </section>
-
-  <!-- ── PÚBLICO ── -->
-  <section class="card">
-    <h2>Estrutura e pré-definições de público</h2>
-    <p class="card-intro">Como a campanha está configurada no Meta Ads.</p>
-    <div class="config-grid">
-      <div class="config">
-        <span class="config-label">Campanha</span>
-        <span class="config-value">CBO · Engajamento → Mensagens</span>
-      </div>
-      <div class="config">
-        <span class="config-label">Otimização do conjunto</span>
-        <span class="config-value">Respostas (conversas iniciadas no WhatsApp)</span>
-      </div>
-      <div class="config">
-        <span class="config-label">Público</span>
-        <span class="config-value">Advantage Audience (IA do Meta)</span>
-      </div>
-      <div class="config">
-        <span class="config-label">Direcionamento (sugestão)</span>
-        <span class="config-value">Interesse: Purificador de ar</span>
-      </div>
-      <div class="config">
-        <span class="config-label">Idade</span>
-        <span class="config-value">35 a 60 anos</span>
-      </div>
-      <div class="config">
-        <span class="config-label">Gênero</span>
-        <span class="config-value">Mulheres</span>
-      </div>
-      <div class="config">
-        <span class="config-label">Regiões</span>
-        <span class="config-value">Paraná · Santa Catarina · Rio Grande do Sul</span>
-      </div>
-      <div class="config">
-        <span class="config-label">Programação de veiculação</span>
-        <span class="config-value">Seg a Sáb · 09h às 21h</span>
-      </div>
-      <div class="config">
-        <span class="config-label">Destino do clique</span>
-        <span class="config-value">WhatsApp da Tássia</span>
-      </div>
-      <div class="config">
-        <span class="config-label">Orçamento</span>
-        <span class="config-value">R$ 50,00 por dia (CBO)</span>
-      </div>
-    </div>
-    <div class="note">
-      <strong>Sobre Advantage + idade + gênero:</strong> no público Advantage, idade e gênero funcionam como <em>sugestão</em>, não trava. O Meta dá total preferência para mulheres de 35 a 60 anos, mas pode mostrar o anúncio também para pessoas a partir de 25 anos ou eventualmente para homens, se identificar interesse no produto. Isso é normal e tende a melhorar os resultados.
-    </div>
-  </section>
-
-  <!-- ── REGIÕES ── -->
-  <section class="card">
-    <h2>Resultado por região</h2>
-    <p class="card-intro">Como o investimento e as conversas se distribuíram nos 3 estados do Sul.</p>
-    <div class="region-grid">
-
-      <article class="region best">
-        <div class="region-head">
-          <div class="region-name">Rio Grande do Sul</div>
-          <span class="region-badge">Líder em volume</span>
-        </div>
-        <div class="region-cost">
-          <span>Custo por conversa</span>
-          <strong>R$ 7,68</strong>
-        </div>
-        <div class="region-share">
-          <div class="region-share-row"><span>Investimento</span><em>R$ 783,15 · 48%</em></div>
-          <div class="region-share-bar"><div style="width:48%"></div></div>
-        </div>
-        <div class="region-share">
-          <div class="region-share-row"><span>Conversas</span><em>~102 · 48%</em></div>
-          <div class="region-share-bar"><div style="width:48%"></div></div>
-        </div>
-        <div class="region-metrics">
-          <div><span>Alcance</span><strong>16.671</strong></div>
-          <div><span>Impressões</span><strong>36.837</strong></div>
-          <div><span>Cliques</span><strong>888</strong></div>
-          <div><span>CTR</span><strong>2,41%</strong></div>
-          <div><span>CPC</span><strong>R$ 0,88</strong></div>
-          <div><span>Custo/link click</span><strong>R$ 1,96</strong></div>
-        </div>
-      </article>
-
-      <article class="region">
-        <div class="region-head">
-          <div class="region-name">Santa Catarina</div>
-        </div>
-        <div class="region-cost">
-          <span>Custo por conversa</span>
-          <strong>R$ 7,69</strong>
-        </div>
-        <div class="region-share">
-          <div class="region-share-row"><span>Investimento</span><em>R$ 361,57 · 22%</em></div>
-          <div class="region-share-bar"><div style="width:22%"></div></div>
-        </div>
-        <div class="region-share">
-          <div class="region-share-row"><span>Conversas</span><em>~47 · 22%</em></div>
-          <div class="region-share-bar"><div style="width:22%"></div></div>
-        </div>
-        <div class="region-metrics">
-          <div><span>Alcance</span><strong>6.972</strong></div>
-          <div><span>Impressões</span><strong>15.223</strong></div>
-          <div><span>Cliques</span><strong>301</strong></div>
-          <div><span>CTR</span><strong>1,98%</strong></div>
-          <div><span>CPC</span><strong>R$ 1,20</strong></div>
-          <div><span>Custo/link click</span><strong>R$ 2,61</strong></div>
-        </div>
-      </article>
-
-      <article class="region">
-        <div class="region-head">
-          <div class="region-name">Paraná</div>
-        </div>
-        <div class="region-cost">
-          <span>Custo por conversa</span>
-          <strong>R$ 7,62</strong>
-        </div>
-        <div class="region-share">
-          <div class="region-share-row"><span>Investimento</span><em>R$ 480,38 · 30%</em></div>
-          <div class="region-share-bar"><div style="width:30%"></div></div>
-        </div>
-        <div class="region-share">
-          <div class="region-share-row"><span>Conversas</span><em>~63 · 30%</em></div>
-          <div class="region-share-bar"><div style="width:30%"></div></div>
-        </div>
-        <div class="region-metrics">
-          <div><span>Alcance</span><strong>11.393</strong></div>
-          <div><span>Impressões</span><strong>23.368</strong></div>
-          <div><span>Cliques</span><strong>428</strong></div>
-          <div><span>CTR</span><strong>1,83%</strong></div>
-          <div><span>CPC</span><strong>R$ 1,12</strong></div>
-          <div><span>Custo/link click</span><strong>R$ 2,38</strong></div>
-        </div>
-      </article>
-
-    </div>
-    <div class="note">
-      <strong>Leitura:</strong> RS lidera em volume (~102 conversas, 48% do budget). PR assumiu a liderança em eficiência com R$ 7,62/conv — abaixo de RS (R$ 7,68) e SC (R$ 7,69). A diferença entre o melhor e o pior está em apenas R$ 0,07 — os 3 estados seguem praticamente empatados. Distribuição livre mantida.
+      <strong>23/jun é o melhor dia: R$3,84/conv com 24 conversas</strong> — novo recorde absoluto. <strong>22/jun: 28 conversas e R$5,48/conv</strong> — as ADVs entregaram muito após as 17h. ● = dia ainda em curso.
     </div>
   </section>
 
