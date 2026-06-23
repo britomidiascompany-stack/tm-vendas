@@ -366,6 +366,65 @@
     footer .brand { margin-bottom: 12px; }
     footer .brand-name { color: var(--white); }
 
+    /* ── DAY TABLE ── */
+    .dtable-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; }
+    .dtable { width: max-content; border-collapse: collapse; font-size: 0.78rem; }
+    .dtable th, .dtable td { border: 1px solid rgba(167,139,250,.10); padding: 8px 10px; text-align: center; white-space: nowrap; }
+    .dtable .row-label {
+      text-align: left; font-weight: 700; font-size: 10px; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--purple-300); background: var(--gray-850);
+      position: sticky; left: 0; z-index: 2; padding: 8px 14px;
+      border-right: 2px solid rgba(167,139,250,.20); width: 110px;
+    }
+    .dtable thead .row-label { z-index: 3; }
+    .dtable thead th {
+      background: var(--gray-850); vertical-align: bottom; padding: 8px 10px;
+    }
+    .dtable thead th.th-best { background: rgba(74,222,128,.10); }
+    .dtable thead th.th-parcial { background: rgba(251,191,36,.10); }
+    .dtable .th-dow { display: block; font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gray-500); margin-bottom: 2px; }
+    .dtable .th-date { display: block; font-size: 12px; font-weight: 700; color: var(--white); }
+    .dtable tbody tr:nth-child(odd) td:not(.row-label) { background: rgba(255,255,255,.02); }
+    .dtable tbody tr:nth-child(even) td:not(.row-label) { background: transparent; }
+    .dtable .col-best { background: rgba(74,222,128,.06) !important; }
+    .dtable .col-parcial { background: rgba(251,191,36,.06) !important; }
+    .dtable .cpl-low { color: #4ade80; font-weight: 700; }
+    .dtable .cpl-mid { color: #fbbf24; font-weight: 700; }
+    .dtable .cpl-high { color: #f87171; font-weight: 700; }
+    .dtable .td-invest { color: var(--gray-300); }
+    .dtable .td-conv { color: var(--white); font-weight: 700; }
+
+    /* ── HOURLY TABLE ── */
+    .htable-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; }
+    .htable { width: max-content; border-collapse: collapse; font-size: 0.78rem; min-width: 100%; }
+    .htable th, .htable td { border: 1px solid rgba(167,139,250,.10); padding: 7px 10px; text-align: center; white-space: nowrap; }
+    .htable .col-hour {
+      text-align: left; font-weight: 700; font-size: 11px; letter-spacing: .3px;
+      color: var(--gray-400); background: var(--gray-850);
+      position: sticky; left: 0; z-index: 2;
+      border-right: 2px solid rgba(167,139,250,.18); padding: 7px 14px;
+    }
+    .htable thead tr:first-child th { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--purple-300); background: var(--gray-850); }
+    .htable thead tr:first-child th.col-hour { font-size: 10px; letter-spacing: 1px; }
+    .htable thead tr:last-child th { font-size: 10px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; color: var(--gray-500); background: var(--gray-900); }
+    .htable thead tr:first-child th.col-hour { background: var(--gray-850); z-index: 3; }
+    .htable thead tr:last-child th.col-hour { background: var(--gray-850); z-index: 3; }
+    .htable .day-end { border-right: 2px solid rgba(167,139,250,.18) !important; }
+    .htable .conv-cell { color: var(--white); font-weight: 700; font-size: 13px; }
+    .htable .conv-zero { color: var(--gray-700); }
+    .htable .cpl-cell { font-size: 11px; font-weight: 600; }
+    .htable .cpl-low { color: #4ade80; }
+    .htable .cpl-mid { color: #fbbf24; }
+    .htable .cpl-high { color: #f87171; }
+    .htable tbody tr:hover td { background: rgba(167,139,250,.04); }
+
+    /* ── NO-IMAGE CREATIVE ── */
+    .creative-thumb.no-img { background: linear-gradient(135deg, var(--gray-800), var(--gray-850)); display: flex; align-items: center; justify-content: center; }
+    .creative-thumb.video-ad { background: linear-gradient(135deg, var(--purple-900), var(--gray-850)); display: flex; align-items: center; justify-content: center; }
+    .creative-thumb.no-img::after { content: "SEM IMAGEM"; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: var(--gray-600); text-transform: uppercase; }
+    .creative-thumb.video-ad::after { content: "VÍDEO"; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--purple-400); text-transform: uppercase; }
+    .badge.video { background: linear-gradient(135deg,var(--purple-600),var(--purple-400)); color: var(--white); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 720px) {
       .hero { padding: 48px 0 72px; }
@@ -467,11 +526,231 @@
     </div>
   </section>
 
+  <!-- ── HORÁRIO ── -->
+  <section class="card">
+    <h2>Mensagens por horário</h2>
+    <p class="card-intro">Conversas iniciadas e custo por conversa por faixa horária, agrupados por dia da semana — 22/mai a 22/jun.</p>
+    <div class="htable-wrap">
+      <table class="htable">
+        <thead>
+          <tr>
+            <th class="col-hour" rowspan="2">Faixa</th>
+            <th colspan="2" class="day-end">Segunda</th>
+            <th colspan="2" class="day-end">Terça</th>
+            <th colspan="2" class="day-end">Quarta</th>
+            <th colspan="2" class="day-end">Quinta</th>
+            <th colspan="2" class="day-end">Sexta</th>
+            <th colspan="2" class="day-end">Sábado</th>
+          </tr>
+          <tr>
+            <th>Conv</th><th class="day-end">R$/conv</th>
+            <th>Conv</th><th class="day-end">R$/conv</th>
+            <th>Conv</th><th class="day-end">R$/conv</th>
+            <th>Conv</th><th class="day-end">R$/conv</th>
+            <th>Conv</th><th class="day-end">R$/conv</th>
+            <th>Conv</th><th class="day-end">R$/conv</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-hour">9 – 10h</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$7,98</td>
+            <td class="conv-cell">1</td><td class="cpl-cell cpl-high day-end">R$14,33</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-low day-end">R$5,97</td>
+            <td class="conv-cell">3</td><td class="cpl-cell cpl-low day-end">R$5,11</td>
+            <td class="conv-cell">1</td><td class="cpl-cell cpl-high day-end">R$13,28</td>
+            <td class="conv-cell">3</td><td class="cpl-cell cpl-low day-end">R$3,95</td>
+          </tr>
+          <tr>
+            <td class="col-hour">10 – 11h</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$7,88</td>
+            <td class="conv-cell">4</td><td class="cpl-cell cpl-low day-end">R$4,87</td>
+            <td class="conv-cell">1</td><td class="cpl-cell cpl-high day-end">R$13,83</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-low day-end">R$5,72</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-low day-end">R$6,02</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$9,05</td>
+          </tr>
+          <tr>
+            <td class="col-hour">11 – 12h</td>
+            <td class="conv-cell">4</td><td class="cpl-cell cpl-low day-end">R$6,80</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$11,47</td>
+            <td class="conv-cell">4</td><td class="cpl-cell cpl-low day-end">R$3,50</td>
+            <td class="conv-cell">1</td><td class="cpl-cell cpl-mid day-end">R$11,42</td>
+            <td class="conv-cell">1</td><td class="cpl-cell cpl-mid day-end">R$11,99</td>
+            <td class="conv-cell">3</td><td class="cpl-cell cpl-low day-end">R$6,21</td>
+          </tr>
+          <tr>
+            <td class="col-hour">12 – 13h</td>
+            <td class="conv-cell">1</td><td class="cpl-cell cpl-high day-end">R$28,57</td>
+            <td class="conv-cell">5</td><td class="cpl-cell cpl-low day-end">R$5,29</td>
+            <td class="conv-zero">—</td><td class="cpl-cell day-end" style="color:var(--gray-600)">—</td>
+            <td class="conv-cell">4</td><td class="cpl-cell cpl-low day-end">R$3,81</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-low day-end">R$6,63</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$10,77</td>
+          </tr>
+          <tr>
+            <td class="col-hour">13 – 14h</td>
+            <td class="conv-cell">1</td><td class="cpl-cell cpl-high day-end">R$30,49</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$8,66</td>
+            <td class="conv-cell">1</td><td class="cpl-cell cpl-high day-end">R$24,42</td>
+            <td class="conv-zero">—</td><td class="cpl-cell day-end" style="color:var(--gray-600)">—</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-low day-end">R$6,58</td>
+            <td class="conv-cell">3</td><td class="cpl-cell cpl-mid day-end">R$9,08</td>
+          </tr>
+          <tr>
+            <td class="col-hour">14 – 15h</td>
+            <td class="conv-cell">3</td><td class="cpl-cell cpl-low day-end">R$5,62</td>
+            <td class="conv-zero">—</td><td class="cpl-cell day-end" style="color:var(--gray-600)">—</td>
+            <td class="conv-cell">4</td><td class="cpl-cell cpl-low day-end">R$5,10</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-low day-end">R$6,83</td>
+            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$9,14</td>
+            <td class="conv-cell">4</td><td class="cpl-cell cpl-mid day-end">R$9,01</td>
+          </tr>
+          <tr style="border-top:2px solid rgba(167,139,250,.12)">
+            <td class="col-hour" style="color:var(--gray-600);font-style:italic">15 – 21h</td>
+            <td colspan="12" style="text-align:left;color:var(--gray-600);font-size:11px;font-style:italic;padding:8px 14px">Orçamento diário esgota antes das 15h — entrega residual, sem dados relevantes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <strong>Leitura:</strong> dados agregados de 22/mai–22/jun. O orçamento de R$50/dia esgota tipicamente às 14–15h, concentrando entregas pela manhã. <strong>Melhores faixas: Qua 11h (R$3,50/conv), Qui 12h (R$3,81/conv) e Sáb 9h (R$3,95/conv).</strong> Terça 12h entregou 5 conversas — melhor volume em uma hora única. Verde = abaixo de R$7 · Amarelo = R$7–12 · Vermelho = acima de R$12.
+    </div>
+  </section>
+
   <!-- ── DIA A DIA ── -->
   <section class="card">
     <h2>Dia a dia: custo por conversa</h2>
-    <p class="card-intro">Cada cartão mostra quanto foi investido no dia, quantas conversas saíram, e o custo de cada uma.</p>
-    <div class="day-grid">
+    <p class="card-intro">Investimento, conversas e CPL de cada dia. Mais recente à esquerda.</p>
+    <div class="dtable-wrap">
+      <table class="dtable">
+        <thead>
+          <tr>
+            <th class="row-label"></th>
+            <th class="th-parcial"><span class="th-dow">Seg*</span><span class="th-date">22/jun</span></th>
+            <th><span class="th-dow">Sáb</span><span class="th-date">20/jun</span></th>
+            <th><span class="th-dow">Sex</span><span class="th-date">19/jun</span></th>
+            <th class="th-best"><span class="th-dow">Qui</span><span class="th-date">18/jun</span></th>
+            <th><span class="th-dow">Qua</span><span class="th-date">17/jun</span></th>
+            <th><span class="th-dow">Ter</span><span class="th-date">16/jun</span></th>
+            <th><span class="th-dow">Seg</span><span class="th-date">15/jun</span></th>
+            <th><span class="th-dow">Sáb</span><span class="th-date">13/jun</span></th>
+            <th><span class="th-dow">Sex</span><span class="th-date">12/jun</span></th>
+            <th><span class="th-dow">Qui</span><span class="th-date">11/jun</span></th>
+            <th><span class="th-dow">Qua</span><span class="th-date">10/jun</span></th>
+            <th><span class="th-dow">Ter</span><span class="th-date">09/jun</span></th>
+            <th><span class="th-dow">Seg</span><span class="th-date">08/jun</span></th>
+            <th><span class="th-dow">Sáb</span><span class="th-date">06/jun</span></th>
+            <th><span class="th-dow">Sex</span><span class="th-date">05/jun</span></th>
+            <th><span class="th-dow">Qui</span><span class="th-date">04/jun</span></th>
+            <th><span class="th-dow">Qua</span><span class="th-date">03/jun</span></th>
+            <th><span class="th-dow">Ter</span><span class="th-date">02/jun</span></th>
+            <th><span class="th-dow">Seg</span><span class="th-date">01/jun</span></th>
+            <th><span class="th-dow">Sáb</span><span class="th-date">30/mai</span></th>
+            <th><span class="th-dow">Sex</span><span class="th-date">29/mai</span></th>
+            <th><span class="th-dow">Qui</span><span class="th-date">28/mai</span></th>
+            <th><span class="th-dow">Qua</span><span class="th-date">27/mai</span></th>
+            <th><span class="th-dow">Ter</span><span class="th-date">26/mai</span></th>
+            <th><span class="th-dow">Seg</span><span class="th-date">25/mai</span></th>
+            <th><span class="th-dow">Sáb</span><span class="th-date">23/mai</span></th>
+            <th><span class="th-dow">Sex</span><span class="th-date">22/mai</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Investimento</td>
+            <td class="td-invest col-parcial">R$99,49</td>
+            <td class="td-invest">R$96,79</td>
+            <td class="td-invest">R$57,25</td>
+            <td class="td-invest col-best">R$56,87</td>
+            <td class="td-invest">R$55,19</td>
+            <td class="td-invest">R$61,30</td>
+            <td class="td-invest">R$69,34</td>
+            <td class="td-invest">R$60,44</td>
+            <td class="td-invest">R$45,73</td>
+            <td class="td-invest">R$59,23</td>
+            <td class="td-invest">R$51,82</td>
+            <td class="td-invest">R$67,56</td>
+            <td class="td-invest">R$65,22</td>
+            <td class="td-invest">R$66,27</td>
+            <td class="td-invest">R$48,49</td>
+            <td class="td-invest">R$54,12</td>
+            <td class="td-invest">R$56,52</td>
+            <td class="td-invest">R$60,71</td>
+            <td class="td-invest">R$63,82</td>
+            <td class="td-invest">R$59,23</td>
+            <td class="td-invest">R$55,43</td>
+            <td class="td-invest">R$50,80</td>
+            <td class="td-invest">R$61,04</td>
+            <td class="td-invest">R$62,15</td>
+            <td class="td-invest">R$61,27</td>
+            <td class="td-invest">R$43,62</td>
+            <td class="td-invest">R$35,46</td>
+          </tr>
+          <tr>
+            <td class="row-label">Conversas</td>
+            <td class="td-conv col-parcial">6</td>
+            <td class="td-conv">19</td>
+            <td class="td-conv">7</td>
+            <td class="td-conv col-best">14</td>
+            <td class="td-conv">10</td>
+            <td class="td-conv">6</td>
+            <td class="td-conv">10</td>
+            <td class="td-conv">5</td>
+            <td class="td-conv">9</td>
+            <td class="td-conv">4</td>
+            <td class="td-conv">8</td>
+            <td class="td-conv">8</td>
+            <td class="td-conv">8</td>
+            <td class="td-conv">11</td>
+            <td class="td-conv">8</td>
+            <td class="td-conv">7</td>
+            <td class="td-conv">5</td>
+            <td class="td-conv">6</td>
+            <td class="td-conv">4</td>
+            <td class="td-conv">8</td>
+            <td class="td-conv">6</td>
+            <td class="td-conv">7</td>
+            <td class="td-conv">8</td>
+            <td class="td-conv">7</td>
+            <td class="td-conv">10</td>
+            <td class="td-conv">6</td>
+            <td class="td-conv">4</td>
+          </tr>
+          <tr>
+            <td class="row-label">CPL</td>
+            <td class="col-parcial cpl-high">R$16,58</td>
+            <td class="cpl-low">R$5,09</td>
+            <td class="cpl-mid">R$8,18</td>
+            <td class="col-best cpl-low">R$4,06</td>
+            <td class="cpl-low">R$5,52</td>
+            <td class="cpl-mid">R$10,22</td>
+            <td class="cpl-low">R$6,93</td>
+            <td class="cpl-high">R$12,09</td>
+            <td class="cpl-low">R$5,08</td>
+            <td class="cpl-high">R$14,81</td>
+            <td class="cpl-low">R$6,48</td>
+            <td class="cpl-mid">R$8,45</td>
+            <td class="cpl-mid">R$8,15</td>
+            <td class="cpl-low">R$6,02</td>
+            <td class="cpl-low">R$6,06</td>
+            <td class="cpl-low">R$7,73</td>
+            <td class="cpl-mid">R$11,30</td>
+            <td class="cpl-mid">R$10,12</td>
+            <td class="cpl-high">R$15,96</td>
+            <td class="cpl-low">R$7,40</td>
+            <td class="cpl-mid">R$9,24</td>
+            <td class="cpl-low">R$7,26</td>
+            <td class="cpl-low">R$7,63</td>
+            <td class="cpl-mid">R$8,88</td>
+            <td class="cpl-low">R$6,13</td>
+            <td class="cpl-low">R$7,27</td>
+            <td class="cpl-mid">R$8,87</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="day-grid" style="display:none">
       <article class="day-card">
         <div class="day-card-top"></div>
         <div class="day-card-date">22 mai</div>
@@ -636,7 +915,7 @@
       </article>
     </div>
     <div class="note">
-      <strong>Encerramento em alta:</strong> <strong>18 de junho bateu recorde absoluto de CPL — R$ 4,06/conv</strong> com 14 conversas no dia. <strong>20 de junho registrou 19 conversas</strong>, o maior volume diário da campanha. <strong>22 de junho em curso:</strong> 6 conversas e R$ 99,49 investidos até as 17h34 — CPL parcial de R$ 16,58 (lote diário ainda em entrega).
+      <strong>Encerramento em alta:</strong> <strong>18 de junho bateu recorde absoluto de CPL — R$ 4,06/conv</strong> com 14 conversas no dia. <strong>20 de junho registrou 19 conversas</strong>, o maior volume diário da campanha. <strong>22 de junho em curso:</strong> 6 conversas e R$ 99,49 investidos até as 17h34 — CPL parcial de R$ 16,58 (lote diário ainda em entrega). <span style="margin-left:8px;opacity:.8">Verde = CPL abaixo de R$8 · Amarelo = R$8–12 · Vermelho = acima de R$12</span>
     </div>
   </section>
 
@@ -784,8 +1063,8 @@
 
   <!-- ── CRIATIVOS ── -->
   <section class="card">
-    <h2>Top 6 criativos</h2>
-    <p class="card-intro">Anúncios ordenados pelo desempenho. Clique na imagem para abrir no Drive.</p>
+    <h2>Top 12 criativos</h2>
+    <p class="card-intro">Anúncios ordenados por conversas. Criativos de vídeo (ADV) iniciados neste período. Clique na imagem para abrir no Drive.</p>
     <div class="creative-grid">
 
       <div class="creative">
@@ -796,12 +1075,12 @@
         <div class="creative-body">
           <h3>ADI04 · Aparelho que limpa o ar 01</h3>
           <div class="creative-metrics">
-            <div><span>Investimento</span><strong>R$ 1.065,96</strong></div>
-            <div><span>Conversas</span><strong>163</strong></div>
-            <div><span>Custo / conv.</span><strong>R$ 6,54</strong></div>
-            <div><span>Share budget</span><strong>65,6%</strong></div>
+            <div><span>Investimento</span><strong>R$ 1.076,30</strong></div>
+            <div><span>Conversas</span><strong>166</strong></div>
+            <div><span>Custo / conv.</span><strong>R$ 6,48</strong></div>
+            <div><span>CTR</span><strong>2,09%</strong></div>
           </div>
-          <p class="creative-note">Motor absoluto da campanha — 77% das conversas totais com CPL abaixo da média. Algoritmo em pleno ritmo.</p>
+          <p class="creative-note">Motor absoluto da campanha — responsável pela maior fatia das conversas com CPL abaixo da média. Algoritmo em pleno ritmo.</p>
         </div>
       </div>
 
@@ -813,29 +1092,139 @@
         <div class="creative-body">
           <h3>ADI15 · Inverno chegou 05</h3>
           <div class="creative-metrics">
-            <div><span>Investimento</span><strong>R$ 132,36</strong></div>
+            <div><span>Investimento</span><strong>R$ 132,69</strong></div>
             <div><span>Conversas</span><strong>14</strong></div>
-            <div><span>Custo / conv.</span><strong>R$ 9,45</strong></div>
+            <div><span>Custo / conv.</span><strong>R$ 9,48</strong></div>
             <div><span>CTR</span><strong>1,72%</strong></div>
           </div>
-          <p class="creative-note">Segundo criativo mais produtivo do período. Ângulo "inverno chegou" com consistência — bom candidato a escala.</p>
+          <p class="creative-note">Segundo criativo mais produtivo. Ângulo "inverno chegou" com consistência — candidato a escala.</p>
+        </div>
+      </div>
+
+      <div class="creative">
+        <a class="creative-thumb video-ad" href="https://drive.google.com/drive/folders/1nr25pCV9eVg_sunKcqwHUtIG4ZQGJJWT" target="_blank">
+          <span class="badge video">Vídeo novo</span>
+        </a>
+        <div class="creative-body">
+          <h3>ADV03 · Mãezinha do Sul</h3>
+          <div class="creative-metrics">
+            <div><span>Investimento</span><strong>R$ 10,65</strong></div>
+            <div><span>Conversas</span><strong>10</strong></div>
+            <div><span>Custo / conv.</span><strong>R$ 1,07</strong></div>
+            <div><span>CTR</span><strong>7,8%</strong></div>
+          </div>
+          <p class="creative-note">Melhor CPL de toda a campanha — R$1,07/conv com apenas R$10,65 investidos. Vídeo de depoimento pessoal com apelo emocional fortíssimo. Escala urgente.</p>
+        </div>
+      </div>
+
+      <div class="creative">
+        <a class="creative-thumb no-img" href="#" target="_blank">
+          <span class="badge rising">4º em conversas</span>
+        </a>
+        <div class="creative-body">
+          <h3>ADI08 · Dormiu bem 02</h3>
+          <div class="creative-metrics">
+            <div><span>Investimento</span><strong>R$ 46,21</strong></div>
+            <div><span>Conversas</span><strong>9</strong></div>
+            <div><span>Custo / conv.</span><strong>R$ 5,13</strong></div>
+            <div><span>CTR</span><strong>1,15%</strong></div>
+          </div>
+          <p class="creative-note">CPL de R$5,13 — muito abaixo da média da campanha. Boa eficiência com volume relevante. Candidato a receber mais investimento.</p>
+        </div>
+      </div>
+
+      <div class="creative">
+        <a class="creative-thumb video-ad" href="https://drive.google.com/drive/folders/1nr25pCV9eVg_sunKcqwHUtIG4ZQGJJWT" target="_blank">
+          <span class="badge video">Vídeo novo</span>
+        </a>
+        <div class="creative-body">
+          <h3>ADV01 · Família vive resfriada</h3>
+          <div class="creative-metrics">
+            <div><span>Investimento</span><strong>R$ 8,11</strong></div>
+            <div><span>Conversas</span><strong>6</strong></div>
+            <div><span>Custo / conv.</span><strong>R$ 1,35</strong></div>
+            <div><span>CTR</span><strong>4,8%</strong></div>
+          </div>
+          <p class="creative-note">Segundo melhor CPL da campanha — R$1,35/conv. Abordagem emocional de família e saúde com excelente conversão.</p>
         </div>
       </div>
 
       <div class="creative">
         <a class="creative-thumb" href="https://drive.google.com/file/d/1dTIQ8cOZpzHGudyHoJQ3m1YctvgWcPE1/view" target="_blank">
           <img src="img/ADI19.jpg" alt="ADI19">
-          <span class="badge rising">3º em conversas</span>
         </a>
         <div class="creative-body">
           <h3>ADI19 · UFF e UNICAMP atestam 03</h3>
           <div class="creative-metrics">
-            <div><span>Investimento</span><strong>R$ 88,57</strong></div>
+            <div><span>Investimento</span><strong>R$ 88,62</strong></div>
             <div><span>Conversas</span><strong>4</strong></div>
-            <div><span>Custo / conv.</span><strong>R$ 22,14</strong></div>
-            <div><span>CTR</span><strong>3,34%</strong></div>
+            <div><span>Custo / conv.</span><strong>R$ 22,16</strong></div>
+            <div><span>CTR</span><strong>3,33%</strong></div>
           </div>
-          <p class="creative-note">Alta taxa de clique (CTR 3,34%) mas CPL elevado. Atrai curiosidade — conversão no WhatsApp a validar.</p>
+          <p class="creative-note">CTR alto (3,33%) mas CPL elevado. Atrai cliques — validação da conversão no WhatsApp em andamento.</p>
+        </div>
+      </div>
+
+      <div class="creative">
+        <a class="creative-thumb video-ad" href="https://drive.google.com/drive/folders/1nr25pCV9eVg_sunKcqwHUtIG4ZQGJJWT" target="_blank">
+          <span class="badge video">Vídeo novo</span>
+        </a>
+        <div class="creative-body">
+          <h3>ADV05 · Dormiu noite inteira</h3>
+          <div class="creative-metrics">
+            <div><span>Investimento</span><strong>R$ 7,10</strong></div>
+            <div><span>Conversas</span><strong>3</strong></div>
+            <div><span>Custo / conv.</span><strong>R$ 2,37</strong></div>
+            <div><span>CTR</span><strong>3,41%</strong></div>
+          </div>
+          <p class="creative-note">Terceiro vídeo ADV com CPL de R$2,37 — excelente. Testemunho sobre qualidade do sono com boa taxa de clique.</p>
+        </div>
+      </div>
+
+      <div class="creative">
+        <a class="creative-thumb no-img" href="#" target="_blank">
+        </a>
+        <div class="creative-body">
+          <h3>ADI09 · Dormiu bem 03</h3>
+          <div class="creative-metrics">
+            <div><span>Investimento</span><strong>R$ 10,52</strong></div>
+            <div><span>Conversas</span><strong>3</strong></div>
+            <div><span>Custo / conv.</span><strong>R$ 3,51</strong></div>
+            <div><span>CTR</span><strong>2,45%</strong></div>
+          </div>
+          <p class="creative-note">CPL de R$3,51 com pouco investimento — surpresa positiva. Alto potencial se receber mais budget.</p>
+        </div>
+      </div>
+
+      <div class="creative">
+        <a class="creative-thumb no-img" href="#" target="_blank">
+        </a>
+        <div class="creative-body">
+          <h3>ADI06 · Problema não com você 02</h3>
+          <div class="creative-metrics">
+            <div><span>Investimento</span><strong>R$ 10,87</strong></div>
+            <div><span>Conversas</span><strong>3</strong></div>
+            <div><span>Custo / conv.</span><strong>R$ 3,62</strong></div>
+            <div><span>CTR</span><strong>3,62%</strong></div>
+          </div>
+          <p class="creative-note">CTR de 3,62% e CPL de R$3,62 — excelente custo-benefício. Abordagem "não é culpa sua" ressoa bem com o público.</p>
+        </div>
+      </div>
+
+      <div class="creative">
+        <a class="creative-thumb" href="https://drive.google.com/file/d/1kfmLEIe9hno_uJ3MxGEbIOt_jPHed03I/view" target="_blank">
+          <img src="img/ADI16.jpg" alt="ADI16">
+          <span class="badge efficient">Melhor CPL imagem</span>
+        </a>
+        <div class="creative-body">
+          <h3>ADI16 · Poder do Azônio 01</h3>
+          <div class="creative-metrics">
+            <div><span>Investimento</span><strong>R$ 20,14</strong></div>
+            <div><span>Conversas</span><strong>3</strong></div>
+            <div><span>Custo / conv.</span><strong>R$ 6,71</strong></div>
+            <div><span>CTR</span><strong>2,16%</strong></div>
+          </div>
+          <p class="creative-note">Melhor CPL entre os criativos de imagem secundários. Com mais budget pode confirmar escala.</p>
         </div>
       </div>
 
@@ -851,40 +1240,22 @@
             <div><span>Custo / conv.</span><strong>R$ 20,50</strong></div>
             <div><span>CTR</span><strong>3,99%</strong></div>
           </div>
-          <p class="creative-note">Maior CTR do grupo — o anúncio atrai cliques, mas CPL ainda alto. Família UNICAMP acumulando volume.</p>
+          <p class="creative-note">Maior CTR entre os criativos de imagem (3,99%) — atrai cliques, mas CPL ainda elevado. Família UNICAMP acumulando volume.</p>
         </div>
       </div>
 
       <div class="creative">
-        <a class="creative-thumb" href="https://drive.google.com/file/d/1kfmLEIe9hno_uJ3MxGEbIOt_jPHed03I/view" target="_blank">
-          <img src="img/ADI16.jpg" alt="ADI16">
-          <span class="badge efficient">Melhor CPL</span>
+        <a class="creative-thumb no-img" href="#" target="_blank">
         </a>
         <div class="creative-body">
-          <h3>ADI16 · Poder do Azônio 01</h3>
+          <h3>ADI25 · Dormiu noite inteira 03</h3>
           <div class="creative-metrics">
-            <div><span>Investimento</span><strong>R$ 20,11</strong></div>
-            <div><span>Conversas</span><strong>3</strong></div>
-            <div><span>Custo / conv.</span><strong>R$ 6,70</strong></div>
-            <div><span>CTR</span><strong>2,16%</strong></div>
-          </div>
-          <p class="creative-note">Melhor CPL entre os criativos secundários. Com mais budget pode confirmar escala — candidato prioritário a teste.</p>
-        </div>
-      </div>
-
-      <div class="creative">
-        <a class="creative-thumb" href="https://drive.google.com/file/d/1AeZIWMNSNnUbU7fmzHCsahjtdeYJKK5I/view" target="_blank">
-          <img src="img/ADI17.jpg" alt="ADI17">
-        </a>
-        <div class="creative-body">
-          <h3>ADI17 · UFF e UNICAMP atestam 01</h3>
-          <div class="creative-metrics">
-            <div><span>Investimento</span><strong>R$ 40,03</strong></div>
+            <div><span>Investimento</span><strong>R$ 17,44</strong></div>
             <div><span>Conversas</span><strong>2</strong></div>
-            <div><span>Custo / conv.</span><strong>R$ 20,02</strong></div>
-            <div><span>CTR</span><strong>3,37%</strong></div>
+            <div><span>Custo / conv.</span><strong>R$ 8,72</strong></div>
+            <div><span>CTR</span><strong>1,63%</strong></div>
           </div>
-          <p class="creative-note">Melhorou: subiu de 1 para 2 conversas e CPL caiu de R$ 28 para R$ 20. CTR forte (3,37%). Ainda atrás de ADI18 e ADI19 em volume, mas tendência positiva.</p>
+          <p class="creative-note">Variante da série "Dormiu Noite Inteira" com CPL dentro da média. Série com múltiplas variações testadas.</p>
         </div>
       </div>
 
@@ -896,12 +1267,12 @@
     <h2>Destaques e próximos passos</h2>
     <p class="card-intro">O que os dados indicam e o que vale testar agora.</p>
     <ul class="insights-list">
-      <li><strong>ADI04 dominou o período</strong> — 163 de 212 conversas (77%) com R$ 6,54/conv. Motor principal da campanha, algoritmo maduro e estável.</li>
-      <li><strong>ADI15 é o segundo motor</strong> — 14 conversas com CTR 1,72% e R$ 9,45/conv. Ângulo "inverno chegou" com consistência — candidato a escala.</li>
-      <li><strong>ADI09 e ADI06 são as surpresas ocultas</strong> — 3 conversas cada a R$ 3,51/conv, os melhores CPLs de toda a conta. Ainda sem imagens no relatório, mas merecem atenção.</li>
-      <li><strong>ADI17 mantém tendência positiva</strong> — 2 conversas e CPL de R$ 20,02 com CTR de 3,37%. Família UNICAMP acumulando volume gradual.</li>
-      <li><strong>PR assumiu a liderança em CPL</strong> — R$ 7,62/conv, à frente de RS (R$ 7,68) e SC (R$ 7,69). Diferença de apenas R$ 0,07 — os 3 estados seguem empatados na prática.</li>
-      <li><strong>57% das conversas avançaram para 3+ trocas</strong> — leads qualificados chegando. A taxa de fechamento real (vendas / conversas) é o próximo número a acompanhar.</li>
+      <li><strong>Vídeos ADV chegaram com CPL absurdo</strong> — ADV03 (R$1,07/conv), ADV01 (R$1,35/conv) e ADV05 (R$2,37/conv) com pouquíssimo investimento. Depoimentos emocionais performam melhor que qualquer imagem testada. Escala prioritária.</li>
+      <li><strong>ADI04 dominou o volume</strong> — 166 de 230+ conversas com R$ 6,48/conv. Motor principal maduro e estável — mantém o caixa enquanto os vídeos escalam.</li>
+      <li><strong>ADI15 é o segundo motor de imagem</strong> — 14 conversas com CTR 1,72% e R$ 9,48/conv. Ângulo "inverno chegou" com consistência — candidato a escala paralela.</li>
+      <li><strong>ADI08, ADI09 e ADI06 surpreenderam</strong> — CPLs entre R$3,51 e R$5,13 com pouco investimento. Os três merecem mais budget para confirmar escala.</li>
+      <li><strong>PR assumiu a liderança em CPL por estado</strong> — R$ 7,62/conv, à frente de RS (R$ 7,68) e SC (R$ 7,69). Diferença mínima — os 3 estados seguem empatados na prática.</li>
+      <li><strong>18/jun é o benchmark de CPL a bater</strong> — R$ 4,06/conv com 14 conversas. 20/jun entregou 19 conversas (recorde de volume). Referências para avaliar próximas semanas.</li>
     </ul>
   </section>
 
