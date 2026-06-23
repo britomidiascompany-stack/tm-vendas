@@ -449,6 +449,25 @@
     .htable .cpl-high { color: #f87171; }
     .htable tbody tr:hover td { background: rgba(167,139,250,.04); }
 
+    /* ── HORÁRIO SIMPLES ── */
+    .htable-simple { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    .htable-simple th { background: var(--gray-850); padding: 10px 16px; text-align: left; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--purple-300); border-bottom: 2px solid rgba(167,139,250,.2); }
+    .htable-simple th.num { text-align: center; }
+    .htable-simple td { border-bottom: 1px solid rgba(167,139,250,.08); padding: 9px 16px; vertical-align: middle; }
+    .htable-simple .h-slot { color: var(--purple-200); font-weight: 600; white-space: nowrap; }
+    .htable-simple .h-conv { text-align: center; font-size: 1.05rem; font-weight: 700; color: var(--white); }
+    .htable-simple .h-invest { text-align: right; color: var(--gray-300); }
+    .htable-simple .h-cpl-wrap { text-align: right; }
+    .htable-simple .cpl-badge { display: inline-block; font-weight: 600; font-size: 0.78rem; border-radius: 5px; padding: 3px 9px; }
+    .htable-simple .cpl-badge.cpl-low  { color: #4ade80; background: rgba(74,222,128,.13); }
+    .htable-simple .cpl-badge.cpl-mid  { color: #fbbf24; background: rgba(251,191,36,.10); }
+    .htable-simple .cpl-badge.cpl-high { color: #f87171; background: rgba(248,113,113,.12); }
+    .htable-simple .h-bar-cell { width: 130px; padding: 9px 10px; }
+    .htable-simple tbody tr.h-peak td { background: rgba(74,222,128,.04); }
+    .htable-simple tbody tr:hover td { background: rgba(167,139,250,.04); }
+    .h-bar-outer { background: rgba(167,139,250,.1); border-radius: 4px; height: 8px; }
+    .h-bar-inner { height: 8px; border-radius: 4px; background: var(--purple-500); }
+
     /* ── NO-IMAGE CREATIVE ── */
     .creative-thumb.no-img { background: linear-gradient(135deg, var(--gray-800), var(--gray-850)); display: flex; align-items: center; justify-content: center; }
     .creative-thumb.video-ad { background: linear-gradient(135deg, var(--purple-900), var(--gray-850)); display: flex; align-items: center; justify-content: center; }
@@ -560,92 +579,73 @@
   <!-- ── HORÁRIO ── -->
   <section class="card">
     <h2>Mensagens por horário</h2>
-    <p class="card-intro">Conversas iniciadas e custo por conversa por faixa horária, agrupados por dia da semana — 22/mai a 23/jun.</p>
-    <div class="htable-wrap">
-      <table class="htable">
+    <p class="card-intro">Conversas e custo por conversa agrupados em faixas de 2h — totais acumulados de 22/mai a 23/jun.</p>
+    <div style="overflow-x:auto;border-radius:12px;">
+      <table class="htable-simple">
         <thead>
           <tr>
-            <th class="col-hour" rowspan="2">Faixa</th>
-            <th colspan="2" class="day-end">Segunda</th>
-            <th colspan="2" class="day-end">Terça</th>
-            <th colspan="2" class="day-end">Quarta</th>
-            <th colspan="2" class="day-end">Quinta</th>
-            <th colspan="2" class="day-end">Sexta</th>
-            <th colspan="2" class="day-end">Sábado</th>
-          </tr>
-          <tr>
-            <th>Conv</th><th class="day-end">R$/conv</th>
-            <th>Conv</th><th class="day-end">R$/conv</th>
-            <th>Conv</th><th class="day-end">R$/conv</th>
-            <th>Conv</th><th class="day-end">R$/conv</th>
-            <th>Conv</th><th class="day-end">R$/conv</th>
-            <th>Conv</th><th class="day-end">R$/conv</th>
+            <th>Faixa</th>
+            <th class="num">Conv</th>
+            <th>Volume relativo</th>
+            <th class="num">Investimento</th>
+            <th class="num">CPL médio</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="col-hour">9 – 10h</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$7,98</td>
-            <td class="conv-cell">1</td><td class="cpl-cell cpl-high day-end">R$14,33</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-low day-end">R$5,97</td>
-            <td class="conv-cell">3</td><td class="cpl-cell cpl-low day-end">R$5,11</td>
-            <td class="conv-cell">1</td><td class="cpl-cell cpl-high day-end">R$13,28</td>
-            <td class="conv-cell">3</td><td class="cpl-cell cpl-low day-end">R$3,95</td>
+            <td class="h-slot">8 – 10h</td>
+            <td class="h-conv">44</td>
+            <td class="h-bar-cell"><div class="h-bar-outer"><div class="h-bar-inner" style="width:91.7%"></div></div></td>
+            <td class="h-invest">R$288,01</td>
+            <td class="h-cpl-wrap"><span class="cpl-badge cpl-low">R$6,55</span></td>
           </tr>
           <tr>
-            <td class="col-hour">10 – 11h</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$7,88</td>
-            <td class="conv-cell">4</td><td class="cpl-cell cpl-low day-end">R$4,87</td>
-            <td class="conv-cell">1</td><td class="cpl-cell cpl-high day-end">R$13,83</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-low day-end">R$5,72</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-low day-end">R$6,02</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$9,05</td>
+            <td class="h-slot">10 – 12h</td>
+            <td class="h-conv">33</td>
+            <td class="h-bar-cell"><div class="h-bar-outer"><div class="h-bar-inner" style="width:68.8%"></div></div></td>
+            <td class="h-invest">R$201,79</td>
+            <td class="h-cpl-wrap"><span class="cpl-badge cpl-low">R$6,12</span></td>
           </tr>
           <tr>
-            <td class="col-hour">11 – 12h</td>
-            <td class="conv-cell">4</td><td class="cpl-cell cpl-low day-end">R$6,80</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$11,47</td>
-            <td class="conv-cell">4</td><td class="cpl-cell cpl-low day-end">R$3,50</td>
-            <td class="conv-cell">1</td><td class="cpl-cell cpl-mid day-end">R$11,42</td>
-            <td class="conv-cell">1</td><td class="cpl-cell cpl-mid day-end">R$11,99</td>
-            <td class="conv-cell">3</td><td class="cpl-cell cpl-low day-end">R$6,21</td>
+            <td class="h-slot">12 – 14h</td>
+            <td class="h-conv">25</td>
+            <td class="h-bar-cell"><div class="h-bar-outer"><div class="h-bar-inner" style="width:52.1%"></div></div></td>
+            <td class="h-invest">R$263,31</td>
+            <td class="h-cpl-wrap"><span class="cpl-badge cpl-mid">R$10,53</span></td>
           </tr>
           <tr>
-            <td class="col-hour">12 – 13h</td>
-            <td class="conv-cell">1</td><td class="cpl-cell cpl-high day-end">R$28,57</td>
-            <td class="conv-cell">5</td><td class="cpl-cell cpl-low day-end">R$5,29</td>
-            <td class="conv-zero">—</td><td class="cpl-cell day-end" style="color:var(--gray-600)">—</td>
-            <td class="conv-cell">4</td><td class="cpl-cell cpl-low day-end">R$3,81</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-low day-end">R$6,63</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$10,77</td>
+            <td class="h-slot">14 – 16h</td>
+            <td class="h-conv">37</td>
+            <td class="h-bar-cell"><div class="h-bar-outer"><div class="h-bar-inner" style="width:77.1%"></div></div></td>
+            <td class="h-invest">R$275,06</td>
+            <td class="h-cpl-wrap"><span class="cpl-badge cpl-low">R$7,43</span></td>
           </tr>
           <tr>
-            <td class="col-hour">13 – 14h</td>
-            <td class="conv-cell">1</td><td class="cpl-cell cpl-high day-end">R$30,49</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$8,66</td>
-            <td class="conv-cell">1</td><td class="cpl-cell cpl-high day-end">R$24,42</td>
-            <td class="conv-zero">—</td><td class="cpl-cell day-end" style="color:var(--gray-600)">—</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-low day-end">R$6,58</td>
-            <td class="conv-cell">3</td><td class="cpl-cell cpl-mid day-end">R$9,08</td>
+            <td class="h-slot">16 – 18h</td>
+            <td class="h-conv">40</td>
+            <td class="h-bar-cell"><div class="h-bar-outer"><div class="h-bar-inner" style="width:83.3%"></div></div></td>
+            <td class="h-invest">R$228,81</td>
+            <td class="h-cpl-wrap"><span class="cpl-badge cpl-low">R$5,72</span></td>
+          </tr>
+          <tr class="h-peak">
+            <td class="h-slot">18 – 20h ★</td>
+            <td class="h-conv">48</td>
+            <td class="h-bar-cell"><div class="h-bar-outer"><div class="h-bar-inner" style="width:100%"></div></div></td>
+            <td class="h-invest">R$338,62</td>
+            <td class="h-cpl-wrap"><span class="cpl-badge cpl-low">R$7,05</span></td>
           </tr>
           <tr>
-            <td class="col-hour">14 – 15h</td>
-            <td class="conv-cell">3</td><td class="cpl-cell cpl-low day-end">R$5,62</td>
-            <td class="conv-zero">—</td><td class="cpl-cell day-end" style="color:var(--gray-600)">—</td>
-            <td class="conv-cell">4</td><td class="cpl-cell cpl-low day-end">R$5,10</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-low day-end">R$6,83</td>
-            <td class="conv-cell">2</td><td class="cpl-cell cpl-mid day-end">R$9,14</td>
-            <td class="conv-cell">4</td><td class="cpl-cell cpl-mid day-end">R$9,01</td>
-          </tr>
-          <tr style="border-top:2px solid rgba(167,139,250,.12)">
-            <td class="col-hour" style="color:var(--gray-600);font-style:italic">15 – 21h</td>
-            <td colspan="12" style="text-align:left;color:var(--gray-600);font-size:11px;font-style:italic;padding:8px 14px">Orçamento diário esgota antes das 15h — entrega residual, sem dados relevantes</td>
+            <td class="h-slot">20 – 22h *</td>
+            <td class="h-conv">33</td>
+            <td class="h-bar-cell"><div class="h-bar-outer"><div class="h-bar-inner" style="width:68.8%"></div></div></td>
+            <td class="h-invest">R$194,65</td>
+            <td class="h-cpl-wrap"><span class="cpl-badge cpl-low">R$5,90</span></td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="note">
-      <strong>Leitura:</strong> dados agregados de 22/mai–22/jun. O orçamento de R$50/dia esgota tipicamente às 14–15h, concentrando entregas pela manhã. <strong>Melhores faixas: Qua 11h (R$3,50/conv), Qui 12h (R$3,81/conv) e Sáb 9h (R$3,95/conv).</strong> Terça 12h entregou 5 conversas — melhor volume em uma hora única. Verde = abaixo de R$7 · Amarelo = R$7–12 · Vermelho = acima de R$12.
+      <strong>Leitura:</strong> com o orçamento atual (~R$90–100/dia) a campanha roda das 8h às 22h — a observação da cliente sobre mensagens à noite está correta. <strong>Pico de volume: 18–20h (48 conv)</strong>. Melhor CPL: 16–18h (R$5,72/conv). A faixa 12–14h tem o custo mais alto (R$10,53) — maior concorrência no leilão do meio-dia. * 9 das 33 conversas na faixa 20–22h foram orgânicas (iniciadas sem clique pago). Verde = abaixo de R$8 · Amarelo = R$8–12 · Vermelho = acima de R$12.
     </div>
   </section>
 
