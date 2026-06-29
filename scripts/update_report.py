@@ -84,6 +84,11 @@ def hc_cell(hh, best_slot):
         return (f'<div class="hc hc-noconv">'
                 f'<span class="hc-invest">{brl(s)}</span>'
                 f'<span class="hc-dash">0 conv</span></div>')
+    if s < 0.50:
+        # atribuições tardias — conversões sem investimento ativo
+        return (f'<div class="hc hc-noconv">'
+                f'<span class="hc-invest">R$0,00</span>'
+                f'<span class="hc-conv">{c} conv</span></div>')
     cpl_h    = s / c
     cls      = "cpl-low" if cpl_h < 8 else ("cpl-mid" if cpl_h < 12 else "cpl-high")
     best_cls = " hc-best" if hh == best_slot else ""
@@ -226,7 +231,7 @@ html = patch(html, "funil_r3_cpl", f"~{brl(cpl_r3)} por interação")
 html = patch(html, "funil_note_r1", f"~{r1} de {total}")
 
 # Horário — células do dia de hoje
-for hh in [15, 16, 17, 18, 19]:
+for hh in [15, 16, 17, 18, 19, 20]:
     html = patch(html, f"hc:{today}:{hh}", hc_cell(hh, best_slot))
 
 # Dia-a-dia — célula de hoje
