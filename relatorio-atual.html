@@ -475,6 +475,61 @@
     .creative-thumb.video-ad::after { content: "VÍDEO"; font-size: 12px; font-weight: 800; letter-spacing: 2px; color: var(--purple-400); text-transform: uppercase; }
     .badge.video { background: linear-gradient(135deg,var(--purple-600),var(--purple-400)); color: var(--white); }
 
+    /* ── MENSAL ── */
+    .month-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .month-card {
+      background: var(--gray-850); border-radius: 16px; padding: 24px 22px 26px;
+      border: 1px solid rgba(167,139,250,.10); position: relative;
+      display: flex; flex-direction: column; gap: 14px; overflow: hidden;
+    }
+    .month-card::before {
+      content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+      background: linear-gradient(90deg, var(--purple-500), var(--purple-300)); opacity: .5;
+    }
+    .month-card.best {
+      background: linear-gradient(135deg, var(--purple-700) 0%, var(--purple-500) 100%);
+      border-color: transparent; box-shadow: 0 14px 36px rgba(124,58,237,.30);
+    }
+    .month-card.best::before { display: none; }
+    .month-card.partial { background: var(--gray-950); border-style: dashed; }
+    .month-card.partial::before { opacity: .25; }
+    .month-name { font-size: 18px; font-weight: 700; letter-spacing: -.3px; }
+    .month-sub {
+      font-size: 11px; letter-spacing: .8px; text-transform: uppercase;
+      color: var(--purple-300); font-weight: 600; margin-top: -8px;
+    }
+    .month-card.best .month-sub { color: var(--purple-200); }
+    .month-card.partial .month-sub { color: var(--gray-500); }
+    .month-invest {
+      display: flex; flex-direction: column; gap: 2px;
+      padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .month-invest span {
+      font-size: 10px; font-weight: 600; letter-spacing: .8px;
+      color: var(--purple-300); text-transform: uppercase;
+    }
+    .month-card.best .month-invest span { color: var(--purple-200); }
+    .month-card.best .month-invest { border-bottom-color: rgba(255,255,255,.18); }
+    .month-invest strong { font-size: 28px; font-weight: 700; letter-spacing: -.5px; }
+    .month-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+    .month-kpis > div { display: flex; flex-direction: column; gap: 2px; }
+    .month-kpis span {
+      font-size: 10px; text-transform: uppercase; letter-spacing: .8px;
+      color: var(--gray-400); font-weight: 600;
+    }
+    .month-card.best .month-kpis span { color: var(--purple-200); }
+    .month-kpis strong { font-size: 15px; font-weight: 700; letter-spacing: -.2px; }
+    .month-badge {
+      display: inline-block; align-self: flex-start;
+      background: var(--white); color: var(--purple-700);
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      padding: 4px 10px; border-radius: 999px; text-transform: uppercase; margin-top: -4px;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 720px) {
       .hero { padding: 48px 0 72px; }
@@ -534,6 +589,61 @@
       <div class="kpi-label">Melhor dia até hoje</div>
       <div class="kpi-value"><!-- VK:kpi_best_conv -->78 conv<!-- /VK:kpi_best_conv --></div>
       <div class="kpi-foot"><!-- VK:kpi_best_foot -->28/jun · R$1,28 — recorde absoluto<!-- /VK:kpi_best_foot --></div>
+    </div>
+  </section>
+
+  <!-- ── MENSAL ── -->
+  <section class="card">
+    <h2>Resultado mensal</h2>
+    <p class="card-intro">Investimento, conversas iniciadas e custo por conversa mês a mês.</p>
+    <div class="month-grid">
+
+      <div class="month-card">
+        <div class="month-name">Maio 2026</div>
+        <div class="month-sub">22–31/mai · fase inicial</div>
+        <div class="month-invest">
+          <span>Investimento</span>
+          <strong>R$ 429,00</strong>
+        </div>
+        <div class="month-kpis">
+          <div><span>Conversas</span><strong>56</strong></div>
+          <div><span>CPL</span><strong>R$ 7,66</strong></div>
+          <div><span>Impressões</span><strong>20.682</strong></div>
+          <div><span>CTR</span><strong>2,29%</strong></div>
+        </div>
+      </div>
+
+      <div class="month-card best">
+        <div class="month-name">Junho 2026</div>
+        <div class="month-sub">mês completo · melhor CPL</div>
+        <span class="month-badge">Melhor mês</span>
+        <div class="month-invest">
+          <span>Investimento</span>
+          <strong>R$ 2.097,78</strong>
+        </div>
+        <div class="month-kpis">
+          <div><span>Conversas</span><strong>481</strong></div>
+          <div><span>CPL</span><strong>R$ 4,36</strong></div>
+          <div><span>Impressões</span><strong>109.202</strong></div>
+          <div><span>CTR</span><strong>3,32%</strong></div>
+        </div>
+      </div>
+
+      <div class="month-card partial">
+        <div class="month-name">Julho 2026</div>
+        <div class="month-sub">1–14/jul · em andamento</div>
+        <div class="month-invest">
+          <span>Investimento</span>
+          <strong>R$ 427,45</strong>
+        </div>
+        <div class="month-kpis">
+          <div><span>Conversas</span><strong>71</strong></div>
+          <div><span>CPL</span><strong>R$ 6,02</strong></div>
+          <div><span>Impressões</span><strong>21.920</strong></div>
+          <div><span>CTR</span><strong>2,50%</strong></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
