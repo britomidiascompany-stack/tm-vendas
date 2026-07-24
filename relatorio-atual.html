@@ -10,26 +10,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --purple-900: #2A0F4E;
-      --purple-800: #3B1A6B;
-      --purple-700: #4C1D95;
-      --purple-600: #6B2BC8;
-      --purple-500: #7C3AED;
-      --purple-400: #A78BFA;
-      --purple-300: #C4B5FD;
-      --purple-200: #DDD6FE;
-      --purple-50:  #F5F0FF;
-      --black:      #08080C;
-      --gray-950:   #0E0D14;
-      --gray-900:   #15141A;
-      --gray-850:   #1B1924;
-      --gray-800:   #1F1D27;
-      --gray-700:   #2A2733;
-      --gray-600:   #3A3645;
-      --gray-500:   #6E6A7A;
-      --gray-400:   #9C97A8;
-      --gray-300:   #C9C5D2;
-      --gray-200:   #E6E3EC;
+      /* ── Identidade Brito Mídias · tokens oficiais ── */
+      --roxo:        #7C3AED;   /* cor de marca */
+      --roxo-dark:   #5B21B6;
+      --roxo-deep:   #3B0F73;
+      --roxo-light:  #A78BFA;   /* destaque sobre fundo escuro */
+      --roxo-xlight: #EDE9FE;
+      --preto:       #0A0A0A;   /* base */
+      --ink:         #141018;   /* superfície / footer */
+      --linha:       #E7E3EE;
+
+      /* ── Aliases da versão escura (fundo preto mantido) ── */
+      --purple-900: #17111F;
+      --purple-800: var(--roxo-deep);
+      --purple-700: var(--roxo-dark);
+      --purple-600: var(--roxo);
+      --purple-500: var(--roxo);
+      --purple-400: var(--roxo-light);
+      --purple-300: var(--roxo-light);
+      --purple-200: var(--roxo-xlight);
+      --purple-100: var(--roxo-xlight);
+      --purple-50:  var(--roxo-xlight);
+      --black:      var(--preto);
+      --gray-950:   var(--ink);
+      --gray-900:   #16121C;
+      --gray-850:   #1B1622;
+      --gray-800:   #201A28;
+      --gray-700:   #2C2436;
+      --gray-600:   #3D3448;
+      --gray-500:   #6E6678;
+      --gray-400:   #9C94A8;
+      --gray-300:   #CFC9D8;
+      --gray-200:   #E7E3EE;
       --white:      #FFFFFF;
     }
 
@@ -40,8 +52,8 @@
       font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--black);
       color: var(--white);
-      font-weight: 400;
-      line-height: 1.55;
+      font-weight: 300;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -50,43 +62,52 @@
     /* ── HERO ── */
     .hero {
       background:
-        radial-gradient(ellipse 80% 70% at 50% 0%, rgba(167,139,250,.30) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 60% at 100% 0%, rgba(124,58,237,.32) 0%, transparent 55%),
-        radial-gradient(ellipse 80% 100% at 0% 60%, rgba(76,29,149,.45) 0%, transparent 60%),
-        linear-gradient(180deg, var(--purple-800) 0%, var(--purple-900) 55%, var(--black) 100%);
+        radial-gradient(1100px 500px at 78% -10%, rgba(124,58,237,.55), transparent 60%),
+        linear-gradient(150deg, #0A0A0A 0%, #17111F 45%, #3B0F73 100%);
       color: var(--white);
       padding: 64px 0 96px;
       position: relative;
       overflow: hidden;
     }
+    /* malha/grid do hero — linhas brancas 14%, célula 44px, máscara radial */
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle at 20% 90%, rgba(124,58,237,.18), transparent 40%),
-        radial-gradient(circle at 80% 100%, rgba(167,139,250,.12), transparent 50%);
+      background-image:
+        linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px);
+      background-size: 44px 44px;
+      -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 35%, #000 30%, transparent 78%);
+      mask-image: radial-gradient(ellipse 75% 70% at 50% 35%, #000 30%, transparent 78%);
+      opacity: .5;
       pointer-events: none;
     }
     .hero-inner { position: relative; z-index: 1; }
 
-    .brand { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 56px; }
-    .brand-mark {
-      width: 28px; height: 28px;
-      background: linear-gradient(135deg, var(--purple-300), var(--purple-500));
-      border-radius: 8px; position: relative;
+    .brand { display: inline-flex; align-items: center; gap: 16px; margin-bottom: 56px; }
+    .brand svg { width: 44px; height: 44px; flex-shrink: 0; }
+    .brand .word { display: flex; align-items: center; gap: 12px; font-weight: 300; }
+    .brand .word b { font-weight: 800; font-size: 19px; letter-spacing: .01em; }
+    .brand .word .bar { width: 2px; height: 28px; background: rgba(255,255,255,.55); display: inline-block; }
+    .brand .word .mid { font-size: 19px; letter-spacing: .22em; }
+
+    /* ── RÓTULO DE SEÇÃO (traço roxo + maiúsculo espaçado) ── */
+    .section-label {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 12px; font-weight: 600; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--roxo-light); margin-bottom: 10px;
     }
-    .brand-mark::after {
-      content: ""; position: absolute; inset: 6px;
-      border-radius: 4px; background: var(--white); opacity: .22;
+    .section-label::before {
+      content: ""; width: 34px; height: 2px;
+      background: var(--roxo); border-radius: 2px; flex-shrink: 0;
     }
-    .brand-name { font-weight: 800; font-size: 14px; letter-spacing: 2.5px; }
 
     .hero h1 {
-      font-weight: 700; font-size: clamp(36px, 5vw, 56px);
-      letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 16px;
+      font-weight: 800; font-size: clamp(38px, 5vw, 58px);
+      letter-spacing: -.02em; line-height: 1.05; margin-bottom: 16px;
     }
-    .hero .subtitle { font-size: 20px; font-weight: 500; color: var(--purple-200); margin-bottom: 14px; }
+    .hero .subtitle { font-size: 22px; font-weight: 600; color: var(--roxo-light); margin-bottom: 14px; }
     .hero .period { font-size: 14px; color: rgba(255,255,255,.65); letter-spacing: .3px; }
     .hero .period strong { color: var(--white); font-weight: 600; }
 
@@ -126,7 +147,7 @@
       background: var(--gray-900); border-radius: 20px; padding: 40px 36px;
       margin-bottom: 24px; border: 1px solid rgba(167,139,250,.08); position: relative;
     }
-    .card h2 { font-size: 24px; font-weight: 700; letter-spacing: -.5px; margin-bottom: 6px; }
+    .card h2 { font-size: 28px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; }
     .card-intro { color: var(--gray-400); font-size: 14px; margin-bottom: 28px; }
 
     .note {
@@ -203,9 +224,9 @@
     .day-card.partial .day-card-top { opacity: .25; }
     .day-card-badge {
       display: inline-block; align-self: flex-start;
-      background: var(--white); color: var(--purple-700);
-      font-size: 10px; font-weight: 700; letter-spacing: 1px;
-      padding: 4px 10px; border-radius: 999px; text-transform: uppercase; margin-top: 2px;
+      background: var(--white); color: var(--roxo-dark);
+      font-size: 10px; font-weight: 600; letter-spacing: .12em;
+      padding: 6px 14px; border-radius: 100px; text-transform: uppercase; margin-top: 2px;
     }
 
     /* ── CONFIG GRID ── */
@@ -244,9 +265,9 @@
     .region-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .region-name { font-size: 18px; font-weight: 700; letter-spacing: -.3px; }
     .region-badge {
-      background: var(--white); color: var(--purple-700);
-      font-size: 10px; font-weight: 700; letter-spacing: 1px;
-      padding: 4px 10px; border-radius: 999px; text-transform: uppercase;
+      background: var(--white); color: var(--roxo-dark);
+      font-size: 10px; font-weight: 600; letter-spacing: .12em;
+      padding: 6px 14px; border-radius: 100px; text-transform: uppercase;
     }
     .region-cost { display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,.08); }
     .region-cost span {
@@ -314,7 +335,7 @@
     .badge {
       position: absolute; top: 12px; left: 12px;
       font-size: 11px; font-weight: 700; letter-spacing: .5px;
-      padding: 6px 10px; border-radius: 999px; text-transform: uppercase;
+      padding: 7px 14px; border-radius: 100px; text-transform: uppercase; letter-spacing: .1em;
     }
     .badge.winner { background: var(--purple-500); color: var(--white); }
     .badge.efficient { background: var(--white); color: var(--purple-700); }
@@ -359,7 +380,7 @@
 
     /* ── FOOTER ── */
     footer {
-      background: var(--gray-950); color: var(--gray-500);
+      background: var(--ink); color: var(--gray-500);
       padding: 36px 0; text-align: center; font-size: 12px;
       border-top: 1px solid rgba(167,139,250,.08);
     }
@@ -525,9 +546,9 @@
     .month-kpis strong { font-size: 15px; font-weight: 700; letter-spacing: -.2px; }
     .month-badge {
       display: inline-block; align-self: flex-start;
-      background: var(--white); color: var(--purple-700);
-      font-size: 10px; font-weight: 700; letter-spacing: 1px;
-      padding: 4px 10px; border-radius: 999px; text-transform: uppercase; margin-top: -4px;
+      background: var(--white); color: var(--roxo-dark);
+      font-size: 10px; font-weight: 600; letter-spacing: .12em;
+      padding: 6px 14px; border-radius: 100px; text-transform: uppercase; margin-top: -4px;
     }
 
     /* ── RESPONSIVE ── */
@@ -557,8 +578,16 @@
 <header class="hero">
   <div class="container hero-inner">
     <div class="brand">
-      <span class="brand-mark"></span>
-      <span class="brand-name">BRITO MÍDIAS</span>
+      <svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" aria-label="BM Mídias">
+        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27"></polygon>
+        <polygon points="50,33 65,59 35,59"></polygon>
+        <line x1="50" y1="4" x2="50" y2="33"></line><line x1="90" y1="73" x2="65" y2="59"></line>
+        <line x1="10" y1="73" x2="35" y2="59"></line><line x1="90" y1="27" x2="50" y2="33"></line>
+        <line x1="90" y1="27" x2="65" y2="59"></line><line x1="50" y1="96" x2="65" y2="59"></line>
+        <line x1="50" y1="96" x2="35" y2="59"></line><line x1="10" y1="27" x2="35" y2="59"></line>
+        <line x1="10" y1="27" x2="50" y2="33"></line>
+      </svg>
+      <span class="word"><b>BM</b><i class="bar"></i><span class="mid">MÍDIAS</span></span>
     </div>
     <h1>Relatório de Campanha</h1>
     <p class="subtitle">Gerador de Ozônio · Tássia Mandelli</p>
@@ -595,6 +624,7 @@
 
   <!-- ── MENSAL ── -->
   <section class="card">
+    <div class="section-label">VISÃO CONSOLIDADA</div>
     <h2>Resultado mensal</h2>
     <p class="card-intro">Investimento, conversas iniciadas e custo por conversa mês a mês.</p>
     <div class="month-grid">
@@ -650,6 +680,7 @@
 
   <!-- ── FUNIL ── -->
   <section class="card">
+    <div class="section-label">JORNADA DO LEAD</div>
     <h2>Funil completo de mensagens</h2>
     <p class="card-intro">De cada anúncio visto até a conversa avançar no WhatsApp da Tássia.</p>
     <div class="funnel">
@@ -689,6 +720,7 @@
 
   <!-- ── HORÁRIO ── -->
   <section class="card">
+    <div class="section-label">ANÁLISE POR HORÁRIO</div>
     <h2>Mensagens por horário — Fase 2</h2>
     <p class="card-intro">Investimento, conversas e CPL por hora — Fase 2 (25/jun–3/jul). Campanhas [03]–[05] rodam das 15h às 20h · Qui–Sex–Sáb–Dom. As faixas 13–14h e 14–15h aparecem sem veiculação (—) porque a Fase 2 só começava às 15h. Verde = CPL abaixo de R$8 · Amarelo = R$8–12 · Vermelho = acima de R$12.</p>
     <div class="htable-dow-wrap">
@@ -795,6 +827,7 @@
 
   <!-- ── DIA A DIA ── -->
   <section class="card">
+    <div class="section-label">EVOLUÇÃO DIÁRIA</div>
     <h2>Dia a dia</h2>
     <p class="card-intro">Cada célula mostra investimento, conversas e CPL. A tabela cresce para baixo a cada semana. Verde = abaixo de R$8 · Amarelo = R$8–12 · Vermelho = acima de R$12.</p>
     <div class="dow-table-wrap">
@@ -1129,7 +1162,8 @@
 
   <!-- ── CRIATIVOS FASE 5 ── -->
   <section class="card" style="border-color:rgba(167,139,250,.45);">
-    <div style="display:inline-block;background:var(--purple-500);color:var(--white);font-size:10px;font-weight:800;letter-spacing:1.2px;padding:5px 12px;border-radius:999px;text-transform:uppercase;margin-bottom:12px;">Fase atual · no ar · dia 1</div>
+    <div style="display:inline-block;background:var(--purple-500);color:var(--white);font-size:10px;font-weight:800;letter-spacing:1.2px;padding:5px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;">Fase atual · no ar · dia 1</div>
+    <div class="section-label">FASE ATUAL</div>
     <h2>Fase 5 · Público Lookalike de compradores</h2>
     <p class="card-intro">Estreou hoje, <strong>23/jul</strong>: a campanha [12] deixou de mirar um recorte geográfico genérico e passou a usar um <strong>Lookalike 1% da lista de compradores reais</strong> — ou seja, o Meta procura pessoas parecidas com quem <em>de fato comprou</em>, não com quem apenas conversa. É a virada de chave da qualificação do público. Janela de 15h–20h.</p>
 
@@ -1272,7 +1306,8 @@
 
   <!-- ── CRIATIVOS FASE 4 ── -->
   <section class="card" style="border-color:rgba(74,222,128,.35);">
-    <div style="display:inline-block;background:rgba(74,222,128,.20);color:#4ade80;font-size:10px;font-weight:800;letter-spacing:1.2px;padding:5px 12px;border-radius:999px;text-transform:uppercase;margin-bottom:12px;">Encerrada · melhor CPL das fases novas</div>
+    <div style="display:inline-block;background:rgba(74,222,128,.20);color:#4ade80;font-size:10px;font-weight:800;letter-spacing:1.2px;padding:5px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;">Encerrada · melhor CPL das fases novas</div>
+    <div class="section-label">FASE ANTERIOR</div>
     <h2>Fase 4 · Regiões ampliadas (encerrada)</h2>
     <p class="card-intro">Estratégia que rodou de <strong>17 a 23/jul</strong>: recortes regionais amplos (Grande SP + interior + Curitiba) e janela de 13h–20h. Passou por três campanhas — [09] (regiões premium), [10] e [11] (regiões ampliadas), todas <strong>pausadas em 23/jul</strong> para dar lugar ao público Lookalike da Fase 5. Foi a fase que recuperou o custo por conversa depois do problema da Fase 3.</p>
 
@@ -1480,6 +1515,7 @@
 
   <!-- ── CRIATIVOS FASE 3 ── -->
   <section class="card">
+    <div class="section-label">HISTÓRICO</div>
     <h2>Fase 3 · Bairros de SP (encerrada)</h2>
     <p class="card-intro">Campanhas [06]–[08], que rodaram de <strong>15 a 16/jul</strong> (16h–20h) e foram <strong>pausadas em 17/jul</strong> para dar lugar à Fase 4. Foi o primeiro teste com <strong>bairros específicos da Grande SP</strong> e criativos 100% novos. Números finais consolidados, já com as atribuições tardias.</p>
     <div class="note" style="margin-bottom:24px">
@@ -1723,6 +1759,7 @@
 
   <!-- ── CRIATIVOS ── -->
   <section class="card">
+    <div class="section-label">HISTÓRICO</div>
     <h2>Criativos — Fases 1 e 2 (encerradas)</h2>
     <p class="card-intro">Acumulado por criativo · 22/mai–15/jul · campanhas [01]–[05], pausadas em 15/jul para entrada da Fase 3. Os vídeos ADV01–ADV05 também veicularam na Fase 2 ([03]–[05]), por isso o acúmulo é maior.</p>
     <div class="note" style="margin-bottom:24px">
@@ -1936,6 +1973,7 @@
 
   <!-- ── INSIGHTS ── -->
   <section class="card insights">
+    <div class="section-label">LEITURA E RECOMENDAÇÕES</div>
     <h2>Destaques e próximos passos</h2>
     <p class="card-intro">O que os dados indicam e o que vale testar agora.</p>
     <ul class="insights-list">
@@ -1954,8 +1992,16 @@
 <footer>
   <div class="container">
     <div class="brand">
-      <span class="brand-mark"></span>
-      <span class="brand-name">BRITO MÍDIAS</span>
+      <svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" aria-label="BM Mídias">
+        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27"></polygon>
+        <polygon points="50,33 65,59 35,59"></polygon>
+        <line x1="50" y1="4" x2="50" y2="33"></line><line x1="90" y1="73" x2="65" y2="59"></line>
+        <line x1="10" y1="73" x2="35" y2="59"></line><line x1="90" y1="27" x2="50" y2="33"></line>
+        <line x1="90" y1="27" x2="65" y2="59"></line><line x1="50" y1="96" x2="65" y2="59"></line>
+        <line x1="50" y1="96" x2="35" y2="59"></line><line x1="10" y1="27" x2="35" y2="59"></line>
+        <line x1="10" y1="27" x2="50" y2="33"></line>
+      </svg>
+      <span class="word"><b>BM</b><i class="bar"></i><span class="mid">MÍDIAS</span></span>
     </div>
     <p><!-- VK:footer_ts -->Relatório atualizado em 23 de Julho de 2026 · Informação atualizada: 23 de julho até às 20h00 · Campanha GDO CTWA · Conta 857209303367605<!-- /VK:footer_ts --></p>
   </div>
