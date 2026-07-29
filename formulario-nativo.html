@@ -114,34 +114,24 @@ td.num-cell{font-variant-numeric:tabular-nums;color:var(--cinza)}
 .mini-card .stat-row b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 .star{position:absolute;top:16px;right:16px;font-size:16px}
 
-/* ===== PHONE MOCKUPS ===== */
-.phones{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;margin-top:36px}
-.phone-block{text-align:center}
-.phone-block .cap{font-size:13px;font-weight:600;color:var(--cinza);margin-bottom:12px;
-  letter-spacing:.04em}
-.phone{width:230px;border-radius:26px;border:8px solid #17111F;background:#fff;
-  box-shadow:0 18px 40px -18px rgba(20,16,24,.35);overflow:hidden}
-.phone .ph-head{display:flex;align-items:center;gap:6px;padding:10px 14px 6px;font-size:10.5px;color:#8a8a95}
-.phone .ph-head b{color:var(--ink);font-size:11.5px;display:block}
-.phone .ph-progress{display:flex;gap:3px;padding:0 14px 10px}
-.phone .ph-progress i{flex:1;height:3px;border-radius:3px;background:var(--linha)}
-.ig .ph-progress i:nth-child(1){background:linear-gradient(90deg,#f58529,#dd2a7b)}
-.fb .ph-progress i:nth-child(1){background:#1a8f4c;background:#0a8f4c}
-.phone .avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#3B0F73,#7C3AED);
-  margin:6px auto 10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px}
-.phone .q{font-size:13px;font-weight:600;text-align:center;padding:0 16px 14px;color:var(--ink);line-height:1.4}
-.phone .opts{padding:0 14px;display:flex;flex-direction:column;gap:7px}
-.phone .opt{border:1px solid var(--linha);border-radius:10px;padding:9px 11px;font-size:10.8px;
-  color:var(--ink);line-height:1.35;display:flex;justify-content:space-between;align-items:center;gap:6px}
-.phone .opt .dot{width:12px;height:12px;border-radius:50%;border:1.4px solid #c7c3d0;flex:none}
-.phone .cta{margin:14px 12px 16px;background:var(--meta-blue);color:#fff;text-align:center;
-  border-radius:9px;padding:9px;font-size:12px;font-weight:600}
-.phone .cta.wa{background:var(--wa-green)}
-.phone .thanks{padding:20px 18px 4px;text-align:center}
-.phone .thanks .icon{width:38px;height:38px;margin:0 auto 12px;color:var(--roxo)}
-.phone .thanks h4{font-size:14px;font-weight:700;margin-bottom:8px;line-height:1.35}
-.phone .thanks p{font-size:11px;color:var(--cinza);margin-bottom:0;line-height:1.5}
+/* ===== FILMSTRIP (prints reais) ===== */
+.filmstrip-group{margin-top:34px}
+.filmstrip-group + .filmstrip-group{margin-top:38px}
+.filmstrip-group .fs-label{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.filmstrip-group .fs-label b{font-size:15px;font-weight:600;color:var(--ink)}
+.filmstrip-group .fs-label span{font-size:12px;color:var(--cinza)}
+.filmstrip{display:flex;gap:16px;overflow-x:auto;padding-bottom:10px;
+  scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.filmstrip::-webkit-scrollbar{height:8px}
+.filmstrip::-webkit-scrollbar-thumb{background:var(--linha);border-radius:8px}
+.fs-item{flex:0 0 auto;width:160px;scroll-snap-align:start}
+.fs-item img{width:100%;display:block;border-radius:12px;border:1px solid var(--linha);
+  box-shadow:0 10px 24px -16px rgba(20,16,24,.35)}
+.fs-item .fs-cap{margin-top:8px;font-size:12px;color:var(--cinza);text-align:center;line-height:1.35}
+.fs-item .fs-cap b{display:block;color:var(--roxo-dark);font-size:10.5px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
 
+/* ===== QUESTIONS ===== */
 /* ===== QUESTIONS ===== */
 .qa{margin-top:34px;display:flex;flex-direction:column;gap:22px}
 .qa-card{border:1px solid var(--linha);border-radius:16px;padding:24px 26px;background:#fff}
@@ -325,49 +315,26 @@ footer .foot-meta a{color:#C9BCF2}
     <div class="section-label">A EXPERIÊNCIA</div>
     <h2 class="title">Como a pessoa vê o formulário</h2>
     <p class="lead">O conteúdo é o mesmo, mas a moldura muda um pouco dependendo de onde o anúncio aparece.</p>
-    <div class="phones">
-      <div class="phone-block">
-        <div class="cap">Instagram</div>
-        <div class="phone ig">
-          <div class="ph-head"><b>Instagram &middot; Formulário</b></div>
-          <div class="ph-progress"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="avatar">RS</div>
-          <div class="q">Qual dessas situações é mais parecida com a sua casa hoje?</div>
-          <div class="opts">
-            <div class="opt"><span>Sempre tem alguém resfriado ou com o nariz entupido</span><span class="dot"></span></div>
-            <div class="opt"><span>Alguém da família tem crise alérgica que sempre volta</span><span class="dot"></span></div>
-            <div class="opt"><span>Nenhuma dessas, estou pesquisando</span><span class="dot"></span></div>
-          </div>
-          <div class="cta">Continuar</div>
-        </div>
+    <div class="filmstrip-group">
+      <div class="fs-label"><b>Facebook</b><span>as 6 telas, na ordem real</span></div>
+      <div class="filmstrip">
+        <div class="fs-item"><img src="img/formulario/fb-1-situacao.png" alt="Facebook, pergunta 1, situação atual"><div class="fs-cap"><b>1 de 6</b>Situação atual</div></div>
+        <div class="fs-item"><img src="img/formulario/fb-2-timing.png" alt="Facebook, pergunta 2, momento de decisão"><div class="fs-cap"><b>2 de 6</b>Momento de decisão</div></div>
+        <div class="fs-item"><img src="img/formulario/fb-3-investimento.png" alt="Facebook, pergunta 3, investimento"><div class="fs-cap"><b>3 de 6</b>Investimento</div></div>
+        <div class="fs-item"><img src="img/formulario/fb-4-contato.png" alt="Facebook, informações de contato"><div class="fs-cap"><b>4 de 6</b>Contato, preenchido sozinho</div></div>
+        <div class="fs-item"><img src="img/formulario/fb-5-privacidade.png" alt="Facebook, tela de revisão e privacidade"><div class="fs-cap"><b>5 de 6</b>Revisão e privacidade</div></div>
+        <div class="fs-item"><img src="img/formulario/fb-6-conclusao.png" alt="Facebook, tela final com botão para o WhatsApp"><div class="fs-cap"><b>6 de 6</b>Conclusão, botão pro WhatsApp</div></div>
       </div>
-      <div class="phone-block">
-        <div class="cap">Facebook</div>
-        <div class="phone fb">
-          <div class="ph-head"><b>Facebook &middot; Formulário</b></div>
-          <div class="ph-progress"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="avatar">RS</div>
-          <div class="q">Qual dessas situações é mais parecida com a sua casa hoje?</div>
-          <div class="opts">
-            <div class="opt"><span>Sempre tem alguém resfriado ou com o nariz entupido</span><span class="dot"></span></div>
-            <div class="opt"><span>Alguém da família tem crise alérgica que sempre volta</span><span class="dot"></span></div>
-            <div class="opt"><span>Nenhuma dessas, estou pesquisando</span><span class="dot"></span></div>
-          </div>
-          <div class="cta">Continue</div>
-        </div>
-      </div>
-      <div class="phone-block">
-        <div class="cap">Tela final, os dois formatos</div>
-        <div class="phone ig">
-          <div class="ph-head"><b>Formulário</b></div>
-          <div class="ph-progress"><i style="background:var(--roxo)"></i><i style="background:var(--roxo)"></i><i style="background:var(--roxo)"></i><i style="background:var(--roxo)"></i><i style="background:var(--roxo)"></i><i style="background:var(--roxo)"></i></div>
-          <div class="thanks">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="4" width="12" height="16" rx="2"></rect><path d="M9 4h6v2H9z"></path><path d="M9 12l2 2 4-4"></path></svg>
-            <h4>Falta pouco pra cuidar do ar da sua casa!</h4>
-            <p>Clique no botão abaixo pra continuar a conversa no WhatsApp. Vamos te mostrar como mais de 40 mil famílias já protegeram a saúde de quem mais importa.</p>
-          </div>
-          <div class="cta wa">&#9742; Chamar no WhatsApp</div>
-        </div>
+    </div>
+    <div class="filmstrip-group">
+      <div class="fs-label"><b>Instagram</b><span>as 6 telas, na ordem real</span></div>
+      <div class="filmstrip">
+        <div class="fs-item"><img src="img/formulario/ig-1-situacao.png" alt="Instagram, pergunta 1, situação atual"><div class="fs-cap"><b>1 de 6</b>Situação atual</div></div>
+        <div class="fs-item"><img src="img/formulario/ig-2-timing.png" alt="Instagram, pergunta 2, momento de decisão"><div class="fs-cap"><b>2 de 6</b>Momento de decisão</div></div>
+        <div class="fs-item"><img src="img/formulario/ig-3-investimento.png" alt="Instagram, pergunta 3, investimento"><div class="fs-cap"><b>3 de 6</b>Investimento</div></div>
+        <div class="fs-item"><img src="img/formulario/ig-4-contato.png" alt="Instagram, informações de contato"><div class="fs-cap"><b>4 de 6</b>Contato, preenchido sozinho</div></div>
+        <div class="fs-item"><img src="img/formulario/ig-5-privacidade.png" alt="Instagram, tela de revisão e privacidade"><div class="fs-cap"><b>5 de 6</b>Revisão e privacidade</div></div>
+        <div class="fs-item"><img src="img/formulario/ig-6-conclusao.png" alt="Instagram, tela final com botão para o WhatsApp"><div class="fs-cap"><b>6 de 6</b>Conclusão, botão pro WhatsApp</div></div>
       </div>
     </div>
   </div>
