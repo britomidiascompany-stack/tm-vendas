@@ -134,6 +134,13 @@
       font-size: 15px; font-weight: 600; transition: background .15s;
     }
     .btn-tertiary:hover { background: rgba(99,102,241,.08); }
+    .btn-quaternary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; border: 1.5px solid var(--success); color: var(--success);
+      padding: 12.5px 24px; border-radius: 10px; text-decoration: none;
+      font-size: 15px; font-weight: 600; transition: background .15s;
+    }
+    .btn-quaternary:hover { background: rgba(34,197,94,.08); }
     .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
 
     .updated-at {
@@ -250,7 +257,8 @@
   <div class="container tabs-inner">
     <a href="relatorio-atual.html" class="tab">Relatório de Tráfego</a>
     <a href="formulario-nativo.html" class="tab">Campanha · Formulário Nativo</a>
-    <a href="google-ads-pesquisa-youtube.html" class="tab">Google Ads · Pesquisa e YouTube <span class="tab-badge">Novo</span></a>
+    <a href="google-ads-pesquisa-youtube.html" class="tab">Google Ads · Pesquisa e YouTube</a>
+    <a href="google-ads-primeira-campanha.html" class="tab">Google Ads · Primeira Campanha <span class="tab-badge">Novo</span></a>
     <a href="revisao-conformidade-site-google.html" class="tab">Conformidade do Site <span class="tab-badge">Ação</span></a>
   </div>
 </nav>
@@ -275,6 +283,10 @@
         <a href="google-ads-pesquisa-youtube.html" class="btn-tertiary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           Ver Pesquisa no Google Ads
+        </a>
+        <a href="google-ads-primeira-campanha.html" class="btn-quaternary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>
+          Ver Primeira Campanha Google Ads
         </a>
       </div>
       <p class="updated-at">Última atualização: <strong id="today-label"></strong></p>
