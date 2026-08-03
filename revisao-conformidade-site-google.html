@@ -3,430 +3,396 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conformidade Google Ads · Site Referência em Saúde · TM Vendas</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Conformidade Google Ads · Site Referência em Saúde · Brito Mídias</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --bg:        #07080f;
-    --surface:   #0f111a;
-    --surface2:  #171a27;
-    --border:    #252840;
-    --accent:    #6366f1;
-    --accent2:   #f59e0b;
-    --text:      #e8eaf6;
-    --muted:     #8b8fa8;
-    --success:   #22c55e;
-    --danger:    #ef4444;
-    --tag-bg:    rgba(99,102,241,.12);
+  :root{
+    --roxo:        #7C3AED;
+    --roxo-dark:   #5B21B6;
+    --roxo-deep:   #3B0F73;
+    --roxo-light:  #A78BFA;
+    --roxo-xlight: #EDE9FE;
+    --preto:   #0A0A0A;
+    --ink:     #141018;
+    --cinza:   #5B5566;
+    --linha:   #E7E3EE;
+    --bg:      #FFFFFF;
+    --bg-soft: #FAF9FC;
+    --danger:  #DC2626;
+    --amber:   #D97706;
   }
 
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Poppins', system-ui, sans-serif;
     background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
+    color: var(--ink);
+    font-weight: 300;
     line-height: 1.6;
   }
 
-  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 28px; }
 
-  /* HEADER */
-  header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 20px 0;
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(1100px 500px at 78% -10%, rgba(124,58,237,.55), transparent 60%),
+      linear-gradient(150deg, #0A0A0A 0%, #17111F 45%, #3B0F73 100%);
+    color: #fff;
   }
-  .header-inner { display: flex; align-items: center; gap: 14px; }
-  .logo {
-    width: 38px; height: 38px;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px; font-weight: 800; color: #fff; flex-shrink: 0;
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px);
+    background-size: 44px 44px;
+    -webkit-mask-image: radial-gradient(1000px 460px at 70% 0%, #000 30%, transparent 75%);
+    mask-image: radial-gradient(1000px 460px at 70% 0%, #000 30%, transparent 75%);
+    pointer-events: none;
   }
-  .header-text h1 { font-size: 17px; font-weight: 700; }
-  .header-text p  { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .hero-inner { position: relative; padding: 30px 0 56px; }
 
-  /* TABS */
-  .tabs { background: var(--surface); border-bottom: 1px solid var(--border); }
-  .tabs-inner { display: flex; gap: 4px; padding: 10px 24px; flex-wrap: wrap; max-width: 860px; margin: 0 auto; }
-  .tab {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 9px 16px; border-radius: 8px;
-    font-size: 13.5px; font-weight: 600; color: var(--muted);
-    text-decoration: none; transition: background .15s, color .15s;
-  }
-  .tab:hover { background: var(--surface2); color: var(--text); }
-  .tab.is-active { background: var(--tag-bg); color: var(--accent); }
-  .tab-badge {
-    font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-    background: rgba(239,68,68,.15); color: var(--danger); padding: 2px 7px; border-radius: 100px;
-  }
+  .brand{display:flex;align-items:center;gap:16px;margin-bottom:44px}
+  .brand svg{width:46px;height:46px}
+  .brand .word{display:flex;align-items:center;gap:12px;font-weight:300;color:#fff}
+  .brand .word b{font-weight:800;font-size:20px}
+  .brand .word .bar{width:2px;height:30px;background:rgba(255,255,255,.55)}
+  .brand .word span{font-size:20px;letter-spacing:.22em}
 
-  /* HERO */
-  .hero { padding: 46px 0 30px; border-bottom: 1px solid var(--border); }
-  .hero-label {
-    font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--accent2); margin-bottom: 12px;
+  .hero-label{
+    display:inline-flex;align-items:center;gap:12px;
+    font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--roxo-light);margin-bottom:18px;
   }
-  .hero h2 { font-size: 34px; font-weight: 800; line-height: 1.15; letter-spacing: -.02em; }
-  .hero p { color: var(--muted); font-size: 15px; margin-top: 14px; max-width: 640px; }
+  .hero-label::before{content:"";width:34px;height:2px;background:var(--roxo-light);border-radius:2px}
+  .hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.12;letter-spacing:-.02em}
+  .hero .lead{color:rgba(255,255,255,.82);font-size:16px;margin-top:18px;max-width:660px;font-weight:300}
 
-  /* VERDICT */
-  .verdict {
-    margin: 28px 0 8px;
-    background: rgba(239,68,68,.08);
-    border: 1px solid rgba(239,68,68,.3);
-    border-radius: 14px;
-    padding: 20px 22px;
+  /* ── VERDICT ── */
+  .verdict{
+    margin-top:34px;
+    background:rgba(220,38,38,.1);
+    border:1px solid rgba(255,255,255,.16);
+    border-left:3px solid var(--danger);
+    border-radius:14px;padding:20px 22px;max-width:720px;
   }
-  .verdict h3 { font-size: 15px; color: var(--danger); font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-  .verdict p { font-size: 14px; color: var(--text); }
-  .verdict p + p { margin-top: 8px; }
+  .verdict h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:8px}
+  .verdict p{font-size:14px;color:rgba(255,255,255,.85);font-weight:300}
+  .verdict p + p{margin-top:8px}
+  .verdict strong{font-weight:600;color:#fff}
 
-  /* SECTION */
-  .section { padding: 34px 0 6px; }
-  .section-title {
-    font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-    display: inline-flex; align-items: center; gap: 9px; margin-bottom: 4px;
+  /* ── SECTIONS ── */
+  main{padding:8px 0 0}
+  .section{padding:48px 0 4px}
+  .section.soft-wrap{background:var(--bg-soft);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+
+  .section-label{
+    display:flex;align-items:center;gap:12px;
+    font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--roxo);
+    margin-bottom:10px;
   }
-  .dot { width: 9px; height: 9px; border-radius: 50%; }
-  .dot.red { background: var(--danger); }
-  .dot.amber { background: var(--accent2); }
-  .section-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .section-label::before{content:"";width:34px;height:2px;background:var(--roxo);border-radius:2px}
+  .section-label.red{color:var(--danger)}
+  .section-label.red::before{background:var(--danger)}
+  .section-label.amber{color:var(--amber)}
+  .section-label.amber::before{background:var(--amber)}
 
-  /* CARD */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 22px;
-    margin-bottom: 14px;
+  .section h2{font-size:28px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+  .section-sub{font-size:14px;color:var(--cinza);margin-bottom:22px;max-width:640px}
+
+  /* ── CARD ── */
+  .card{
+    background:var(--bg);
+    border:1px solid var(--linha);
+    border-radius:16px;
+    padding:22px 24px;
+    margin-bottom:16px;
   }
-  .card-num {
-    display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .04em;
-    color: var(--accent); margin-bottom: 10px;
+  .section.soft-wrap .card{background:#fff}
+
+  .card-num{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;
+    color:var(--roxo);margin-bottom:12px;
   }
-  .card-num.red { color: var(--danger); }
-  .card-num.amber { color: var(--accent2); }
+  .card-num.red{color:var(--danger)}
+  .card-num.amber{color:var(--amber)}
 
-  .lbl {
-    font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-    margin-bottom: 6px; display: block;
+  .lbl{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px;display:block}
+  .lbl.now{color:var(--cinza)}
+  .lbl.issue{color:var(--amber)}
+  .lbl.fix{color:var(--roxo)}
+
+  .now-text{
+    background:var(--bg-soft);border-left:3px solid #C9C4D6;border-radius:0 8px 8px 0;
+    padding:11px 15px;font-size:14px;color:var(--cinza);font-weight:400;
   }
-  .lbl.now { color: var(--muted); }
-  .lbl.issue { color: var(--accent2); }
-  .lbl.fix { color: var(--success); }
-
-  .now-text {
-    background: var(--surface2); border-left: 3px solid var(--muted);
-    border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 14px; color: #c3c6dc;
+  .now-text.strike{text-decoration:line-through;text-decoration-color:rgba(220,38,38,.45)}
+  .issue-text{font-size:13.5px;color:var(--cinza);padding:2px 0}
+  .fix-text{
+    background:var(--roxo-xlight);border-left:3px solid var(--roxo);border-radius:0 8px 8px 0;
+    padding:11px 15px;font-size:14px;color:var(--ink);font-weight:500;
   }
-  .now-text.strike { text-decoration: line-through; text-decoration-color: rgba(239,68,68,.5); }
-  .issue-text { font-size: 13px; color: var(--muted); padding: 2px 0; }
-  .fix-text {
-    background: rgba(34,197,94,.07); border-left: 3px solid var(--success);
-    border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 14px; color: var(--text); font-weight: 500;
+  .block{margin-top:14px}
+
+  /* line-by-line swaps */
+  .swap-row{padding:12px 0;border-bottom:1px solid var(--linha)}
+  .swap-row:last-child{border-bottom:none}
+  .swap-old{font-size:13.5px;color:var(--cinza);text-decoration:line-through;text-decoration-color:rgba(220,38,38,.4);font-weight:400}
+  .swap-arrow{color:var(--roxo);font-weight:700;margin-right:4px}
+  .swap-new{font-size:14px;color:var(--ink);font-weight:500;margin-top:4px}
+  .col-tag{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--roxo);margin:14px 0 2px}
+  .col-tag.first{margin-top:6px}
+  .tbl-note{font-size:13.5px;color:var(--cinza);margin-bottom:10px}
+
+  /* structural */
+  .struct{
+    background:linear-gradient(135deg, rgba(91,33,182,.06) 0%, rgba(167,139,250,.1) 100%);
+    border:1px solid var(--linha);border-radius:16px;padding:24px 26px;margin-bottom:22px;
   }
-  .block { margin-top: 14px; }
-  .remove-tag { font-size: 12px; color: var(--danger); font-weight: 600; }
+  .struct h3{font-size:18px;font-weight:700;margin-bottom:12px}
+  .struct p{font-size:14px;color:var(--cinza)}
+  .fromto{font-size:14px;margin:8px 0}
+  .fromto .from{color:var(--cinza)}
+  .fromto .to{color:var(--roxo-dark);font-weight:600}
 
-  /* line-by-line list */
-  .swap-row { padding: 11px 0; border-bottom: 1px solid var(--border); }
-  .swap-row:last-child { border-bottom: none; }
-  .swap-old { font-size: 13.5px; color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(239,68,68,.4); }
-  .swap-arrow { color: var(--success); font-weight: 700; margin: 0 2px; }
-  .swap-new { font-size: 14px; color: var(--text); font-weight: 500; margin-top: 3px; }
-
-  /* TABLE cols */
-  .tbl-note { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
-
-  /* STRUCTURAL */
-  .struct {
-    background: linear-gradient(135deg, rgba(99,102,241,.1), rgba(245,158,11,.06));
-    border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; margin: 8px 0 20px;
-  }
-  .struct h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
-  .struct .fromto { font-size: 14px; margin: 8px 0; }
-  .struct .from { color: var(--muted); }
-  .struct .to { color: var(--success); font-weight: 600; }
-
-  footer { border-top: 1px solid var(--border); padding: 28px 0 44px; margin-top: 20px; }
-  footer p { font-size: 12px; color: var(--muted); }
-  footer p + p { margin-top: 6px; }
+  /* footer */
+  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:34px 0 46px;margin-top:44px}
+  footer .brand{margin-bottom:20px}
+  footer p{font-size:12.5px;font-weight:300;color:rgba(255,255,255,.6)}
+  footer p + p{margin-top:6px}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="container header-inner">
-    <div class="logo">TM</div>
-    <div class="header-text">
-      <h1>Conformidade Google Ads</h1>
-      <p>Revisão do site referenciaemsaude.com.br · Brito Mídias</p>
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" aria-label="BM Mídias">
+        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27"></polygon>
+        <polygon points="50,33 65,59 35,59"></polygon>
+        <line x1="50" y1="4" x2="50" y2="33"></line><line x1="90" y1="73" x2="65" y2="59"></line>
+        <line x1="10" y1="73" x2="35" y2="59"></line><line x1="90" y1="27" x2="50" y2="33"></line>
+        <line x1="90" y1="27" x2="65" y2="59"></line><line x1="50" y1="96" x2="65" y2="59"></line>
+        <line x1="50" y1="96" x2="35" y2="59"></line><line x1="10" y1="27" x2="35" y2="59"></line>
+        <line x1="10" y1="27" x2="50" y2="33"></line>
+      </svg>
+      <span class="word"><b>BM</b><i class="bar"></i><span>MÍDIAS</span></span>
     </div>
-  </div>
-</header>
 
-<nav class="tabs">
-  <div class="tabs-inner">
-    <a href="relatorio-atual.html" class="tab">Relatório de Tráfego</a>
-    <a href="formulario-nativo.html" class="tab">Campanha · Formulário Nativo</a>
-    <a href="google-ads-pesquisa-youtube.html" class="tab">Google Ads · Pesquisa e YouTube</a>
-    <a href="revisao-conformidade-site-google.html" class="tab is-active">Conformidade do Site <span class="tab-badge">Ação</span></a>
-  </div>
-</nav>
-
-<main>
-  <div class="container">
-
-    <div class="hero">
-      <p class="hero-label">Revisão de Políticas · Google Ads</p>
-      <h2>O que mudar no site<br>antes de rodar no Google</h2>
-      <p>Cada trecho abaixo traz o texto que está no site hoje e a cópia nova, já ajustada para as políticas do Google. É só substituir texto por texto.</p>
-    </div>
+    <div class="hero-label">Revisão de Políticas · Google Ads</div>
+    <h1>O que mudar no site<br>antes de rodar no Google</h1>
+    <p class="lead">Cada trecho abaixo traz o texto que está no site hoje e a cópia nova, já ajustada para as políticas do Google. É só substituir texto por texto.</p>
 
     <div class="verdict">
       <h3>Veredito geral: risco alto</h3>
       <p>Do jeito que está, o site quase certamente reprova no Google Ads. Pior: um produto de ozônio com promessas de tratar doenças pode levar à <strong>suspensão da conta</strong>, não só à reprovação do anúncio.</p>
       <p>Políticas em jogo: Deturpação (Misrepresentation), Saúde e medicamentos, e Declarações não confiáveis. A correção principal é deixar de prometer cura de doenças e passar a falar de purificação do ar, da água e dos alimentos, que é um benefício verificável.</p>
     </div>
+  </div>
+</header>
 
-    <!-- GRAVISSIMO -->
-    <div class="section">
-      <div class="section-title"><span class="dot red"></span>Gravíssimo: reprova na hora e pode suspender a conta</div>
+<main>
+
+  <!-- GRAVISSIMO -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label red">Gravíssimo</div>
+      <h2>Reprova na hora e pode suspender a conta</h2>
       <p class="section-sub">Estes trechos precisam sair ou ser substituídos antes de qualquer veiculação.</p>
 
       <!-- 1 -->
       <div class="card">
-        <span class="card-num red">01</span>
+        <span class="card-num red">Item 01</span>
         <span class="lbl now">Texto atual no site</span>
         <div class="now-text strike">"O Ozônio age em mais de 250 Enfermidades"</div>
-        <div class="block">
-          <span class="lbl issue">Por que é problema</span>
-          <p class="issue-text">Afirmação de que o produto trata centenas de doenças. É o claim médico mais grave da página.</p>
-        </div>
-        <div class="block">
-          <span class="lbl fix">Trocar por</span>
-          <div class="fix-text">"Uma só tecnologia para cuidar do ar, da água e dos alimentos da sua casa."</div>
-        </div>
+        <div class="block"><span class="lbl issue">Por que é problema</span>
+          <p class="issue-text">Afirmação de que o produto trata centenas de doenças. É o claim médico mais grave da página.</p></div>
+        <div class="block"><span class="lbl fix">Trocar por</span>
+          <div class="fix-text">"Uma só tecnologia para cuidar do ar, da água e dos alimentos da sua casa."</div></div>
       </div>
 
       <!-- 2 -->
       <div class="card">
-        <span class="card-num red">02</span>
+        <span class="card-num red">Item 02</span>
         <span class="lbl now">Bloco atual "A LISTA DE PERIGOS É EXTENSA"</span>
-        <p class="issue-text" style="margin-bottom:10px">Cada linha cita doença grave ou dependência de remédio. Em vez de só apagar, troque linha por linha por um benefício de ambiente:</p>
-
-        <div class="swap-row">
-          <div class="swap-old">"Dores de cabeça constantes e inflamação"</div>
-          <div class="swap-new"><span class="swap-arrow">→</span> "Ambientes com ar mais limpo e menos abafado"</div>
-        </div>
-        <div class="swap-row">
-          <div class="swap-old">"Crises respiratórias e baixa imunidade"</div>
-          <div class="swap-new"><span class="swap-arrow">→</span> "Ar tratado de vírus, fungos e bactérias nos cômodos da casa"</div>
-        </div>
-        <div class="swap-row">
-          <div class="swap-old">"Riscos elevados de Alzheimer, Parkinson e Diabetes"</div>
-          <div class="swap-new"><span class="swap-arrow">→</span> "Água higienizada para o consumo da família"</div>
-        </div>
-        <div class="swap-row">
-          <div class="swap-old">"Depressão e falta de energia vital"</div>
-          <div class="swap-new"><span class="swap-arrow">→</span> "Frutas e verduras higienizadas, com menos resíduos"</div>
-        </div>
-        <div class="swap-row">
-          <div class="swap-old">Título "A LISTA DE PERIGOS É EXTENSA"</div>
-          <div class="swap-new"><span class="swap-arrow">→</span> "O QUE O OZÔNIO CUIDA NA SUA CASA"</div>
-        </div>
-        <div class="swap-row">
-          <div class="swap-old">"Você precisa agir HOJE. Amanhã pode ser tarde demais."</div>
-          <div class="swap-new"><span class="swap-arrow">→</span> "Comece hoje a cuidar do ambiente da sua casa."</div>
-        </div>
+        <p class="issue-text" style="margin-bottom:8px">Cada linha cita doença grave ou dependência de remédio. Em vez de só apagar, troque linha por linha por um benefício de ambiente:</p>
+        <div class="swap-row"><div class="swap-old">"Dores de cabeça constantes e inflamação"</div><div class="swap-new"><span class="swap-arrow">›</span>"Ambientes com ar mais limpo e menos abafado"</div></div>
+        <div class="swap-row"><div class="swap-old">"Crises respiratórias e baixa imunidade"</div><div class="swap-new"><span class="swap-arrow">›</span>"Ar tratado de vírus, fungos e bactérias nos cômodos da casa"</div></div>
+        <div class="swap-row"><div class="swap-old">"Riscos elevados de Alzheimer, Parkinson e Diabetes"</div><div class="swap-new"><span class="swap-arrow">›</span>"Água higienizada para o consumo da família"</div></div>
+        <div class="swap-row"><div class="swap-old">"Depressão e falta de energia vital"</div><div class="swap-new"><span class="swap-arrow">›</span>"Frutas e verduras higienizadas, com menos resíduos"</div></div>
+        <div class="swap-row"><div class="swap-old">Título "A LISTA DE PERIGOS É EXTENSA"</div><div class="swap-new"><span class="swap-arrow">›</span>"O QUE O OZÔNIO CUIDA NA SUA CASA"</div></div>
+        <div class="swap-row"><div class="swap-old">"Você precisa agir HOJE. Amanhã pode ser tarde demais."</div><div class="swap-new"><span class="swap-arrow">›</span>"Comece hoje a cuidar do ambiente da sua casa."</div></div>
       </div>
 
       <!-- 3 -->
       <div class="card">
-        <span class="card-num red">03</span>
+        <span class="card-num red">Item 03</span>
         <span class="lbl now">Texto atual (subtítulo da capa)</span>
         <div class="now-text strike">"Descubra como combater crises respiratórias, dores crônicas, inflamação sistêmica e ao mesmo tempo fortalecer sua imunidade enquanto você dorme. Sem esforço, sem efeitos colaterais."</div>
-        <div class="block">
-          <span class="lbl issue">Por que é problema</span>
-          <p class="issue-text">Promete combater doenças crônicas e fortalecer imunidade.</p>
-        </div>
-        <div class="block">
-          <span class="lbl fix">Trocar por</span>
-          <div class="fix-text">"Conheça a tecnologia de ozônio que ajuda a purificar o ar, a água e os alimentos da sua casa, de forma prática e contínua, enquanto você vive a sua rotina."</div>
-        </div>
+        <div class="block"><span class="lbl issue">Por que é problema</span>
+          <p class="issue-text">Promete combater doenças crônicas e fortalecer imunidade.</p></div>
+        <div class="block"><span class="lbl fix">Trocar por</span>
+          <div class="fix-text">"Conheça a tecnologia de ozônio que ajuda a purificar o ar, a água e os alimentos da sua casa, de forma prática e contínua, enquanto você vive a sua rotina."</div></div>
       </div>
 
       <!-- 4 -->
       <div class="card">
-        <span class="card-num red">04</span>
+        <span class="card-num red">Item 04</span>
         <span class="lbl now">Card atual "Adeus Dores"</span>
         <div class="now-text strike">"Adeus Dores. Ação anti-inflamatória potente e constante. Redução daquelas dores que te travam e te impedem de viver."</div>
-        <div class="block">
-          <span class="lbl fix">Trocar por</span>
-          <div class="fix-text"><strong>Título:</strong> "Água e alimentos mais limpos"<br><strong>Texto:</strong> "O ozônio ajuda a higienizar frutas, verduras e a água no seu dia a dia."</div>
-        </div>
+        <div class="block"><span class="lbl fix">Trocar por</span>
+          <div class="fix-text"><strong>Título:</strong> "Água e alimentos mais limpos"<br><strong>Texto:</strong> "O ozônio ajuda a higienizar frutas, verduras e a água no seu dia a dia."</div></div>
       </div>
 
       <!-- 5 -->
       <div class="card">
-        <span class="card-num red">05</span>
+        <span class="card-num red">Item 05</span>
         <span class="lbl now">Card atual "Imunidade de Ferro"</span>
         <div class="now-text strike">"Imunidade de Ferro. Combate vírus, fungos e bactérias no ar da sua casa e fortalece seu sistema imunológico contra crises respiratórias e infecções."</div>
-        <div class="block">
-          <span class="lbl fix">Trocar por</span>
-          <div class="fix-text"><strong>Título:</strong> "Ar mais limpo em casa"<br><strong>Texto:</strong> "A tecnologia de ozônio ajuda a reduzir vírus, fungos e bactérias no ar dos ambientes da sua casa."</div>
-        </div>
+        <div class="block"><span class="lbl fix">Trocar por</span>
+          <div class="fix-text"><strong>Título:</strong> "Ar mais limpo em casa"<br><strong>Texto:</strong> "A tecnologia de ozônio ajuda a reduzir vírus, fungos e bactérias no ar dos ambientes da sua casa."</div></div>
       </div>
 
       <!-- 6 -->
       <div class="card">
-        <span class="card-num red">06</span>
+        <span class="card-num red">Item 06</span>
         <span class="lbl now">Card atual "Detox Total"</span>
         <div class="now-text strike">"Detox Total. Menos agrotóxicos nas suas frutas e verduras e água ozonizada pura para beber todos os dias."</div>
-        <div class="block">
-          <span class="lbl issue">Por que é problema</span>
-          <p class="issue-text">"Detox" e "pura" são claims proibidos.</p>
-        </div>
-        <div class="block">
-          <span class="lbl fix">Trocar por</span>
-          <div class="fix-text"><strong>Título:</strong> "Higienização no dia a dia"<br><strong>Texto:</strong> "O ozônio auxilia na higienização de frutas, verduras e da água em casa."</div>
-        </div>
+        <div class="block"><span class="lbl issue">Por que é problema</span>
+          <p class="issue-text">"Detox" e "pura" são claims proibidos.</p></div>
+        <div class="block"><span class="lbl fix">Trocar por</span>
+          <div class="fix-text"><strong>Título:</strong> "Higienização no dia a dia"<br><strong>Texto:</strong> "O ozônio auxilia na higienização de frutas, verduras e da água em casa."</div></div>
       </div>
     </div>
+  </section>
 
-    <!-- MEDIO -->
-    <div class="section">
-      <div class="section-title"><span class="dot amber"></span>Médio: medo e urgência (Deturpação)</div>
+  <!-- MEDIO -->
+  <section class="section soft-wrap">
+    <div class="container">
+      <div class="section-label amber">Médio</div>
+      <h2>Medo e urgência (Deturpação)</h2>
       <p class="section-sub">Não são claims médicos, mas violam a regra de táticas de medo e escassez falsa.</p>
 
       <!-- 7 -->
       <div class="card">
-        <span class="card-num amber">07</span>
+        <span class="card-num amber">Item 07</span>
         <span class="lbl now">Headline atual</span>
         <div class="now-text strike">"NÃO ESPERE A DOENÇA CHEGAR"</div>
-        <div class="block">
-          <span class="lbl fix">Trocar por</span>
-          <div class="fix-text">"CUIDE DO AR QUE A SUA FAMÍLIA RESPIRA EM CASA"</div>
-        </div>
+        <div class="block"><span class="lbl fix">Trocar por</span>
+          <div class="fix-text">"CUIDE DO AR QUE A SUA FAMÍLIA RESPIRA EM CASA"</div></div>
       </div>
 
       <!-- 8 -->
       <div class="card">
-        <span class="card-num amber">08</span>
+        <span class="card-num amber">Item 08</span>
         <span class="lbl now">Bloco atual "SEU CORPO ESTÁ GRITANDO POR AJUDA?"</span>
-        <div class="swap-row">
-          <div class="swap-old">Título "SEU CORPO ESTÁ GRITANDO POR AJUDA?"</div>
-          <div class="swap-new"><span class="swap-arrow">→</span> "COMO ESTÁ A QUALIDADE DO AR DENTRO DA SUA CASA?"</div>
-        </div>
-        <div class="swap-row">
-          <div class="swap-old">"Dor, cansaço crônico, infecções que vão e voltam... Você sabe do que estou falando."</div>
-          <div class="swap-new"><span class="swap-arrow">→</span> "Poeira, ácaros, mofo e odores fazem parte do ar de qualquer casa fechada. Você conhece bem essa sensação de ambiente pesado."</div>
-        </div>
-        <div class="swap-row">
-          <div class="swap-old">"Ignorar esses sinais é perigoso. Você está tentando empurrar com a barriga algo que poderia ser resolvido..."</div>
-          <div class="swap-new"><span class="swap-arrow">→</span> "A boa notícia é que dá para cuidar disso de forma simples e contínua, todos os dias."</div>
-        </div>
+        <div class="swap-row"><div class="swap-old">Título "SEU CORPO ESTÁ GRITANDO POR AJUDA?"</div><div class="swap-new"><span class="swap-arrow">›</span>"COMO ESTÁ A QUALIDADE DO AR DENTRO DA SUA CASA?"</div></div>
+        <div class="swap-row"><div class="swap-old">"Dor, cansaço crônico, infecções que vão e voltam... Você sabe do que estou falando."</div><div class="swap-new"><span class="swap-arrow">›</span>"Poeira, ácaros, mofo e odores fazem parte do ar de qualquer casa fechada. Você conhece bem essa sensação de ambiente pesado."</div></div>
+        <div class="swap-row"><div class="swap-old">"Ignorar esses sinais é perigoso. Você está tentando empurrar com a barriga algo que poderia ser resolvido..."</div><div class="swap-new"><span class="swap-arrow">›</span>"A boa notícia é que dá para cuidar disso de forma simples e contínua, todos os dias."</div></div>
       </div>
 
       <!-- 9 -->
       <div class="card">
-        <span class="card-num amber">09</span>
+        <span class="card-num amber">Item 09</span>
         <span class="lbl now">Faixa de topo atual</span>
         <div class="now-text strike">"ALTA DEMANDA. OUTONO/INVERNO: POUCAS UNIDADES DO LOTE ATUAL DISPONÍVEIS"</div>
-        <div class="block">
-          <span class="lbl issue">Por que é problema</span>
-          <p class="issue-text">Escassez falsa reprova se não for verdade literal e comprovável.</p>
-        </div>
-        <div class="block">
-          <span class="lbl fix">Trocar por</span>
-          <div class="fix-text">"Pronta-entrega. Consultoria personalizada com a nossa equipe." (ou remover a faixa)</div>
-        </div>
+        <div class="block"><span class="lbl issue">Por que é problema</span>
+          <p class="issue-text">Escassez falsa reprova se não for verdade literal e comprovável.</p></div>
+        <div class="block"><span class="lbl fix">Trocar por</span>
+          <div class="fix-text">"Pronta-entrega. Consultoria personalizada com a nossa equipe." (ou remover a faixa)</div></div>
       </div>
 
       <!-- 10 -->
       <div class="card">
-        <span class="card-num amber">10</span>
+        <span class="card-num amber">Item 10</span>
         <span class="lbl now">Tabela "SUA VIDA HOJE × SEU FUTURO"</span>
         <p class="tbl-note">Vários itens são claim de doença ou de substituir remédio. Troque cada linha por um benefício de ambiente:</p>
 
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:6px 0 4px">Coluna SEM ozônio</div>
-        <div class="swap-row"><div class="swap-old">"Vive tratando sintomas."</div><div class="swap-new"><span class="swap-arrow">→</span> "Poeira e ácaros acumulados nos ambientes."</div></div>
-        <div class="swap-row"><div class="swap-old">"Infecções recorrentes."</div><div class="swap-new"><span class="swap-arrow">→</span> "Vírus, fungos e bactérias circulando no ar."</div></div>
-        <div class="swap-row"><div class="swap-old">"Crises que limitam a rotina."</div><div class="swap-new"><span class="swap-arrow">→</span> "Sensação de ar pesado dentro de casa."</div></div>
-        <div class="swap-row"><div class="swap-old">"Corpo sobrecarregado."</div><div class="swap-new"><span class="swap-arrow">→</span> "Frutas e verduras sem higienização extra."</div></div>
-        <div class="swap-row"><div class="swap-old">"Imunidade baixa."</div><div class="swap-new"><span class="swap-arrow">→</span> "Água sem tratamento adicional."</div></div>
-        <div class="swap-row"><div class="swap-old">"Dependência crescente de medicamentos."</div><div class="swap-new"><span class="swap-arrow">→</span> "Odores persistentes nos cômodos."</div></div>
-        <div class="swap-row"><div class="swap-old">"Gastos que só aumentam."</div><div class="swap-new"><span class="swap-arrow">→</span> "Ambiente sem renovação constante do ar."</div></div>
+        <div class="col-tag first">Coluna SEM ozônio</div>
+        <div class="swap-row"><div class="swap-old">"Vive tratando sintomas."</div><div class="swap-new"><span class="swap-arrow">›</span>"Poeira e ácaros acumulados nos ambientes."</div></div>
+        <div class="swap-row"><div class="swap-old">"Infecções recorrentes."</div><div class="swap-new"><span class="swap-arrow">›</span>"Vírus, fungos e bactérias circulando no ar."</div></div>
+        <div class="swap-row"><div class="swap-old">"Crises que limitam a rotina."</div><div class="swap-new"><span class="swap-arrow">›</span>"Sensação de ar pesado dentro de casa."</div></div>
+        <div class="swap-row"><div class="swap-old">"Corpo sobrecarregado."</div><div class="swap-new"><span class="swap-arrow">›</span>"Frutas e verduras sem higienização extra."</div></div>
+        <div class="swap-row"><div class="swap-old">"Imunidade baixa."</div><div class="swap-new"><span class="swap-arrow">›</span>"Água sem tratamento adicional."</div></div>
+        <div class="swap-row"><div class="swap-old">"Dependência crescente de medicamentos."</div><div class="swap-new"><span class="swap-arrow">›</span>"Odores persistentes nos cômodos."</div></div>
+        <div class="swap-row"><div class="swap-old">"Gastos que só aumentam."</div><div class="swap-new"><span class="swap-arrow">›</span>"Ambiente sem renovação constante do ar."</div></div>
 
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--success);margin:16px 0 4px">Coluna COM ozônio</div>
-        <div class="swap-row"><div class="swap-old">"Dorme enquanto o ozônio trabalha a favor do corpo."</div><div class="swap-new"><span class="swap-arrow">→</span> "O ozônio trabalha enquanto você dorme."</div></div>
-        <div class="swap-row"><div class="swap-old">"Menos inflamação, dores e crises."</div><div class="swap-new"><span class="swap-arrow">→</span> "Menos odores e sensação de ar pesado."</div></div>
-        <div class="swap-row"><div class="swap-old">"Defesa natural fortalecida."</div><div class="swap-new"><span class="swap-arrow">→</span> "Ar tratado de vírus, fungos e bactérias."</div></div>
-        <div class="swap-row"><div class="swap-old">"Recuperação mais rápida do organismo."</div><div class="swap-new"><span class="swap-arrow">→</span> "Frutas, verduras e água higienizadas."</div></div>
-        <div class="swap-row"><div class="swap-old">"Menos dependência de medicamentos."</div><div class="swap-new"><span class="swap-arrow">→</span> "Água higienizada para o consumo da família."</div></div>
-        <div class="swap-row"><div class="swap-old">"Menos gastos com médicos e internações."</div><div class="swap-new"><span class="swap-arrow">→</span> "Tecnologia trabalhando todos os dias por você."</div></div>
+        <div class="col-tag">Coluna COM ozônio</div>
+        <div class="swap-row"><div class="swap-old">"Dorme enquanto o ozônio trabalha a favor do corpo."</div><div class="swap-new"><span class="swap-arrow">›</span>"O ozônio trabalha enquanto você dorme."</div></div>
+        <div class="swap-row"><div class="swap-old">"Menos inflamação, dores e crises."</div><div class="swap-new"><span class="swap-arrow">›</span>"Menos odores e sensação de ar pesado."</div></div>
+        <div class="swap-row"><div class="swap-old">"Defesa natural fortalecida."</div><div class="swap-new"><span class="swap-arrow">›</span>"Ar tratado de vírus, fungos e bactérias."</div></div>
+        <div class="swap-row"><div class="swap-old">"Recuperação mais rápida do organismo."</div><div class="swap-new"><span class="swap-arrow">›</span>"Frutas, verduras e água higienizadas."</div></div>
+        <div class="swap-row"><div class="swap-old">"Menos dependência de medicamentos."</div><div class="swap-new"><span class="swap-arrow">›</span>"Água higienizada para o consumo da família."</div></div>
+        <div class="swap-row"><div class="swap-old">"Menos gastos com médicos e internações."</div><div class="swap-new"><span class="swap-arrow">›</span>"Tecnologia trabalhando todos os dias por você."</div></div>
       </div>
 
       <!-- 11 -->
       <div class="card">
-        <span class="card-num amber">11</span>
+        <span class="card-num amber">Item 11</span>
         <span class="lbl now">Título de seção atual</span>
         <div class="now-text strike">"A TECNOLOGIA QUE REGENERA SUA VIDA"</div>
-        <div class="block">
-          <span class="lbl fix">Trocar por</span>
-          <div class="fix-text">"A TECNOLOGIA QUE CUIDA DO AMBIENTE DA SUA CASA"</div>
-        </div>
+        <div class="block"><span class="lbl fix">Trocar por</span>
+          <div class="fix-text">"A TECNOLOGIA QUE CUIDA DO AMBIENTE DA SUA CASA"</div></div>
       </div>
 
       <!-- 12 -->
       <div class="card">
-        <span class="card-num amber">12</span>
+        <span class="card-num amber">Item 12</span>
         <span class="lbl now">Texto atual</span>
         <div class="now-text strike">"simples, prático e acessível"</div>
-        <div class="block">
-          <span class="lbl issue">Por que é problema</span>
-          <p class="issue-text">Fora a questão do Google, "acessível" é palavra proibida pela regra de copy da cliente.</p>
-        </div>
-        <div class="block">
-          <span class="lbl fix">Trocar por</span>
-          <div class="fix-text">"simples, prático e completo"</div>
-        </div>
+        <div class="block"><span class="lbl issue">Por que é problema</span>
+          <p class="issue-text">Fora a questão do Google, "acessível" é palavra proibida pela regra de copy da cliente.</p></div>
+        <div class="block"><span class="lbl fix">Trocar por</span>
+          <div class="fix-text">"simples, prático e completo"</div></div>
       </div>
 
       <!-- 13 -->
       <div class="card">
-        <span class="card-num amber">13</span>
+        <span class="card-num amber">Item 13</span>
         <span class="lbl now">Bloco final atual</span>
         <div class="now-text strike">"NÃO ADIE A DECISÃO DE BLINDAR A SUA CASA DE CRISES RESPIRATÓRIAS, ALERGIAS E VÍRUS."</div>
-        <div class="block">
-          <span class="lbl fix">Trocar por</span>
-          <div class="fix-text">"Deixe o ar, a água e os alimentos da sua casa mais limpos o ano inteiro."</div>
-        </div>
+        <div class="block"><span class="lbl fix">Trocar por</span>
+          <div class="fix-text">"Deixe o ar, a água e os alimentos da sua casa mais limpos o ano inteiro."</div></div>
       </div>
     </div>
+  </section>
 
-    <!-- ESTRUTURAL -->
-    <div class="section">
-      <div class="section-title"><span class="dot"></span>Recomendação estrutural</div>
+  <!-- ESTRUTURAL -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Recomendação estrutural</div>
+      <h2>Reposicionar o eixo do site</h2>
+      <p class="section-sub">Mesmo trocando todos os textos acima, o eixo hoje é "ozônio trata a sua saúde", e o Google trata ozônio para saúde com lupa.</p>
       <div class="struct">
-        <h3>Reposicionar o eixo do site</h3>
-        <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Mesmo trocando todos os textos acima, o eixo hoje é "ozônio trata a sua saúde", e o Google trata ozônio para saúde com lupa. Para reduzir de verdade o risco de reprovação e suspensão:</p>
+        <h3>Do claim de saúde para o benefício de ambiente</h3>
         <p class="fromto"><span class="from">De: "trata mais de 250 doenças, fortalece a imunidade, acaba com as dores"</span></p>
         <p class="fromto"><span class="to">Para: "purifica o ar, a água e os alimentos da sua casa" (benefício de ambiente, verificável)</span></p>
-        <p style="font-size:14px;color:var(--muted);margin-top:12px">Todo benefício passa a ser sobre o ambiente (ar, água e alimento), e não sobre o corpo ou a doença. É a forma de o produto rodar com estabilidade no Google.</p>
+        <p style="margin-top:12px">Todo benefício passa a ser sobre o ambiente (ar, água e alimento), e não sobre o corpo ou a doença. É a forma de o produto rodar com estabilidade no Google.</p>
       </div>
     </div>
+  </section>
 
-  </div>
 </main>
 
 <footer>
   <div class="container">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" aria-label="BM Mídias">
+        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27"></polygon>
+        <polygon points="50,33 65,59 35,59"></polygon>
+        <line x1="50" y1="4" x2="50" y2="33"></line><line x1="90" y1="73" x2="65" y2="59"></line>
+        <line x1="10" y1="73" x2="35" y2="59"></line><line x1="90" y1="27" x2="50" y2="33"></line>
+        <line x1="90" y1="27" x2="65" y2="59"></line><line x1="50" y1="96" x2="65" y2="59"></line>
+        <line x1="50" y1="96" x2="35" y2="59"></line><line x1="10" y1="27" x2="35" y2="59"></line>
+        <line x1="10" y1="27" x2="50" y2="33"></line>
+      </svg>
+      <span class="word"><b>BM</b><i class="bar"></i><span>MÍDIAS</span></span>
+    </div>
     <p>Revisão feita sobre a página inicial de referenciaemsaude.com.br. As páginas de Política de Privacidade, Termos de Uso e Fale Conosco não foram revisadas neste documento.</p>
     <p>Brito Mídias · Tráfego Pago · TM Vendas e Consultoria (Gerador de Ozônio)</p>
   </div>
