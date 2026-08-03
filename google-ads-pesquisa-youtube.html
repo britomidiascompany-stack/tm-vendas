@@ -75,6 +75,14 @@ tbody tr:last-child td{border-bottom:none}
 .tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px}
 .tag.alta{background:#FBE9E9;color:#B42318}
 .tag.media{background:#FFF3DA;color:var(--amarelo)}
+.tag.baixa{background:#E7F5EC;color:var(--verde)}
+
+.kw-block{margin-top:22px}
+.kw-block h4{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--roxo-dark);margin-bottom:10px}
+.kw-wrap{display:flex;flex-wrap:wrap;gap:8px}
+.kw-chip{font-size:13px;background:var(--bg-soft);border:1px solid var(--linha);border-radius:100px;padding:6px 14px 6px 14px;color:var(--ink)}
+.kw-chip b{color:var(--roxo-dark);font-weight:600}
+.kw-chip.excl{background:#FBE9E9;color:#B42318;border-color:#F3C6C6;text-decoration:line-through}
 
 .callout{margin-top:18px;border:1px solid var(--linha);border-left:3px solid var(--roxo);border-radius:12px;
   padding:18px 22px;background:#fff}
@@ -298,15 +306,130 @@ footer .foot-meta a{color:#C9BCF2}
   </div>
 </section>
 
+<section class="soft">
+  <div class="wrap">
+    <div class="section-label">PESQUISA AMPLIADA</div>
+    <h2 class="title">38 termos testados na rodada seguinte, o que teve volume de verdade</h2>
+    <p class="lead">Rodada com termos de sintomas mais amplos que já apareciam na própria página de vendas (imunidade, inflamação, colesterol, circulação) e termos de confiança que quem já desconfia costuma digitar antes de comprar (funciona mesmo, tem certificado, faz mal).</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Palavra-chave</th><th>Média de buscas por mês</th><th>Variação em 3 meses</th><th>Variação em 12 meses</th><th>Concorrência</th></tr></thead>
+        <tbody>
+          <tr><td>bronquiolite bebê</td><td><b>4.400</b></td><td class="flat">0%</td><td class="flat">0%</td><td><span class="tag media">Média</span></td></tr>
+          <tr><td>remédio para má circulação</td><td><b>1.600</b></td><td class="down">-19%</td><td class="down">-19%</td><td><span class="tag alta">Alta</span></td></tr>
+          <tr><td>como fortalecer a imunidade</td><td><b>480</b></td><td class="flat">0%</td><td class="down">-19%</td><td><span class="tag alta">Alta</span></td></tr>
+          <tr><td>como baixar o colesterol naturalmente</td><td><b>320</b></td><td class="up">+22%</td><td class="up">+50%</td><td><span class="tag media">Média</span></td></tr>
+          <tr><td>água ozonizada benefícios</td><td><b>170</b></td><td class="up">+29%</td><td class="down">-18%</td><td><span class="tag alta">Alta</span></td></tr>
+          <tr><td>gerador de ozônio residencial</td><td><b>140</b></td><td class="up">+24%</td><td class="up">+24%</td><td><span class="tag alta">Alta</span></td></tr>
+          <tr><td>tratamento natural para colesterol alto</td><td><b>110</b></td><td class="flat">0%</td><td class="flat">0%</td><td><span class="tag alta">Alta</span></td></tr>
+          <tr><td>benefícios do ozônio para saúde</td><td><b>70</b></td><td class="up">+80%</td><td class="up">+80%</td><td><span class="tag baixa">Baixa</span></td></tr>
+          <tr><td>para que serve o gerador de ozônio</td><td><b>50</b></td><td class="up">+40%</td><td class="up">+133%</td><td><span class="tag alta">Alta</span></td></tr>
+          <tr><td>tratamento para circulação nas pernas</td><td><b>50</b></td><td class="down">-57%</td><td class="down">-25%</td><td><span class="tag alta">Alta</span></td></tr>
+          <tr><td>purificador de ar residencial</td><td><b>30</b></td><td class="up">+33%</td><td class="up">+33%</td><td><span class="tag alta">Alta</span></td></tr>
+          <tr><td>gerador de ozônio funciona</td><td><b>20</b></td><td class="down">-50%</td><td class="down">-50%</td><td><span class="tag alta">Alta</span></td></tr>
+          <tr><td>gerador de ozônio anvisa</td><td><b>10</b></td><td class="flat">0%</td><td class="flat">0%</td><td><span class="tag alta">Alta</span></td></tr>
+          <tr><td>gerador de ozônio faz mal</td><td><b>10</b></td><td class="flat">0%</td><td class="up">+100%</td><td><span class="tag baixa">Baixa</span></td></tr>
+          <tr><td>gerador de ozônio funciona mesmo</td><td><b>10</b></td><td class="up">crescendo</td><td class="flat">0%</td><td><span class="tag alta">Alta</span></td></tr>
+          <tr><td>tratamento natural para inflamação</td><td><b>10</b></td><td class="flat">0%</td><td class="flat">0%</td><td><span class="tag alta">Alta</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn">
+      <p><b>"Purificador de ar residencial" ficou de fora do grupo final</b>, mesmo tendo 30 buscas por mês: é o termo que a Priscilla pediu pra evitar, porque atrai gente comparando purificador de ar comum, sem interesse real em saúde ou no produto. Fica registrado na tabela só como dado de pesquisa, não entra na campanha.</p>
+    </div>
+    <div class="callout">
+      <p><b>O restante dos 38 termos testados</b>, variações de doenças específicas, sintomas isolados como varizes, cansaço crônico, sinusite, formigamento nas mãos e pés, e perguntas de dúvida como "ozônio faz mal aos pulmões" ou "gerador de ozônio tem certificado", voltou sem volume de pesquisa mensal registrado. Isso não quer dizer que ninguém pensa nisso, só que não vira busca literal no Google em volume relevante.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">GRUPO DE ANÚNCIOS FINAL</div>
+    <h2 class="title">Um grupo só, unindo volume real e confiança</h2>
+    <p class="lead">Em vez de manter os grupos separados por tema, a decisão foi juntar tudo num único grupo de anúncios, apontando para <b>referenciaemsaude.com.br</b>.</p>
+    <div class="kw-block">
+      <h4>Com volume de busca real</h4>
+      <div class="kw-wrap">
+        <span class="kw-chip">bronquiolite bebê <b>4.400</b></span>
+        <span class="kw-chip">remédio para má circulação <b>1.600</b></span>
+        <span class="kw-chip">como fortalecer a imunidade <b>480</b></span>
+        <span class="kw-chip">como baixar o colesterol naturalmente <b>320</b></span>
+        <span class="kw-chip">água ozonizada benefícios <b>170</b></span>
+        <span class="kw-chip">gerador de ozônio residencial <b>140</b></span>
+        <span class="kw-chip">tratamento natural para colesterol alto <b>110</b></span>
+        <span class="kw-chip">benefícios do ozônio para saúde <b>70</b></span>
+        <span class="kw-chip">para que serve o gerador de ozônio <b>50</b></span>
+        <span class="kw-chip">tratamento para circulação nas pernas <b>50</b></span>
+        <span class="kw-chip">gerador de ozônio funciona <b>20</b></span>
+        <span class="kw-chip">gerador de ozônio anvisa <b>10</b></span>
+        <span class="kw-chip">gerador de ozônio faz mal <b>10</b></span>
+        <span class="kw-chip">gerador de ozônio funciona mesmo <b>10</b></span>
+        <span class="kw-chip">tratamento natural para inflamação <b>10</b></span>
+      </div>
+    </div>
+    <div class="kw-block">
+      <h4>Sem volume, mantidas por intenção de compra e confiança</h4>
+      <div class="kw-wrap">
+        <span class="kw-chip">gerador de ozônio é seguro</span>
+        <span class="kw-chip">gerador de ozônio vale a pena</span>
+        <span class="kw-chip">gerador de ozônio residencial vale a pena</span>
+        <span class="kw-chip">gerador de ozônio tem certificado</span>
+        <span class="kw-chip">gerador de ozônio laudo</span>
+        <span class="kw-chip">gerador de ozônio uff unicamp</span>
+        <span class="kw-chip">ozônio faz mal aos pulmões</span>
+        <span class="kw-chip">criança resfriado toda semana</span>
+      </div>
+    </div>
+    <div class="kw-block">
+      <h4>Fora do grupo, por pedido da Priscilla</h4>
+      <div class="kw-wrap">
+        <span class="kw-chip excl">purificador de ar residencial</span>
+      </div>
+    </div>
+    <div class="callout">
+      <p><b>Por que manter termo sem busca:</b> a mesma lógica dos selos de confiança que já usamos nos criativos (laudo UFF + UNICAMP, único certificado). Quem pesquisa "gerador de ozônio tem certificado" ou "é seguro" está a um passo de comprar, mesmo que pouca gente digite isso ao pé da letra no Google. Vale ocupar esse espaço mesmo sem volume relevante.</p>
+    </div>
+    <div class="sim-grid" style="grid-template-columns:1fr">
+      <div class="sim-card">
+        <span class="tag-sim">Previsão do Planejador &middot; grupo único, orçamento máximo permitido</span>
+        <h3>R$ 2,5 mil de investimento</h3>
+        <div class="sub-h">Orçamento diário médio de R$ 83 &middot; estratégia Maximizar conversões &middot; taxa de conversão estimada de 75,25%</div>
+        <div class="sim-stats">
+          <div class="stat cpa-lo"><small>Conversões previstas</small><b>452</b></div>
+          <div class="stat"><small>Cliques</small><b>525,93</b></div>
+          <div class="stat"><small>Impressões</small><b>8.982,98</b></div>
+          <div class="stat"><small>Custo no período</small><b>R$ 2.280,97</b></div>
+          <div class="stat"><small>CTR</small><b>5,9%</b></div>
+          <div class="stat"><small>CPC médio</small><b>R$ 4,34</b></div>
+        </div>
+        <div class="loc-row">
+          <span class="loc-chip"><span class="dot" style="background:#7C3AED"></span>São Paulo <b>26%</b></span>
+          <span class="loc-chip"><span class="dot" style="background:#EC4899"></span>Minas Gerais <b>10%</b></span>
+          <span class="loc-chip"><span class="dot" style="background:#F59E0B"></span>Rio Grande do Sul <b>9%</b></span>
+          <span class="loc-chip"><span class="dot" style="background:#22C55E"></span>Rio de Janeiro <b>9%</b></span>
+          <span class="loc-chip"><span class="dot" style="background:#A78BFA"></span>Amazonas <b>8%</b></span>
+          <span class="loc-chip"><span class="dot" style="background:#5B5566"></span>Outros locais <b>38%</b></span>
+        </div>
+        <p class="dev-note">R$ 83 por dia foi o teto que o próprio Planejador permitiu simular para este grupo. Período simulado: 1 a 30 de setembro de 2026.</p>
+      </div>
+    </div>
+    <div class="callout warn">
+      <p><b>Isso ainda é estimativa do Google, não garantia:</b> o CPC médio de R$ 4,34 é bem mais alto do que o das simulações anteriores, porque agora o grupo mistura termos de volume baixo e concorrência alta com os de volume alto. Vale rodar um teste real com orçamento menor antes de confirmar esse orçamento cheio.</p>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="section-label">PRÓXIMOS PASSOS</div>
     <h2 class="title">O que decidir antes de ativar</h2>
     <div class="next-list">
+      <div class="next-item"><span class="dot"></span><p><b>Grupo de anúncios único já definido</b>, apontando para referenciaemsaude.com.br, unindo os termos com volume real e os termos de confiança mantidos por intenção de compra.</p></div>
       <div class="next-item"><span class="dot"></span><p><b>Deixar o site ponte pronto antes de subir a campanha</b>, mesmo tentando a opção 3 primeiro, porque se o Google recusar o link direto pro WhatsApp, o anúncio já tem pra onde apontar sem atraso.</p></div>
-      <div class="next-item"><span class="dot"></span><p><b>Decidir se entra também com "purificador de ar"</b>, termo de maior volume mas mais genérico, ou se o investimento fica concentrado em "gerador de ozônio", termo mais específico e com o público mais definido.</p></div>
-      <div class="next-item"><span class="dot"></span><p><b>Testar "bronquiolite bebê" como palavra-chave própria</b>, já que empatou com "gerador de ozônio" em volume (4.400 buscas por mês) e tem concorrência só média, mais barata de disputar.</p></div>
-      <div class="next-item"><span class="dot"></span><p><b>Rodar um teste real com orçamento pequeno</b> antes de confiar nas simulações, pra ver se o custo por conversa fica mais perto da Simulação A ou da B.</p></div>
+      <div class="next-item"><span class="dot"></span><p><b>"Purificador de ar" ficou decidido como fora</b> do grupo, mesmo tendo volume de busca, porque atrai gente comparando purificador comum, sem interesse real no produto.</p></div>
+      <div class="next-item"><span class="dot"></span><p><b>Testar "bronquiolite bebê" e "remédio para má circulação" como palavras-chave próprias</b>, já que são as duas com maior volume isolado (4.400 e 1.600 buscas por mês) e vale acompanhar o custo por conversa de cada uma separadamente.</p></div>
+      <div class="next-item"><span class="dot"></span><p><b>Rodar um teste real com orçamento pequeno</b> antes de confirmar os R$ 83 por dia da simulação, pra ver se o custo por conversa fica de fato perto do CPC médio de R$ 4,34 projetado.</p></div>
     </div>
   </div>
 </section>
