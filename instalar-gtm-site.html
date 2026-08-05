@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instalar o Google Tag Manager · Referência em Saúde · Brito Mídias</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root{
+    --roxo:#7C3AED; --roxo-dark:#5B21B6; --roxo-deep:#3B0F73; --roxo-light:#A78BFA; --roxo-xlight:#EDE9FE;
+    --preto:#0A0A0A; --ink:#141018; --cinza:#5B5566; --linha:#E7E3EE; --bg:#FFFFFF; --bg-soft:#FAF9FC;
+    --code-bg:#15121D; --success:#16A34A;
+    --mono:'SF Mono',ui-monospace,Menlo,Consolas,'Liberation Mono',monospace;
+  }
+
+  body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-weight:300;line-height:1.6}
+  .container{max-width:1000px;margin:0 auto;padding:0 28px}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;color:#fff;
+    background:radial-gradient(1100px 500px at 78% -10%, rgba(124,58,237,.55), transparent 60%),
+      linear-gradient(150deg,#0A0A0A 0%,#17111F 45%,#3B0F73 100%);}
+  .hero::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.14) 1px,transparent 1px);
+    background-size:44px 44px;
+    -webkit-mask-image:radial-gradient(1000px 460px at 70% 0%,#000 30%,transparent 75%);
+    mask-image:radial-gradient(1000px 460px at 70% 0%,#000 30%,transparent 75%);pointer-events:none}
+  .hero-inner{position:relative;padding:30px 0 54px}
+
+  .brand{display:flex;align-items:center;gap:16px;margin-bottom:44px}
+  .brand svg{width:46px;height:46px}
+  .brand .word{display:flex;align-items:center;gap:12px;font-weight:300;color:#fff}
+  .brand .word b{font-weight:800;font-size:20px}
+  .brand .word .bar{width:2px;height:30px;background:rgba(255,255,255,.55)}
+  .brand .word span{font-size:20px;letter-spacing:.22em}
+
+  .hero-label{display:inline-flex;align-items:center;gap:12px;font-size:13px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--roxo-light);margin-bottom:18px}
+  .hero-label::before{content:"";width:34px;height:2px;background:var(--roxo-light);border-radius:2px}
+  .hero h1{font-size:clamp(32px,5vw,50px);font-weight:800;line-height:1.12;letter-spacing:-.02em}
+  .hero .lead{color:rgba(255,255,255,.82);font-size:16px;margin-top:18px;max-width:640px;font-weight:300}
+  .id-pill{display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:8px 16px;font-size:13px;color:#fff}
+  .id-pill b{font-family:var(--mono);font-weight:600;letter-spacing:.02em;color:var(--roxo-light)}
+
+  /* SECTIONS */
+  main{padding:8px 0 0}
+  .section{padding:46px 0 6px}
+  .section.soft{background:var(--bg-soft);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+  .section-label{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--roxo);margin-bottom:10px}
+  .section-label::before{content:"";width:34px;height:2px;background:var(--roxo);border-radius:2px}
+  .section h2{font-size:28px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+  .section-sub{font-size:14px;color:var(--cinza);margin-bottom:24px;max-width:680px}
+
+  /* CODE BLOCK */
+  .code-item{margin-bottom:22px}
+  .code-tag{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .code-tag .n{width:26px;height:26px;border-radius:8px;background:var(--roxo-xlight);color:var(--roxo-dark);
+    font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+  .code-tag h3{font-size:16px;font-weight:600}
+  .code-tag .where{font-size:13px;color:var(--cinza)}
+  .code-tag code{font-family:var(--mono);font-size:12.5px;background:var(--roxo-xlight);color:var(--roxo-dark);
+    padding:1px 7px;border-radius:5px;font-weight:500}
+
+  .code-wrap{position:relative;background:var(--code-bg);border:1px solid #2A2436;border-radius:12px;overflow:hidden}
+  .code-wrap pre{margin:0;padding:18px 20px;overflow-x:auto}
+  .code-wrap code{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#E4E0EC;white-space:pre;display:block}
+  .copy-btn{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;gap:7px;
+    background:linear-gradient(90deg,#7C3AED,#5B21B6);color:#fff;border:none;border-radius:8px;
+    padding:8px 13px;font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;
+    transition:transform .12s,filter .12s}
+  .copy-btn:hover{filter:brightness(1.08)}
+  .copy-btn:active{transform:scale(.97)}
+  .copy-btn.done{background:var(--success)}
+  .copy-btn svg{width:14px;height:14px}
+
+  /* METHOD CARD */
+  .method{background:var(--bg);border:1px solid var(--linha);border-radius:16px;padding:24px 26px;margin-bottom:16px}
+  .section.soft .method{background:#fff}
+  .method-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .method-head .ico{width:34px;height:34px;border-radius:10px;background:var(--roxo-xlight);
+    display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+  .method-head h3{font-size:19px;font-weight:700}
+  .method .tagline{font-size:13.5px;color:var(--cinza);margin-bottom:16px}
+  .badge-rec{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    background:var(--roxo-xlight);color:var(--roxo-dark);padding:3px 9px;border-radius:100px}
+
+  ol.steps{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:12px}
+  ol.steps li{counter-increment:s;position:relative;padding-left:40px;font-size:14.5px;color:var(--ink);font-weight:300}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:-1px;width:26px;height:26px;border-radius:8px;
+    background:linear-gradient(135deg,#5B21B6,#A78BFA);color:#fff;font-size:13px;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+  ol.steps li b{font-weight:600}
+  ol.steps li code{font-family:var(--mono);font-size:12.5px;background:var(--bg-soft);border:1px solid var(--linha);
+    padding:1px 6px;border-radius:5px;color:var(--roxo-dark)}
+  .subnote{font-size:13px;color:var(--cinza);margin-top:14px;padding:12px 15px;background:var(--bg-soft);
+    border-left:3px solid var(--roxo-light);border-radius:0 8px 8px 0}
+  .subnote b{color:var(--ink);font-weight:600}
+
+  /* PROMPT box for AIs */
+  .prompt-wrap{position:relative;background:var(--code-bg);border:1px solid #2A2436;border-radius:12px;overflow:hidden;margin-top:8px}
+  .prompt-wrap pre{margin:0;padding:18px 20px 18px;overflow-x:auto}
+  .prompt-wrap code{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#E4E0EC;white-space:pre-wrap;display:block}
+
+  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:34px 0 46px;margin-top:44px}
+  footer .brand{margin-bottom:20px}
+  footer p{font-size:12.5px;font-weight:300;color:rgba(255,255,255,.6)}
+  footer p + p{margin-top:6px}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" aria-label="BM Mídias">
+        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27"></polygon>
+        <polygon points="50,33 65,59 35,59"></polygon>
+        <line x1="50" y1="4" x2="50" y2="33"></line><line x1="90" y1="73" x2="65" y2="59"></line>
+        <line x1="10" y1="73" x2="35" y2="59"></line><line x1="90" y1="27" x2="50" y2="33"></line>
+        <line x1="90" y1="27" x2="65" y2="59"></line><line x1="50" y1="96" x2="65" y2="59"></line>
+        <line x1="50" y1="96" x2="35" y2="59"></line><line x1="10" y1="27" x2="35" y2="59"></line>
+        <line x1="10" y1="27" x2="50" y2="33"></line>
+      </svg>
+      <span class="word"><b>BM</b><i class="bar"></i><span>MÍDIAS</span></span>
+    </div>
+
+    <div class="hero-label">Google Tag Manager · Instalação</div>
+    <h1>Instalar o GTM no site<br>Referência em Saúde</h1>
+    <p class="lead">Passo a passo para adicionar o Google Tag Manager em referenciaemsaude.com.br. Os dois códigos abaixo precisam entrar em todas as páginas do site.</p>
+    <div class="id-pill">ID do contêiner: <b>GTM-M3VLJ6QP</b></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- OS CODIGOS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Os dois códigos</div>
+      <h2>Copie os códigos do GTM</h2>
+      <p class="section-sub">São dois trechos. O primeiro vai no topo do <code style="font-family:var(--mono);font-size:12.5px">&lt;head&gt;</code>; o segundo, logo depois que o <code style="font-family:var(--mono);font-size:12.5px">&lt;body&gt;</code> abre. Use o botão "Copiar" de cada um.</p>
+
+      <div class="code-item">
+        <div class="code-tag">
+          <span class="n">1</span>
+          <h3>Código do cabeçalho</h3>
+          <span class="where">cole o mais alto possível dentro do <code>&lt;head&gt;</code></span>
+        </div>
+        <div class="code-wrap">
+          <button class="copy-btn" type="button" aria-label="Copiar código do cabeçalho">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="copy-label">Copiar</span>
+          </button>
+<pre><code>&lt;!-- Google Tag Manager --&gt;
+&lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M3VLJ6QP');&lt;/script&gt;
+&lt;!-- End Google Tag Manager --&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="code-item">
+        <div class="code-tag">
+          <span class="n">2</span>
+          <h3>Código do corpo</h3>
+          <span class="where">cole imediatamente após a tag de abertura <code>&lt;body&gt;</code></span>
+        </div>
+        <div class="code-wrap">
+          <button class="copy-btn" type="button" aria-label="Copiar código do corpo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="copy-label">Copiar</span>
+          </button>
+<pre><code>&lt;!-- Google Tag Manager (noscript) --&gt;
+&lt;noscript&gt;&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3VLJ6QP"
+height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+&lt;!-- End Google Tag Manager (noscript) --&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASSO A PASSO -->
+  <section class="section soft">
+    <div class="container">
+      <div class="section-label">Passo a passo</div>
+      <h2>Escolha o cenário do seu site</h2>
+      <p class="section-sub">O site pode ter sido feito de formas diferentes. Siga o bloco que corresponde ao seu caso.</p>
+
+      <!-- WORDPRESS -->
+      <div class="method">
+        <div class="method-head">
+          <span class="ico">🟦</span>
+          <h3>WordPress</h3>
+          <span class="badge-rec">Mais comum</span>
+        </div>
+        <p class="tagline">Jeito mais simples: um plugin que insere os dois códigos automaticamente só com o ID.</p>
+        <ol class="steps">
+          <li>No painel do WordPress, vá em <b>Plugins → Adicionar novo</b>.</li>
+          <li>Busque por <b>GTM4WP</b> (ou "Google Tag Manager for WordPress", do autor Thomas Geiger). Clique em <b>Instalar</b> e depois <b>Ativar</b>.</li>
+          <li>Vá em <b>Configurações → Google Tag Manager</b>.</li>
+          <li>No campo <b>Google Tag Manager ID</b>, cole <code>GTM-M3VLJ6QP</code> e salve.</li>
+          <li>Pronto. O plugin coloca os dois códigos em todas as páginas sozinho.</li>
+        </ol>
+        <div class="subnote"><b>Alternativa sem o GTM4WP:</b> instale o plugin <b>WPCode</b> (Insert Headers and Footers). Vá em <b>Code Snippets → Header &amp; Footer</b>, cole o <b>Código 1</b> no campo "Header" e o <b>Código 2</b> no campo "Body", e salve.</div>
+      </div>
+
+      <!-- ELEMENTOR -->
+      <div class="method">
+        <div class="method-head">
+          <span class="ico">🟪</span>
+          <h3>Elementor</h3>
+        </div>
+        <p class="tagline">O Elementor Pro tem um recurso de código personalizado que aplica em todo o site.</p>
+        <ol class="steps">
+          <li>No painel do WordPress, vá em <b>Elementor → Custom Code</b> (requer Elementor Pro).</li>
+          <li>Clique em <b>Adicionar novo</b>, dê um nome (ex.: <code>GTM Head</code>).</li>
+          <li>Cole o <b>Código 1</b> e defina a localização como <b>&lt;head&gt;</b>. Publique aplicando em todo o site.</li>
+          <li>Crie outro código, cole o <b>Código 2</b> e defina a localização como <b>Após a tag &lt;body&gt;</b>. Publique.</li>
+        </ol>
+        <div class="subnote"><b>Sem o Elementor Pro:</b> use o plugin <b>WPCode</b> descrito no bloco do WordPress. O Elementor gratuito não insere código no <code>&lt;head&gt;</code> globalmente.</div>
+      </div>
+
+      <!-- IAs -->
+      <div class="method">
+        <div class="method-head">
+          <span class="ico">🤖</span>
+          <h3>Sites feitos por IA (Lovable, Claude, Cursor, v0, Bolt)</h3>
+        </div>
+        <p class="tagline">Se o site foi criado por uma ferramenta de IA, é só pedir para ela inserir os códigos. Copie o pedido abaixo e cole no chat da ferramenta.</p>
+        <div class="prompt-wrap">
+          <button class="copy-btn" type="button" aria-label="Copiar pedido para a IA">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="copy-label">Copiar</span>
+          </button>
+<pre><code>Adicione o Google Tag Manager em todas as páginas do site.
+
+1) Cole este bloco o mais alto possível dentro da tag &lt;head&gt;:
+&lt;!-- Google Tag Manager --&gt;
+&lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M3VLJ6QP');&lt;/script&gt;
+&lt;!-- End Google Tag Manager --&gt;
+
+2) Cole este bloco imediatamente após a tag de abertura &lt;body&gt;:
+&lt;!-- Google Tag Manager (noscript) --&gt;
+&lt;noscript&gt;&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3VLJ6QP"
+height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+&lt;!-- End Google Tag Manager (noscript) --&gt;
+
+Se o projeto for React/Next.js, garanta que o primeiro bloco carregue no
+&lt;head&gt; de todas as páginas e o segundo logo após o &lt;body&gt; abrir.</code></pre>
+        </div>
+        <div class="subnote"><b>Dica:</b> depois que a IA aplicar, peça para ela <b>publicar / fazer deploy</b> do site. O GTM só passa a funcionar na versão publicada, não só no preview.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Confirmação</div>
+      <h2>Como testar se funcionou</h2>
+      <p class="section-sub">Depois de instalar e publicar o site, confirme que o GTM está ativo.</p>
+      <div class="method">
+        <ol class="steps">
+          <li>No painel do <b>Google Tag Manager</b>, clique em <b>Visualizar</b> (Preview) e digite o endereço <code>https://referenciaemsaude.com.br</code>.</li>
+          <li>Se o Tag Assistant conectar e mostrar o contêiner <code>GTM-M3VLJ6QP</code>, está funcionando.</li>
+          <li>Alternativa rápida: instale a extensão <b>Tag Assistant</b> no Chrome, abra o site e veja se o contêiner aparece como ativo.</li>
+          <li>Feito isso, é só <b>Enviar / Publicar</b> o contêiner dentro do GTM para as tags entrarem no ar.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" aria-label="BM Mídias">
+        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27"></polygon>
+        <polygon points="50,33 65,59 35,59"></polygon>
+        <line x1="50" y1="4" x2="50" y2="33"></line><line x1="90" y1="73" x2="65" y2="59"></line>
+        <line x1="10" y1="73" x2="35" y2="59"></line><line x1="90" y1="27" x2="50" y2="33"></line>
+        <line x1="90" y1="27" x2="65" y2="59"></line><line x1="50" y1="96" x2="65" y2="59"></line>
+        <line x1="50" y1="96" x2="35" y2="59"></line><line x1="10" y1="27" x2="35" y2="59"></line>
+        <line x1="10" y1="27" x2="50" y2="33"></line>
+      </svg>
+      <span class="word"><b>BM</b><i class="bar"></i><span>MÍDIAS</span></span>
+    </div>
+    <p>Guia de instalação do Google Tag Manager (GTM-M3VLJ6QP) para referenciaemsaude.com.br.</p>
+    <p>Brito Mídias · Tráfego Pago · TM Vendas e Consultoria (Gerador de Ozônio)</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var wrap = btn.parentNode;
+      var code = wrap.querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(function(){
+        var label = btn.querySelector('.copy-label');
+        var original = label.textContent;
+        label.textContent = 'Copiado!';
+        btn.classList.add('done');
+        setTimeout(function(){ label.textContent = original; btn.classList.remove('done'); }, 1800);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
