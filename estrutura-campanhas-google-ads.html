@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrutura das Campanhas · Google Ads · Gerador de Ozônio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  :root{
+    --roxo:        #7C3AED;
+    --roxo-dark:   #5B21B6;
+    --roxo-deep:   #3B0F73;
+    --roxo-light:  #A78BFA;
+    --roxo-xlight: #EDE9FE;
+    --preto:   #0A0A0A;
+    --ink:     #141018;
+    --cinza:   #5B5566;
+    --linha:   #E7E3EE;
+    --bg:      #FFFFFF;
+    --bg-soft: #FAF9FC;
+  }
+
+  html,body{background:var(--bg)}
+  body{font-family:'Poppins',sans-serif;font-weight:300;color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+  .container{max-width:1040px;margin:0 auto;padding:0 28px}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;overflow:hidden;color:#fff;
+    background:
+      radial-gradient(1100px 500px at 78% -10%, rgba(124,58,237,.55), transparent 60%),
+      linear-gradient(150deg, #0A0A0A 0%, #17111F 45%, #3B0F73 100%);
+    padding:64px 0 56px;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px);
+    background-size:44px 44px;
+    -webkit-mask-image:radial-gradient(ellipse at 60% 20%, #000 0%, transparent 70%);
+    mask-image:radial-gradient(ellipse at 60% 20%, #000 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:1}
+
+  .brand{display:flex;align-items:center;gap:14px;margin-bottom:40px}
+  .brand svg{width:34px;height:34px;flex-shrink:0}
+  .brand .word{display:flex;align-items:center;gap:10px;font-weight:300}
+  .brand .word b{font-weight:800;font-size:15px;color:#fff}
+  .brand .word .bar{width:1.5px;height:18px;background:rgba(255,255,255,.45)}
+  .brand .word span{font-size:13px;letter-spacing:.22em;color:rgba(255,255,255,.85)}
+
+  .hero-label{display:flex;align-items:center;gap:12px;font-size:12.5px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--roxo-light);margin-bottom:18px}
+  .hero-label::before{content:"";width:34px;height:2px;background:var(--roxo-light);border-radius:2px}
+
+  .hero h1{font-size:40px;font-weight:800;letter-spacing:-.02em;line-height:1.15;max-width:760px;margin-bottom:16px}
+  .hero p.lead{font-size:16px;font-weight:300;color:rgba(255,255,255,.72);max-width:620px}
+
+  .hero-meta{display:flex;gap:32px;flex-wrap:wrap;margin-top:36px}
+  .hero-meta div{display:flex;flex-direction:column;gap:4px}
+  .hero-meta small{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--roxo-light)}
+  .hero-meta strong{font-size:16px;font-weight:600;color:#fff}
+
+  /* ===== SECTIONS ===== */
+  .section{padding:56px 0}
+  .section.soft{background:var(--bg-soft)}
+
+  .section-label{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--roxo);margin-bottom:14px}
+  .section-label::before{content:"";width:34px;height:2px;background:var(--roxo);border-radius:2px}
+
+  h2{font-size:28px;font-weight:700;letter-spacing:-.01em;margin-bottom:10px}
+  .section > .container > p.intro{color:var(--cinza);font-size:15px;max-width:680px;margin-bottom:36px}
+
+  /* pills */
+  .pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--roxo-light);color:var(--roxo-dark);
+    border-radius:100px;padding:7px 15px;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+  .pill.solid{background:linear-gradient(90deg,var(--roxo),var(--roxo-dark));color:#fff;border-color:transparent}
+
+  /* schedule highlight */
+  .schedule-card{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
+    background:linear-gradient(135deg, var(--roxo-dark) 0%, var(--roxo-light) 100%);
+    color:#fff;border-radius:20px;padding:32px 36px;margin-bottom:8px;
+  }
+  .schedule-card .days{display:flex;gap:8px;flex-wrap:wrap}
+  .schedule-day{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);
+    border-radius:100px;padding:8px 16px;font-size:13px;font-weight:600}
+  .schedule-day.off{opacity:.4;text-decoration:line-through;background:transparent}
+  .schedule-time{font-size:34px;font-weight:800;letter-spacing:-.01em}
+  .schedule-time small{display:block;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.85;margin-bottom:4px}
+
+  /* campaign overview cards */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:720px){.grid-2{grid-template-columns:1fr}}
+
+  .camp-card{border:1px solid var(--linha);border-radius:20px;background:#fff;padding:28px;overflow:hidden}
+  .camp-card .tag{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--roxo);margin-bottom:8px}
+  .camp-card h3{font-size:21px;font-weight:700;margin-bottom:14px}
+  .camp-card .stats{display:flex;gap:24px;margin-top:18px;padding-top:18px;border-top:1px solid var(--linha)}
+  .camp-card .stats div small{display:block;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza);margin-bottom:3px}
+  .camp-card .stats div strong{font-size:18px;font-weight:700}
+  .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:6px}
+
+  /* asset blocks */
+  .block{border:1px solid var(--linha);border-radius:16px;background:#fff;margin-bottom:16px;overflow:hidden}
+  .block-head{padding:16px 22px;background:var(--bg-soft);border-bottom:1px solid var(--linha);
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .block-head h4{font-size:14.5px;font-weight:600}
+  .block-head span{font-size:12px;color:var(--cinza);font-weight:400}
+  .block-body{padding:20px 22px}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:var(--roxo-xlight);color:var(--roxo-dark);border-radius:100px;padding:7px 14px;
+    font-size:12.5px;font-weight:500}
+  .chip.muted{background:var(--bg-soft);color:var(--cinza);border:1px solid var(--linha)}
+
+  ul.simple-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+  ul.simple-list li{font-size:14px;padding-left:16px;position:relative}
+  ul.simple-list li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--roxo)}
+
+  table.desc-table{width:100%;border-collapse:collapse}
+  table.desc-table td{font-size:13.5px;padding:10px 0;border-bottom:1px solid var(--linha);vertical-align:top}
+  table.desc-table tr:last-child td{border-bottom:none}
+  table.desc-table td.num{width:28px;color:var(--roxo);font-weight:700}
+
+  .sitelink-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:720px){.sitelink-grid{grid-template-columns:1fr}}
+  .sitelink{border:1px solid var(--linha);border-radius:12px;padding:16px}
+  .sitelink b{font-size:13.5px;color:var(--roxo-dark);display:block;margin-bottom:6px}
+  .sitelink span{font-size:12.5px;color:var(--cinza)}
+
+  .kw-note{background:var(--roxo-xlight);border-radius:12px;padding:14px 18px;font-size:13px;color:var(--roxo-dark);margin-top:14px}
+
+  /* footer */
+  footer{background:var(--ink);color:rgba(255,255,255,.65);padding:40px 0}
+  footer .brand .word b, footer .brand .word span{color:#fff}
+  footer p{font-size:12.5px;margin-top:16px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2.4"
+           stroke-linejoin="round" stroke-linecap="round" aria-label="BM Mídias">
+        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27"></polygon>
+        <polygon points="50,33 65,59 35,59"></polygon>
+        <line x1="50" y1="4" x2="50" y2="33"></line><line x1="90" y1="73" x2="65" y2="59"></line>
+        <line x1="10" y1="73" x2="35" y2="59"></line><line x1="90" y1="27" x2="50" y2="33"></line>
+        <line x1="90" y1="27" x2="65" y2="59"></line><line x1="50" y1="96" x2="65" y2="59"></line>
+        <line x1="50" y1="96" x2="35" y2="59"></line><line x1="10" y1="27" x2="35" y2="59"></line>
+        <line x1="10" y1="27" x2="50" y2="33"></line>
+      </svg>
+      <span class="word"><b>BM</b><i class="bar"></i><span>MÍDIAS</span></span>
+    </div>
+
+    <div class="hero-label">GOOGLE ADS · REDE DE PESQUISA</div>
+    <h1>Estrutura das campanhas · Gerador de Ozônio</h1>
+    <p class="lead">Documento de referência com a estrutura completa das duas campanhas de pesquisa criadas para o site referenciaemsaude.com.br: palavras-chave, anúncios e horário de veiculação.</p>
+
+    <div class="hero-meta">
+      <div><small>Cliente</small><strong>TM Vendas e Consultoria</strong></div>
+      <div><small>Canal</small><strong>Google Ads · Rede de Pesquisa</strong></div>
+      <div><small>Campanhas ativas</small><strong>2</strong></div>
+      <div><small>Investimento total</small><strong>R$ 174,00 / dia</strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- HORÁRIO DE VEICULAÇÃO -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">QUANDO OS ANÚNCIOS FICAM NO AR</div>
+    <h2>Programação de veiculação</h2>
+    <p class="intro">Os anúncios das duas campanhas foram programados para exibir apenas nesta janela de dias e horários. Fora dela, eles ficam pausados automaticamente.</p>
+
+    <div class="schedule-card">
+      <div class="schedule-time">
+        <small>Horário</small>
+        15:00 às 20:00
+      </div>
+      <div class="days">
+        <span class="schedule-day off">Segunda</span>
+        <span class="schedule-day off">Terça</span>
+        <span class="schedule-day">Quarta</span>
+        <span class="schedule-day">Quinta</span>
+        <span class="schedule-day">Sexta</span>
+        <span class="schedule-day">Sábado</span>
+        <span class="schedule-day">Domingo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISÃO GERAL -->
+<section class="section soft">
+  <div class="container">
+    <div class="section-label">VISÃO CONSOLIDADA</div>
+    <h2>As duas campanhas</h2>
+    <p class="intro">Cada campanha ataca uma frente de busca diferente: uma pelo produto (gerador de ozônio) e outra pelos sintomas e benefícios que o aparelho ajuda a tratar.</p>
+
+    <div class="grid-2">
+      <div class="camp-card">
+        <div class="tag">Campanha 01</div>
+        <h3>Ozônio</h3>
+        <p style="color:var(--cinza);font-size:13.5px">Busca por quem já procura o produto: "gerador de ozônio", benefícios, funcionamento, certificação.</p>
+        <div class="stats">
+          <div><small>Status</small><strong><span class="status-dot"></span>Ativa</strong></div>
+          <div><small>Orçamento</small><strong>R$ 87/dia</strong></div>
+          <div><small>Palavras-chave</small><strong>27</strong></div>
+        </div>
+      </div>
+      <div class="camp-card">
+        <div class="tag">Campanha 02</div>
+        <h3>Tratamento</h3>
+        <p style="color:var(--cinza);font-size:13.5px">Busca por quem procura solução para um sintoma ou condição: circulação, inflamação, imunidade, dores.</p>
+        <div class="stats">
+          <div><small>Status</small><strong><span class="status-dot"></span>Ativa</strong></div>
+          <div><small>Orçamento</small><strong>R$ 87/dia</strong></div>
+          <div><small>Palavras-chave</small><strong>20</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPANHA OZÔNIO -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">CAMPANHA 01</div>
+    <h2>Ozônio</h2>
+    <p class="intro">Estrutura completa de palavras-chave e anúncio desta campanha.</p>
+
+    <div class="block">
+      <div class="block-head"><h4>Palavras-chave</h4><span>27 termos · correspondência ampla</span></div>
+      <div class="block-body">
+        <div class="chips">
+          <span class="chip">gerador de ozônio</span>
+          <span class="chip">gerador de ozônio residencial</span>
+          <span class="chip">gerador de ozônio anvisa</span>
+          <span class="chip">gerador de ozônio funciona</span>
+          <span class="chip">gerador de ozônio funciona mesmo</span>
+          <span class="chip">gerador de ozônio faz mal</span>
+          <span class="chip">gerador de ozônio é seguro</span>
+          <span class="chip">gerador de ozônio vale a pena</span>
+          <span class="chip">gerador de ozônio residencial vale a pena</span>
+          <span class="chip">gerador de ozônio tem certificado</span>
+          <span class="chip">gerador de ozônio laudo</span>
+          <span class="chip">gerador de ozônio uff unicamp</span>
+          <span class="chip">para que serve o gerador de ozônio</span>
+          <span class="chip">água ozonizada benefícios</span>
+          <span class="chip">benefícios do ozônio para saúde</span>
+          <span class="chip">como fortalecer a imunidade</span>
+          <span class="chip">imunidade baixa o que fazer</span>
+          <span class="chip">como melhorar a circulação sanguínea</span>
+          <span class="chip">remédio para má circulação</span>
+          <span class="chip">tratamento para circulação nas pernas</span>
+          <span class="chip">tratamento natural para inflamação</span>
+          <span class="chip">como baixar o colesterol naturalmente</span>
+          <span class="chip">como tirar agrotóxico dos alimentos</span>
+          <span class="chip">bronquiolite bebê</span>
+          <span class="chip">ozônio faz mal aos pulmões</span>
+          <span class="chip">ozônio tech</span>
+          <span class="chip">ozônio funciona mesmo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h4>Títulos do anúncio</h4><span>14 variações</span></div>
+      <div class="block-body">
+        <ul class="simple-list">
+          <li>Gerador de Ozônio Residencial</li>
+          <li>Ozônio Que Fortalece a Saúde</li>
+          <li>Laudo UFF + UNICAMP</li>
+          <li>Único Gerador Certificado</li>
+          <li>Aprovado Pela Anvisa</li>
+          <li>Recomendado por Médicos</li>
+          <li>Fortaleça Sua Imunidade</li>
+          <li>Ajuda a Melhorar Circulação</li>
+          <li>Ajuda a Reduzir Inflamação</li>
+          <li>Elimina Vírus e Bactérias</li>
+          <li>Funciona Mesmo, Comprovado</li>
+          <li>100% Seguro Para Toda Família</li>
+          <li>Tecnologia 100% Brasileira</li>
+          <li>Fale Com Especialista Agora</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h4>Descrições do anúncio</h4><span>4 variações</span></div>
+      <div class="block-body">
+        <table class="desc-table">
+          <tr><td class="num">1</td><td>Laudos UFF e UNICAMP comprovam a eficácia. Fale com nosso especialista.</td></tr>
+          <tr><td class="num">2</td><td>Ozônio ajuda a fortalecer a imunidade e melhorar a circulação. Fale com nosso especialista.</td></tr>
+          <tr><td class="num">3</td><td>Tecnologia 100% brasileira, aprovada pela Anvisa. Fale com nosso especialista.</td></tr>
+          <tr><td class="num">4</td><td>Reduz inflamação, fortalece o corpo e ajuda no colesterol. Fale com nosso especialista.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h4>Sitelinks e frases de destaque</h4><span>Links extras + selos exibidos no anúncio</span></div>
+      <div class="block-body">
+        <div class="sitelink-grid" style="margin-bottom:18px">
+          <div class="sitelink"><b>Age em + de 250 doenças</b><span>Veja para quais casos ajuda</span></div>
+          <div class="sitelink"><b>Como Funciona o Ozônio</b><span>Tecnologia aprovada pela Anvisa</span></div>
+          <div class="sitelink"><b>Fale no WhatsApp Agora</b><span>Atendimento rápido e humano</span></div>
+        </div>
+        <div class="chips">
+          <span class="chip muted">Ação Contra 250 Doenças</span>
+          <span class="chip muted">Laudos UFF + UNICAMP</span>
+          <span class="chip muted">Recomendado por Médicos</span>
+          <span class="chip muted">Elimina 99,9% de Vírus</span>
+          <span class="chip muted">+40 Mil Famílias Confiam</span>
+          <span class="chip muted">100% Tecnologia Nacional</span>
+          <span class="chip muted">100% Fabricado no Brasil</span>
+          <span class="chip muted">Atendimento Especializado</span>
+          <span class="chip muted">Aprovado Pela Anvisa</span>
+          <span class="chip muted">Seguro Com Pets e Família</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPANHA TRATAMENTO -->
+<section class="section soft">
+  <div class="container">
+    <div class="section-label">CAMPANHA 02</div>
+    <h2>Tratamento</h2>
+    <p class="intro">Estrutura completa de palavras-chave e anúncio desta campanha.</p>
+
+    <div class="block">
+      <div class="block-head"><h4>Palavras-chave</h4><span>20 termos · correspondência ampla</span></div>
+      <div class="block-body">
+        <div class="chips">
+          <span class="chip">tratamento para má circulação</span>
+          <span class="chip">tratamento para tensão muscular</span>
+          <span class="chip">tratamento para cicatrização de feridas</span>
+          <span class="chip">tratamento para bronquite</span>
+          <span class="chip">tratamento para sinusite</span>
+          <span class="chip">tratamento para artrite</span>
+          <span class="chip">tratamento para problemas pulmonares</span>
+          <span class="chip">tratamento para inflamação crônica</span>
+          <span class="chip">tratamento natural para o corpo</span>
+          <span class="chip">tratamento para fadiga crônica</span>
+          <span class="chip">tratamento para estresse oxidativo</span>
+          <span class="chip">tratamento para queda de imunidade</span>
+          <span class="chip">tratamento para recuperação muscular</span>
+          <span class="chip">tratamento para desconforto físico</span>
+          <span class="chip">ozonioterapia benefícios</span>
+          <span class="chip">ozonioterapia para imunidade</span>
+          <span class="chip">ozonioterapia para qualidade de vida</span>
+          <span class="chip">terapia com ozônio em casa</span>
+          <span class="chip">alívio natural para dores</span>
+          <span class="chip">gerador de ozônio terapêutico</span>
+        </div>
+        <div class="kw-note">Os termos foram construídos em torno de sintomas e benefícios gerais, sem citar nomes de doenças específicas. Isso segue a política de saúde do Google, que restringe anúncios personalizados vinculados a condições médicas graves.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h4>Títulos do anúncio</h4><span>15 variações</span></div>
+      <div class="block-body">
+        <ul class="simple-list">
+          <li>Tratamento Natural com Ozônio</li>
+          <li>Alívio para Má Circulação</li>
+          <li>Reduz Tensão Muscular</li>
+          <li>Ajuda na Cicatrização</li>
+          <li>Laudo UFF + UNICAMP</li>
+          <li>Único Gerador Certificado</li>
+          <li>Aprovado Pela Anvisa</li>
+          <li>Recomendado por Médicos</li>
+          <li>Trata Feridas Naturalmente</li>
+          <li>Melhora a Circulação do Corpo</li>
+          <li>Relaxa Músculos Tensos</li>
+          <li>Funciona Mesmo, Comprovado</li>
+          <li>100% Seguro Para Toda Família</li>
+          <li>Tecnologia 100% Brasileira</li>
+          <li>Fale Com Especialista Agora</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h4>Descrições do anúncio</h4><span>4 variações</span></div>
+      <div class="block-body">
+        <table class="desc-table">
+          <tr><td class="num">1</td><td>Alívio natural para má circulação e tensão muscular. Fale com a gente.</td></tr>
+          <tr><td class="num">2</td><td>Ajuda a cicatrizar feridas e reduzir inflamação. Converse com a gente.</td></tr>
+          <tr><td class="num">3</td><td>Laudos UFF e UNICAMP comprovam a eficácia. Saiba mais agora.</td></tr>
+          <tr><td class="num">4</td><td>Tecnologia 100% brasileira, aprovada pela Anvisa. Converse com a gente.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-head"><h4>Sitelinks e frases de destaque</h4><span>Links extras + selos exibidos no anúncio</span></div>
+      <div class="block-body">
+        <div class="sitelink-grid" style="margin-bottom:18px">
+          <div class="sitelink"><b>Age em + de 250 doenças</b><span>Veja para quais casos ajuda</span></div>
+          <div class="sitelink"><b>Como Funciona o Ozônio</b><span>Tecnologia aprovada pela Anvisa</span></div>
+          <div class="sitelink"><b>Fale no WhatsApp Agora</b><span>Atendimento rápido e humano</span></div>
+        </div>
+        <div class="chips">
+          <span class="chip muted">Ação Contra 250 Doenças</span>
+          <span class="chip muted">Laudos UFF + UNICAMP</span>
+          <span class="chip muted">Recomendado por Médicos</span>
+          <span class="chip muted">Elimina 99,9% de Vírus</span>
+          <span class="chip muted">+40 Mil Famílias Confiam</span>
+          <span class="chip muted">100% Tecnologia Nacional</span>
+          <span class="chip muted">100% Fabricado no Brasil</span>
+          <span class="chip muted">Atendimento Especializado</span>
+          <span class="chip muted">Aprovado Pela Anvisa</span>
+          <span class="chip muted">Seguro Com Pets e Família</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2.4"
+           stroke-linejoin="round" stroke-linecap="round" aria-label="BM Mídias">
+        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27"></polygon>
+        <polygon points="50,33 65,59 35,59"></polygon>
+        <line x1="50" y1="4" x2="50" y2="33"></line><line x1="90" y1="73" x2="65" y2="59"></line>
+        <line x1="10" y1="73" x2="35" y2="59"></line><line x1="90" y1="27" x2="50" y2="33"></line>
+        <line x1="90" y1="27" x2="65" y2="59"></line><line x1="50" y1="96" x2="65" y2="59"></line>
+        <line x1="50" y1="96" x2="35" y2="59"></line><line x1="10" y1="27" x2="35" y2="59"></line>
+        <line x1="10" y1="27" x2="50" y2="33"></line>
+      </svg>
+      <span class="word"><b>BM</b><i class="bar"></i><span>MÍDIAS</span></span>
+    </div>
+    <p>Brito Mídias · Gestão de Tráfego Pago · TM Vendas e Consultoria · Gerador de Ozônio</p>
+  </div>
+</footer>
+
+</body>
+</html>
