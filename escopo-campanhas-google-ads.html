@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escopo das Campanhas Google Ads · TM Vendas · Brito Mídias</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --roxo:#7C3AED; --roxo-dark:#5B21B6; --roxo-deep:#3B0F73; --roxo-light:#A78BFA; --roxo-xlight:#EDE9FE;
+    --ink:#141018; --cinza:#5B5566; --linha:#E7E3EE; --bg:#FFFFFF; --bg-soft:#FAF9FC;
+    --ok:#16A34A; --warn:#B45309; --danger:#DC2626;
+    --mono:'SF Mono',ui-monospace,Menlo,Consolas,monospace;
+  }
+  body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-weight:300;line-height:1.6}
+  .container{max-width:1040px;margin:0 auto;padding:0 28px}
+
+  .hero{position:relative;overflow:hidden;color:#fff;
+    background:radial-gradient(1100px 500px at 78% -10%, rgba(124,58,237,.55), transparent 60%),
+      linear-gradient(150deg,#0A0A0A 0%,#17111F 45%,#3B0F73 100%);}
+  .hero::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.14) 1px,transparent 1px);
+    background-size:44px 44px;-webkit-mask-image:radial-gradient(1000px 460px at 70% 0%,#000 30%,transparent 75%);
+    mask-image:radial-gradient(1000px 460px at 70% 0%,#000 30%,transparent 75%);pointer-events:none}
+  .hero-inner{position:relative;padding:30px 0 48px}
+  .brand{display:flex;align-items:center;gap:16px;margin-bottom:40px}
+  .brand svg{width:44px;height:44px}
+  .brand .word{display:flex;align-items:center;gap:12px;font-weight:300;color:#fff}
+  .brand .word b{font-weight:800;font-size:19px}
+  .brand .word .bar{width:2px;height:29px;background:rgba(255,255,255,.55)}
+  .brand .word span{font-size:19px;letter-spacing:.22em}
+  .hero-label{display:inline-flex;align-items:center;gap:12px;font-size:12.5px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--roxo-light);margin-bottom:16px}
+  .hero-label::before{content:"";width:34px;height:2px;background:var(--roxo-light);border-radius:2px}
+  .hero h1{font-size:clamp(30px,4.6vw,46px);font-weight:800;line-height:1.12;letter-spacing:-.02em}
+  .hero .lead{color:rgba(255,255,255,.82);font-size:15px;margin-top:16px;max-width:660px;font-weight:300}
+
+  main{padding:6px 0 0}
+  .section{padding:44px 0 6px}
+  .section.soft{background:var(--bg-soft);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+  .section-label{display:flex;align-items:center;gap:12px;font-size:12.5px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--roxo);margin-bottom:10px}
+  .section-label::before{content:"";width:34px;height:2px;background:var(--roxo);border-radius:2px}
+  .section h2{font-size:26px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+  .section-sub{font-size:14px;color:var(--cinza);margin-bottom:22px;max-width:740px}
+
+  .card{background:#fff;border:1px solid var(--linha);border-radius:16px;padding:22px 24px;margin-bottom:16px}
+  .section.soft .card{background:#fff}
+  .card h3{font-size:17px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .tag{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--roxo-dark);background:var(--roxo-xlight);padding:3px 9px;border-radius:6px}
+  .mtag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:100px}
+  .mtag.exact{background:rgba(124,58,237,.12);color:var(--roxo-dark)}
+  .mtag.phrase{background:rgba(22,163,74,.12);color:var(--ok)}
+  .mtag.neg{background:rgba(220,38,38,.1);color:var(--danger)}
+  .card .desc{font-size:13px;color:var(--cinza);margin-bottom:14px}
+
+  .kw-box{background:var(--bg-soft);border:1px solid var(--linha);border-radius:12px;padding:14px 16px;font-family:var(--mono);font-size:12.5px;color:var(--ink);line-height:1.9;overflow-x:auto}
+  .kw-box .k{display:block;white-space:nowrap}
+  .kw-box .grp{display:block;font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--roxo);margin:10px 0 3px}
+  .kw-box .grp:first-child{margin-top:0}
+
+  .asset-list{list-style:none;display:flex;flex-direction:column;gap:0}
+  .asset-list li{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--linha);font-size:13.5px}
+  .asset-list li:last-child{border-bottom:none}
+  .asset-list li .n{font-family:var(--mono);font-size:11px;color:var(--cinza);flex-shrink:0;width:22px}
+  .asset-list li b{font-weight:500}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:720px){.two{grid-template-columns:1fr}}
+  .col h4{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--roxo);margin-bottom:8px}
+
+  .kv{display:flex;flex-direction:column;gap:8px}
+  .kv .row{display:flex;gap:12px;font-size:13.5px;padding:8px 0;border-bottom:1px solid var(--linha)}
+  .kv .row:last-child{border-bottom:none}
+  .kv .row .lb{width:150px;flex-shrink:0;color:var(--cinza);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .kv .row .vl{font-family:var(--mono);font-size:12px;word-break:break-all}
+  .sl{padding:9px 0;border-bottom:1px solid var(--linha);font-size:13.5px}
+  .sl:last-child{border-bottom:none}
+  .sl b{font-weight:600}
+  .sl span{color:var(--cinza);font-size:12.5px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-size:12.5px;background:var(--roxo-xlight);color:var(--roxo-dark);padding:4px 11px;border-radius:100px;font-weight:500}
+
+  .note{background:#FBF7F1;border-left:3px solid var(--warn);border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;color:var(--ink);margin-bottom:12px}
+  .note b{font-weight:600}
+  .note.ok{background:rgba(22,163,74,.06);border-left-color:var(--ok)}
+
+  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:32px 0 44px;margin-top:44px}
+  footer .brand{margin-bottom:18px}
+  footer p{font-size:12px;font-weight:300;color:rgba(255,255,255,.6)}
+  footer p + p{margin-top:6px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" aria-label="BM Mídias">
+        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27"></polygon><polygon points="50,33 65,59 35,59"></polygon>
+        <line x1="50" y1="4" x2="50" y2="33"></line><line x1="90" y1="73" x2="65" y2="59"></line>
+        <line x1="10" y1="73" x2="35" y2="59"></line><line x1="90" y1="27" x2="50" y2="33"></line>
+        <line x1="90" y1="27" x2="65" y2="59"></line><line x1="50" y1="96" x2="65" y2="59"></line>
+        <line x1="50" y1="96" x2="35" y2="59"></line><line x1="10" y1="27" x2="35" y2="59"></line>
+        <line x1="10" y1="27" x2="50" y2="33"></line>
+      </svg>
+      <span class="word"><b>BM</b><i class="bar"></i><span>MÍDIAS</span></span>
+    </div>
+    <div class="hero-label">Escopo de Reestruturação · Google Ads</div>
+    <h1>Escopo das 2 campanhas<br>para duplicar e alterar</h1>
+    <p class="lead">Nova estrutura de palavras-chave (exata + frase), mais os títulos, descrições, frases de destaque e sitelinks puxados exatamente do que já está rodando na conta TM VENDAS, prontos para reaproveitar.</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- CONFIG COMUM -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Configuração comum</div>
+      <h2>Vale para as duas campanhas</h2>
+      <p class="section-sub">Esses itens já estão certos na conta e devem ser mantidos ao duplicar.</p>
+      <div class="card">
+        <div class="kv">
+          <div class="row"><span class="lb">Objetivo</span><span class="vl">Contatos / Leads (Pesquisa)</span></div>
+          <div class="row"><span class="lb">URL final</span><span class="vl">https://referenciaemsaude.com.br/</span></div>
+          <div class="row"><span class="lb">Caminho exibição</span><span class="vl">referenciaemsaude.com.br</span></div>
+          <div class="row"><span class="lb">WhatsApp (sitelink)</span><span class="vl">wa.me/5551993181561</span></div>
+          <div class="row"><span class="lb">Sufixo de URL (UTM)</span><span class="vl">utm_source=google&utm_campaign={campaignid}&utm_medium={adgroupid}&utm_content={creative}&utm_term={keyword}&matchtype={matchtype}&device={device}&gclid={gclid}</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMPANHA 1: OZONIO / EXATA -->
+  <section class="section soft">
+    <div class="container">
+      <div class="section-label">Campanha 1</div>
+      <h2>Ozônio Geral <span class="mtag exact" style="vertical-align:middle">Correspondência exata</span></h2>
+      <p class="section-sub">Gaveta quente: só os termos "cabeça" de ozônio, que têm busca real e intenção alta. Poucos, mas qualificados.</p>
+
+      <div class="card">
+        <h3><span class="tag">[01] · GRUPO OZÔNIO</span> Palavras-chave <span class="mtag exact">Exata</span></h3>
+        <p class="desc">Cadastrar com colchetes <code style="font-family:var(--mono)">[ ]</code>.</p>
+        <div class="kw-box">
+          <span class="k">[ozonioterapia]</span>
+          <span class="k">[ozonioterapia benefícios]</span>
+          <span class="k">[ozonioterapia para que serve]</span>
+          <span class="k">[para que serve ozonioterapia]</span>
+          <span class="k">[benefícios do ozônio para saúde]</span>
+          <span class="k">[gerador de ozônio]</span>
+          <span class="k">[gerador de ozônio residencial]</span>
+          <span class="k">[gerador de ozônio ozoxx]</span>
+          <span class="k">[ozoxx]</span>
+          <span class="k">[água ozonizada benefícios]</span>
+        </div>
+        <div class="note" style="margin-top:14px"><b>Nota:</b> volume baixo é esperado aqui. Algumas podem aparecer como "baixo volume de pesquisas" até haver busca. É a gaveta de intenção alta, não a de volume.</div>
+      </div>
+
+      <div class="card">
+        <h3>Anúncio (RSA) — reaproveitar o atual</h3>
+        <p class="desc">Puxado exatamente do que já roda em [01]. 15 títulos + 4 descrições.</p>
+        <div class="two">
+          <div class="col">
+            <h4>Títulos (15)</h4>
+            <ul class="asset-list">
+              <li><span class="n">1</span><b>Gerador de Ozônio Residencial</b></li>
+              <li><span class="n">2</span><b>Ozônio Que Fortalece a Saúde</b></li>
+              <li><span class="n">3</span><b>Laudo UFF + UNICAMP</b></li>
+              <li><span class="n">4</span><b>Único Gerador Certificado</b></li>
+              <li><span class="n">5</span><b>Elimina até 99,9% dos vírus</b></li>
+              <li><span class="n">6</span><b>Recomendado por Médicos</b></li>
+              <li><span class="n">7</span><b>Fortaleça Sua Imunidade</b></li>
+              <li><span class="n">8</span><b>Ajuda a Melhorar Circulação</b></li>
+              <li><span class="n">9</span><b>Ajuda a Reduzir Inflamação</b></li>
+              <li><span class="n">10</span><b>Elimina Vírus e Bactérias</b></li>
+              <li><span class="n">11</span><b>Gerador de Ozônio Ozoxx</b></li>
+              <li><span class="n">12</span><b>100% Seguro Para Toda Família</b></li>
+              <li><span class="n">13</span><b>Tecnologia 100% Brasileira</b></li>
+              <li><span class="n">14</span><b>Fale Com Especialista Agora</b></li>
+              <li><span class="n">15</span><b>Para doenças respiratórias</b></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h4>Descrições (4)</h4>
+            <ul class="asset-list">
+              <li><span class="n">1</span><b>Laudos UFF e UNICAMP comprovam a eficácia. Fale com nosso especialista.</b></li>
+              <li><span class="n">2</span><b>Ozônio ajuda a fortalecer a imunidade e melhorar a circulação. Fale com nosso especialista.</b></li>
+              <li><span class="n">3</span><b>Tecnologia 100% brasileira, escolhida por +40 mil famílias. Fale com nosso especialista.</b></li>
+              <li><span class="n">4</span><b>Reduz inflamação e fortalece o corpo, sem efeito colateral. Fale com nosso especialista.</b></li>
+            </ul>
+            <div class="note" style="margin-top:14px"><b>Correção:</b> no título 15 o Google está com o erro "doêncas". Ao duplicar, corrigir para "doenças".</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMPANHA 2: TRATAMENTO / FRASE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Campanha 2</div>
+      <h2>Tratamento <span class="mtag phrase" style="vertical-align:middle">Correspondência de frase</span></h2>
+      <p class="section-sub">O motor de volume: termos de sintoma/tratamento que já converteram, mais os termos-raiz de ozônio que expandem sozinhos para as doenças da imagem.</p>
+
+      <div class="card">
+        <h3><span class="tag">[02] · GRUPO TRATAMENTO</span> Palavras-chave <span class="mtag phrase">Frase</span></h3>
+        <p class="desc">Cadastrar entre aspas <code style="font-family:var(--mono)">" "</code>.</p>
+        <div class="kw-box">
+          <span class="grp">Raiz de ozônio (expandem para as doenças sozinhas)</span>
+          <span class="k">"ozonioterapia para"</span>
+          <span class="k">"tratamento com ozônio"</span>
+          <span class="k">"ozônio para"</span>
+          <span class="k">"terapia com ozônio"</span>
+          <span class="grp">Sintoma / tratamento que já performaram</span>
+          <span class="k">"tratamento para artrite"</span>
+          <span class="k">"tratamento para cicatrização de feridas"</span>
+          <span class="k">"como fortalecer a imunidade"</span>
+          <span class="k">"tratamento para tensão muscular"</span>
+          <span class="k">"tratamento para sinusite"</span>
+          <span class="k">"tratamento para má circulação"</span>
+          <span class="k">"imunidade baixa o que fazer"</span>
+          <span class="k">"como melhorar a circulação sanguínea"</span>
+          <span class="grp">Ozônio + doença (da imagem Ozoxx)</span>
+          <span class="k">"ozônio para asma"</span>
+          <span class="k">"ozônio para bronquite"</span>
+          <span class="k">"ozônio para rinite"</span>
+          <span class="k">"ozônio para sinusite"</span>
+          <span class="k">"ozônio para artrite"</span>
+          <span class="k">"ozônio para diabetes"</span>
+          <span class="k">"ozônio para psoríase"</span>
+          <span class="k">"ozônio para fibromialgia"</span>
+          <span class="k">"ozônio para enxaqueca"</span>
+          <span class="k">"ozônio para má circulação"</span>
+          <span class="k">"ozônio para hérnia de disco"</span>
+          <span class="k">"ozônio para cicatrização de feridas"</span>
+          <span class="k">"ozônio para doenças respiratórias"</span>
+          <span class="k">"ozônio para doenças vasculares"</span>
+          <span class="k">"ozonioterapia para imunidade"</span>
+          <span class="k">"ozonioterapia para dores"</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Anúncio (RSA) — reaproveitar o atual</h3>
+        <p class="desc">Puxado exatamente do que já roda em [02]. 15 títulos + 4 descrições.</p>
+        <div class="two">
+          <div class="col">
+            <h4>Títulos (15)</h4>
+            <ul class="asset-list">
+              <li><span class="n">1</span><b>Tratamento Natural com Ozônio</b></li>
+              <li><span class="n">2</span><b>Alívio para Má Circulação</b></li>
+              <li><span class="n">3</span><b>Reduz Tensão Muscular</b></li>
+              <li><span class="n">4</span><b>Ajuda na Cicatrização</b></li>
+              <li><span class="n">5</span><b>Laudo UFF + UNICAMP</b></li>
+              <li><span class="n">6</span><b>Único Gerador Certificado</b></li>
+              <li><span class="n">7</span><b>+40 Mil Famílias Confiam</b></li>
+              <li><span class="n">8</span><b>Recomendado por Médicos</b></li>
+              <li><span class="n">9</span><b>Trata Feridas Naturalmente</b></li>
+              <li><span class="n">10</span><b>Melhora a Circulação do Corpo</b></li>
+              <li><span class="n">11</span><b>Relaxa Músculos Tensos</b></li>
+              <li><span class="n">12</span><b>Gerador de Ozônio Ozoxx</b></li>
+              <li><span class="n">13</span><b>100% Seguro Para Toda Família</b></li>
+              <li><span class="n">14</span><b>Tecnologia 100% Brasileira</b></li>
+              <li><span class="n">15</span><b>Fale Com Especialista Agora</b></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h4>Descrições (4)</h4>
+            <ul class="asset-list">
+              <li><span class="n">1</span><b>Alívio natural para má circulação e tensão muscular. Fale com a gente.</b></li>
+              <li><span class="n">2</span><b>Ajuda a cicatrizar feridas e reduzir inflamação. Converse com a gente.</b></li>
+              <li><span class="n">3</span><b>Laudos UFF e UNICAMP comprovam a eficácia. Saiba mais agora.</b></li>
+              <li><span class="n">4</span><b>Tecnologia 100% brasileira, sem efeito colateral. Converse com a gente.</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRASES DE DESTAQUE + SITELINKS -->
+  <section class="section soft">
+    <div class="container">
+      <div class="section-label">Recursos compartilhados</div>
+      <h2>Frases de destaque e sitelinks</h2>
+      <p class="section-sub">Puxados da conta. Servem para as duas campanhas.</p>
+
+      <div class="card">
+        <h3>Frases de destaque (Callouts)</h3>
+        <p class="desc">A conta tem 10 frases. Estas 3 estão confirmadas; as demais podem ser mantidas do que já existe.</p>
+        <div class="chips">
+          <span class="chip">Ação Contra 250 Doenças</span>
+          <span class="chip">Laudos UFF + UNICAMP</span>
+          <span class="chip">Recomendado por Médicos</span>
+        </div>
+        <div class="note" style="margin-top:14px"><b>Sugestões extras</b> (se quiser completar): +40 Mil Famílias Confiam · 100% Nacional · Seguro Para Pets · Sem Efeito Colateral · Pronta-entrega · Atendimento Humano · Uso Preventivo e Terapêutico.</div>
+      </div>
+
+      <div class="card">
+        <h3>Sitelinks</h3>
+        <p class="desc">A conta tem 3 sitelinks ativos por campanha (o Google recomenda 6). Os 4 já criados:</p>
+        <div class="sl"><b>Gerador de Ozônio Ozoxx</b> <span>· Tecnologia com laudos UFF e UNICAMP · +40 Mil Famílias Confiam → site</span></div>
+        <div class="sl"><b>Fale no WhatsApp Agora</b> <span>· Atendimento rápido e humano · Tire suas dúvidas agora mesmo → wa.me/5551993181561</span></div>
+        <div class="sl"><b>Age em + de 250 doenças</b> <span>· Veja para quais casos ajuda · Ação preventiva e terapêutica → site</span></div>
+        <div class="sl"><b>Como Funciona o Ozônio</b> <span>· Laudos UFF e UNICAMP · Tecnologia aprovada → site</span></div>
+        <div class="note" style="margin-top:14px"><b>Recomendação:</b> criar mais 2 sitelinks para chegar a 6 e destravar formatos maiores. Ex.: "Depoimentos de Clientes" e "Laudos e Certificações".</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEGATIVAS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Palavras-chave negativas</div>
+      <h2>Filtro contra o público de farmácia</h2>
+      <p class="section-sub">Adicionar como negativas nas duas campanhas. Foram os termos que a correspondência ampla trouxe de gente procurando remédio, pomada ou marca de concorrente. Revisar e ampliar toda semana pelo relatório de termos.</p>
+      <div class="card">
+        <div class="kw-box">
+          <span class="k">varizes</span>
+          <span class="k">creme para varizes</span>
+          <span class="k">médico de varizes</span>
+          <span class="k">diosmina</span>
+          <span class="k">hesperidina</span>
+          <span class="k">miosan</span>
+          <span class="k">urgotul</span>
+          <span class="k">cicatrene</span>
+          <span class="k">artrovita</span>
+          <span class="k">vita supraz</span>
+          <span class="k">castanha da índia</span>
+          <span class="k">óleo de orégano</span>
+          <span class="k">óleo de girassol</span>
+          <span class="k">garra do diabo</span>
+          <span class="k">escaras</span>
+          <span class="k">curativo de carvão</span>
+          <span class="k">laser</span>
+          <span class="k">pomada</span>
+          <span class="k">comprimido</span>
+        </div>
+        <div class="note ok" style="margin-top:14px"><b>Cuidado:</b> não negativar "canela de velho" — o único lead da conta veio de "canela de velho com sucupira". Deixar rodar e observar.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUMO -->
+  <section class="section soft">
+    <div class="container">
+      <div class="section-label">Respondendo você</div>
+      <h2>Os títulos, descrições e sitelinks já funcionam?</h2>
+      <div class="card">
+        <div class="note ok"><b>Sim, dá para reaproveitar quase tudo.</b> Puxei os 15 títulos + 4 descrições de cada anúncio, os sitelinks e as frases de destaque exatamente como estão. O conteúdo é bom e alinhado (laudos, selos, WhatsApp). Só duas correções valem a pena ao duplicar:</div>
+        <ul class="asset-list">
+          <li><span class="n">1</span><b>Corrigir o typo "doêncas" → "doenças"</b> no título 15 da campanha de ozônio.</li>
+          <li><span class="n">2</span><b>Subir de 3 para 6 sitelinks</b> — o próprio Google está pedindo, e destrava formatos de anúncio maiores (mais CTR).</li>
+        </ul>
+        <div class="note" style="margin-top:14px"><b>A grande mudança não é o texto, é a segmentação:</b> trocar correspondência ampla por exata (ozônio) + frase (tratamento) e subir as negativas. Isso é o que corta o desperdício, não o criativo.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" aria-label="BM Mídias">
+        <polygon points="50,4 90,27 90,73 50,96 10,73 10,27"></polygon><polygon points="50,33 65,59 35,59"></polygon>
+        <line x1="50" y1="4" x2="50" y2="33"></line><line x1="90" y1="73" x2="65" y2="59"></line>
+        <line x1="10" y1="73" x2="35" y2="59"></line><line x1="90" y1="27" x2="50" y2="33"></line>
+        <line x1="90" y1="27" x2="65" y2="59"></line><line x1="50" y1="96" x2="65" y2="59"></line>
+        <line x1="50" y1="96" x2="35" y2="59"></line><line x1="10" y1="27" x2="35" y2="59"></line>
+        <line x1="10" y1="27" x2="50" y2="33"></line>
+      </svg>
+      <span class="word"><b>BM</b><i class="bar"></i><span>MÍDIAS</span></span>
+    </div>
+    <p>Títulos, descrições, sitelinks e frases de destaque puxados da conta TM VENDAS em 07/ago/2026. Nova estrutura de palavras-chave proposta pela Brito Mídias.</p>
+    <p>Brito Mídias · Tráfego Pago · TM Vendas e Consultoria (Gerador de Ozônio)</p>
+  </div>
+</footer>
+
+</body>
+</html>
